@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	
+	
+	<title>우리 지역 고용위기 시그널 - LAB2050</title>
+
+	<!-- meta tag, favicon -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" type="image/png" sizes="32x32" href="@images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="@images/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="@images/favicon/favicon-16x16.png">
+
+	<!-- jQuery / jQuery UI 가져오기. -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<!-- plugin for jquery touch ui -->
+	<script type="text/javascript" src="js/plugin/jquery-ui-touch-punch.js"></script>
+
+	<!-- D3.js 가져오기. -->
+	<script src="https://d3js.org/d3.v4.js"></script>
+
+	<!-- Leaflet.js 가져오기. https://leafletjs.com -->
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" 
+		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+		crossorigin=""/>
+		<!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+		integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+		crossorigin=""></script>
+
+	<!-- Leaflet Data Visualization Framework 가져오기. https://github.com/humangeo/leaflet-dvf -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.3.1/css/dvf.css"/> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-dvf/0.3.1/leaflet-dvf.js"></script>
+	<!-- <script src="https://unpkg.com/jsts@1.6.1/dist/jsts.min.js"></script> -->
+
+	<!-- importing webFonts -->
+	<link rel="stylesheet" type='text/css' href="https://fonts.googleapis.com/css?family=Noto+Sans+KR">
+	<link rel="stylesheet" type='text/css' href="https://fonts.googleapis.com/css?family=Noto+Serif+KR:900">
+	<link rel='stylesheet' type='text/css' href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css'>
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/earlyaccess/kopubbatang.css'>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+	<!-- Semantic-UI -->
+	<!-- <link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Menu-master/menu.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Tab-master/tab.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Search-master/search.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Checkbox-master/checkbox.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Icon-master/icon.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Modal-2.3.1/modal.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Dimmer-master/dimmer.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Transition-master/transition.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Table-master/table.css">
+	<link rel="stylesheet" type="text/css" href="@Semantic-UI/UI-Popup-master/popup.css">
+
+	<script type="text/javascript"  src="@Semantic-UI/UI-Tab-master/tab.js"></script>
+	<script type="text/javascript"  src="@Semantic-UI/UI-Search-master/search.js"></script>
+	<script type="text/javascript"  src="@Semantic-UI/UI-Checkbox-master/checkbox.js"></script>
+	<script type="text/javascript"  src="@Semantic-UI/UI-Modal-2.3.1/modal.js"></script>
+	<script type="text/javascript"  src="@Semantic-UI/UI-Dimmer-master/dimmer.js"></script>
+	<script type="text/javascript"  src="@Semantic-UI/UI-Transition-master/transition.js"></script>
+	<script type="text/javascript"  src="@Semantic-UI/UI-Popup-master/popup.js"></script> -->
+
+
+	<!-- local json/css -->
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+	<script type="text/javascript" src="@json_data/scoreLegend.js"></script>
+	<script type="text/javascript" src="@json_data/skorea-map-municipal.js"></script>
+	<script type="text/javascript" src="@json_data/skorea-map-province.js"></script>
+	<script type="text/javascript" src="@json_data/skorea-score-2014.js"></script>
+	<script type="text/javascript" src="@json_data/skorea-score-2015.js"></script>
+	<script type="text/javascript" src="@json_data/skorea-score-2016.js"></script>
+
+
+</head>
+
+
+
+<body>
+
+	<div id="background-bounding">
+		<div id="chapter-01-map"></div>
+		<!-- <div id="chapter-02-svgs">
+			<div id="single-orange-maps"> -->
+				<!-- <object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-8_expertRate.svg" class="single-orange-maps" id="01-8_expertRate"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-7_R-COSTII.svg" class="single-orange-maps" id="01-7_R-COSTII"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-6_incomeRate.svg" class="single-orange-maps" id="01-6_incomeRate"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-5_jobCreation.svg" class="single-orange-maps" id="01-5_jobCreation"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-4_20s.svg" class="single-orange-maps" id="01-4_20s"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-3_mainIndustry.svg" class="single-orange-maps" id="01-3_mainIndustry"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-2_hiring1000.svg" class="single-orange-maps" id="01-2_hiring1000"></object> -->
+				<!-- <object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-1_hiring300.svg" class="single-orange-maps" id="01-1_hiring300"></object> -->
+		<!-- 	</div>
+			<div id="cumulative-red-maps">
+				<object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-1_hiring300.svg" class="cumulative-red-maps" id="02-1_hiring300"></object> -->
+				<!-- <object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-2_hiring1000.svg" class="cumulative-red-maps" id="02-2_hiring1000"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-3_mainIndustry.svg" class="cumulative-red-maps" id="02-3_mainIndustry"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-4_20s.svg" class="cumulative-red-maps" id="02-4_20s"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-5_jobCreation.svg" class="cumulative-red-maps" id="02-5_jobCreation"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-6_incomeRate.svg" class="cumulative-red-maps" id="02-6_incomeRate"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-7_R-COSTII.svg" class="cumulative-red-maps" id="02-7_R-COSTII"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-8_expertRate.svg" class="cumulative-red-maps" id="02-8_expertRate"></object> -->
+		<!-- 	</div>
+		</div> -->
+	</div>
+
+	<div class="chapter" id="chapter-01">
+
+		<div class="page" id="page-00">
+			<div class="paragraph-leftBox" id="site_title">
+				<a id="site_title_logo" href="https://lab2050.org" target="_blank"><img src="@images/lab2050_colour.png"/></a>
+				<a id="site_title_text" href="">우리 지역 <br>고용위기 시그널</a>
+			</div>
+
+			<div class="section paragraph-leftBox white-outerLine">
+				<p>이 지도는 한국의 시군구 가운데 <sanSerif>제조업 대기업(300인 이상)을 보유한 지역들을</sanSerif> 보여줍니다. 지역의 전체 일하는 사람 중에서 제조업 대기업에서 일하는 사람의 비중이 높을수록 색깔이 진해집니다. </p>
+			</div>
+		</div>
+
+		<div class="page white-box box-screenwide" id="page-01">
+			<div class="section paragraph-screenwide">
+				<p>지금까지 한국 사회의 산업 구도에서 본다면 이 지도는 ‘고용의 질이 높은’ 지역을 보여주기 위한 것이라고 해석할 수도 있습니다. 실제로 제조업 대기업 종사자는 우리나라에서 전문직, 금융업 종사자와 함께 평균 임금 수준이 높은 그룹에 속합니다. </p>
+				<div class="article-graph"></div>
+				<p>제조업 대기업 종사자들이 지역에서 거의 유일한 ‘안정적 중산층’인 소도시들도 있습니다. 그런 관점에서 볼 때 이 지도는 색깔이 진할수록 일자리의 질이 괜찮은 지역으로 보일 수 있습니다. </p>
+			</div>
+			<div class="section paragraph-screenwide">
+				<p>한때는 분명 그랬습니다. </p>
+				<p>그렇지만 이제는 관점을 바꿔서 볼 필요가 있습니다. 그것도 180도로 말입니다. </p>
+			</div>
+			<div class="section paragraph-screenwide">
+				<p>제조업은 두 가지 위기에 직면해 있습니다. 글로벌 산업 환경의 빠른 변화로 인해 경쟁력을 장기간 유지하기가 더욱 어려워졌습니다. 자동차 산업은 한동안 고용의 양과 질 모두에서 가장 높은 수준을 유지한 산업이었지만 이제는 그 변화의 방향을 예측하기가 힘듭니다. 제네럴모터스(GM)만 해도 지난 10여년 동안 한국의 군산을 포함해 세계 8개 국가의 도시에서 자동차공장을 폐쇄했습니다. </p>
+				<p>동시에 ‘4차 산업혁명’이라는 이름으로 자동화, 디지털화의 흐름이 밀어닥치고 있습니다. 유럽 국가들이 해외이전(off-shore)했던 공장을 자동화 한 뒤 자국으로 불러들이는 리쇼어(re-shore) 현상도 나타납니다. OECD는 자동화의 흐름 속에서 지역 별로 ‘중간 소득, 중간 기술’의 일자리들이 가장 큰 타격을 받을 것이라고 전망합니다. </p>
+				<div class="article-graph"></div>
+			</div>
+		</div>
+
+		<div class="page" id="page-02">
+			<div class="section paragraph-leftBox white-outerLine">
+				<p>이제 지도를 다시 볼까요? <br>300인 이상 대기업에 종사하는 사람의 비중이 높은 지역은 바꿔 말하면 <sanSerif>그 기업이 위기에 처했을 때 대규모 실업이 일어날 가능성</sanSerif>이 상대적으로 높은 지역입니다.</p> 
+				<p>물론 산업마다, 기업마다 상황이 다르므로 모두 위기에 있다고는 할 수 없습니다. 그렇지만, 지역의 대규모 고용위기에 대응하고자 한다면 이 지도부터 주의깊게 봐야 합니다. 우리 지역의 색깔이 진하다면, 의존도가 높은 산업과 개별 사업장들의 상황이 어떤지, 얼마나 안전한지 다시 살펴볼 필요가 있습니다.</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="chapter" id="chapter-02">
+
+		<div class="page blank-page" id="page-03"></div>
+		<div class="page" id="page-04">
+			<div class="section paragraph-centerBox white-box">
+				<p>이제부터는 실제로 그 지역의 제조업 일자리가 얼마나 위험한지를 가늠할 수 있는 정보들을 지도 위에 추가해 보려고 합니다. 7가지의 정보가 추가되어, <sanSerif>지도 위에서 총 8가지 정보를 겹쳐서 볼 수 있습니다.</sanSerif>
+				<p>우리의 문제의식은 ‘300인 이상 제조업 종사자가 있는 지역’에서 출발하기 때문에 그 외의 지역은 정보가 더해지더라도 지도 상에서 계속 회색으로 남아있게 됩니다.</p>
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<div class="chapter" id="chapter-03" style="width: 100vw; height: 100vh;"></div>
+
+
+
+	<!-- local js/css -->
+	<script type="text/javascript" src="js/onLoad.js"></script>
+	<!-- <script type="text/javascript" src="js/dataLegend_modal.js"></script> -->
+	<script type="text/javascript" src="js/leaflet_script.js"></script>
+	<!-- <script type="text/javascript" src="js/dataInfo.js"></script> -->
+	<!-- <script type="text/javascript" src="js/article_script.js"></script> -->
+
+</body>
+</html>

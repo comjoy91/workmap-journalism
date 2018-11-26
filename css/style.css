@@ -1,0 +1,250 @@
+@charset "UTF-8";
+
+/* 
+	device width distinction - 
+	1025px ~ : Desktop layout
+	768px ~ , (min-aspect-ratio: 2/1) : "iPhone X", widescreen aspect
+	768px ~ 1024xp, (max-aspect-ratio: 2/1) : tablet layout
+	~ 767px, (min-aspect-ratio: 1/1) : mobile phone layout, widescreen aspect
+	360px ~ 767px, (max-aspect-ratio: 1/1) : mobile phone layout, portrait aspect
+	~ (320px) ~ 359px : legendary mobile phone layout
+*/
+
+
+html {
+	font-size: 18px; /* 1rem = this size. */
+	font-family: 'KoPub Batang', serif;
+	line-height: 1.9;
+	font-style: normal;
+	font-weight: 300;
+
+	position: relative;
+	height: 100%;
+	width: 100vw; 
+}
+body {
+	padding: 0;
+	margin: 0;
+	height: 0;
+	width: 100vw;
+}
+div, p {
+	box-sizing: border-box;
+	position: relative;
+
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+p {
+	margin: 0 0 calc(4em / 3) 0;
+	padding: 0 0 0 0;
+}
+
+
+
+/*svg g path {
+	mix-blend-mode: multiply;
+}
+.leaflet-overlay-pane {
+	mix-blend-mode: color-burn;
+}
+.leaflet-shadow-pane {
+    mix-blend-mode: color-burn;
+}
+*/
+
+
+/* ------------ typo: serif ------------ */
+
+sanSerif {
+	font-family: 'Spoqa Han Sans', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+	vertical-align: -0.06em;
+}
+
+
+
+/* ------------ layout: .paragraph-leftBox ------------ */
+
+.blank-page {
+	height: 100vh;
+}
+
+
+.white-box {
+	background: #ffffff;
+	box-shadow: 0 0 10px 2px rgba(0,0,0,0.30);
+}
+
+
+
+.box-screenwide {
+	padding-top: 6rem;
+	padding-bottom: 1px;
+}
+.paragraph-screenwide {
+	width: 630px;
+	margin-left: calc((100vw - 630px) / 2);
+	margin-right: calc((100vw - 630px) / 2);
+	margin-bottom: 6rem;
+}
+.article-graph {
+	height: 240px;
+	background: #dddddd;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
+
+
+.paragraph-leftBox {
+	margin-left: 15%;
+	width: 525px;
+}
+.paragraph-centerBox {
+	margin-left: calc( (100% - 480px) / 2);
+	width: 480px;
+	padding: 33px 40px 18px 40px;
+	/*padding-bottom: calc(40px - 4/3em);*/
+}
+.white-outerLine p {
+	text-shadow: 	#ffffff 4px 0px 0px, 
+					#ffffff 3.87565px 0.989616px 0px, 
+					#ffffff 3.51033px 1.9177px 0px, 
+					#ffffff 2.92676px 2.72656px 0px, 
+					#ffffff 2.16121px 3.36588px 0px, 
+					#ffffff 1.26129px 3.79594px 0px, 
+					#ffffff 0.282949px 3.98998px 0px, 
+					#ffffff -0.712984px 3.93594px 0px, 
+					#ffffff -1.66459px 3.63719px 0px, 
+					#ffffff -2.51269px 3.11229px 0px, 
+					#ffffff -3.20457px 2.39389px 0px, 
+					#ffffff -3.69721px 1.52664px 0px, 
+					#ffffff -3.95997px 0.56448px 0px, 
+					#ffffff -3.97652px -0.432781px 0px, 
+					#ffffff -3.74583px -1.40313px 0px, 
+					#ffffff -3.28224px -2.28625px 0px, 
+					#ffffff -2.61457px -3.02721px 0px, 
+					#ffffff -1.78435px -3.57996px 0px, 
+					#ffffff -0.843183px -3.91012px 0px, 
+					#ffffff 0.150409px -3.99717px 0px, 
+					#ffffff 1.13465px -3.8357px 0px, 
+					#ffffff 2.04834px -3.43574px 0px, 
+					#ffffff 2.83468px -2.82216px 0px, 
+					#ffffff 3.44477px -2.03312px 0px, 
+					#ffffff 3.84068px -1.11766px 0px, 
+					#ffffff 3.9978px -0.132717px 0px;
+}
+
+
+
+/* ------------ layout: opacity ------------ */
+
+
+div {
+
+}
+
+
+/* ------------ chapter 01: page 00, 01, 02, 03 ------------ */
+
+
+	/* ------------ #chapter-01-map ------------ */
+
+
+	#chapter-01-map {
+		position: fixed;
+
+		left: 0px;
+		top: 0px;
+		width: 100%; /*100vw;*/
+		height: 100%; /*100vh;*/
+		z-index: -1;
+		overflow: hidden;
+	}
+
+		.leaflet-container {
+			background: rgba(221, 221, 221, 0.1);
+		}
+
+
+	/* ------------ page 00: #site_title, #text-00 ------------ */
+
+	#page-00 {
+		height: 100vh;
+		padding-top: 52vh;
+	}
+
+		#site_title {
+			/*font-family: 'Noto Serif KR';*/
+			font-family: 'SunBatang';
+			letter-spacing: -3px;
+			font-size: 48px;
+			font-weight: 900;
+			line-height: 1.25;
+			display: flex;
+
+			width: 396px;
+			margin-bottom: 6vh;
+			/*padding: 16px 16px 15px 13px;*/
+
+			background: transparent;
+			border-radius: 4px;
+
+			color: #000000;
+			text-decoration: none;
+		}
+				#site_title_logo {
+					width: 1.2em;
+					height: 1.2em;
+					margin: 0.05em 0.2em 0 0;
+					cursor: pointer;
+				}
+					#site_title_logo img {
+						height: 100%;
+					}
+				#site_title_text {
+					/*padding: 0.1em 0 0 0;*/
+					color: #000000;
+					text-decoration: none;
+					cursor: pointer;
+				}
+
+	/* ------------ page 01:  ------------ */
+
+
+
+
+	/* ------------ page 02:  ------------ */
+
+	#page-02 {
+		height: 100vh;
+		padding-top: 52vh;
+	}
+
+
+
+/* ------------ chapter 02: page 04 ------------ */
+
+
+	/* ------------ #chapter-02-svgs ------------ */
+
+	#chapter-02-svgs {
+		position: fixed;
+
+		left: 0px;
+		top: 0px;
+		width: 100%; /*100vw;*/
+		height: 100%; /*100vh;*/
+		z-index: -1;
+		overflow: hidden;
+	}
+		#chapter-02-svgs div {
+			position: absolute;
+		}
+
+		#chapter-02-svgs object {
+			position: absolute;
+		}
