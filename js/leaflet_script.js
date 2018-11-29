@@ -146,6 +146,7 @@ var layer_province_border_04 = L.geoJson(provinceGeoJSON, {
 
 
 
+
 // ---------- updating score to re-colour the map. ----------
 
 function updateScore_check() {

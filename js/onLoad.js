@@ -184,41 +184,21 @@ function getBound (el) {
 
 (function($){
 
-	function resizeWindow() { // extra working by different browser window width.
-		var svgBound_01 = getBound($("#chapter-01-map .leaflet-overlay-pane svg g"));
-		var svgBound_04 = getBound($("#chapter-04-map .leaflet-overlay-pane svg g"));
-		var objectWidth = svgBound_01.width * modified_mapWidth_const;
-		var objectHeight = svgBound_01.height;
+	function resizeWindow() { // extra working by different browser window width.		
+		windowWidth = $(window).width();
+		windowHeight = $(window).height();
+		wideRatio = windowWidth / windowHeight;
+		if ( windowWidth >= 1025 ) {
+		}
 
-		// $(".single-orange-maps-row").width( 0 ).height( objectHeight )
-		// 										.css( { top: svgBound_01.top + 'px', 
-		// 												left: (svgBound_01.left + (modified_mapLeft_const * svgBound_01.width * modified_mapWidth_const / modified_mapWidth)) + 'px' });
-		// $(".single-orange-maps-row object").width( objectWidth ).css( { 'margin-right': -objectWidth + 'px' } );
+		else if ( windowWidth >= 768 && wideRatio > 2/1) { // "iPhone X"
+		}
 
-		// $("#chapter-02-svgs-landscape").width( 0 ).height( 0 )
-		// 								.css( { top: svgBound_01.top+'px', 
-		// 										left: (svgBound_01.left + (modified_mapLeft_const * svgBound_01.width * modified_mapWidth_const / modified_mapWidth)) + 'px' });
-		// 	$(".single-orange-maps-row").width( 0 ).height( objectHeight )
-		// 	$(".single-orange-maps-row object").width( objectWidth ).css( { 'margin-right': -objectWidth + 'px' } );
+		else if ( windowWidth >= 768 ) {
+		}
 
-		// $("#chapter-03-svgs .single-orange-maps object").eq(0).css( { opacity: 1.0 } );
-
-
-		
-		// windowWidth = $(window).width();
-		// windowHeight = $(window).height();
-		// wideRatio = windowWidth / windowHeight;
-		// if ( windowWidth >= 1025 ) {
-		// }
-
-		// else if ( windowWidth >= 768 && wideRatio > 2/1) { // "iPhone X"
-		// }
-
-		// else if ( windowWidth >= 768 ) {
-		// }
-
-		// else { 
-		// }
+		else { 
+		}
 	}
 
 	$(window).on("load", resizeWindow );
