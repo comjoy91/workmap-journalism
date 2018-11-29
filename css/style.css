@@ -55,7 +55,7 @@ p {
 */
 
 
-/* ------------ typo: serif ------------ */
+/* ------------ typo ------------ */
 
 sanSerif {
 	font-family: 'Spoqa Han Sans', sans-serif;
@@ -64,6 +64,27 @@ sanSerif {
 	vertical-align: -0.06em;
 }
 
+.map-title {
+	font-family: 'KoPub Batang', serif;
+	font-weight: 600;
+	font-size: calc( 1em * 10/9 );
+	text-align: center;
+}
+
+.map-description {
+	font-family: 'Spoqa Han Sans', sans-serif;
+	font-weight: 300;
+	font-size: calc( 1em * 5/6 );
+	line-height: 1.8;
+}
+
+
+
+/* ------------ layout: .chapter ------------ */
+
+.chapter {
+	margin-bottom: 100vh;
+}
 
 
 /* ------------ layout: .paragraph-leftBox ------------ */
@@ -71,11 +92,15 @@ sanSerif {
 .blank-page {
 	height: 100vh;
 }
+.blank-halfpage {
+	height: 50vh;
+}
 
 
 .white-box {
 	background: #ffffff;
-	box-shadow: 0 0 10px 2px rgba(0,0,0,0.30);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	/*box-shadow: 0 0 10px 2px rgba(0,0,0,0.30);*/
 }
 
 
@@ -140,39 +165,46 @@ sanSerif {
 
 
 
-/* ------------ layout: opacity ------------ */
+/* ------------ layout: background opacity ------------ */
 
 
-div {
+div.fixed-background {
+	position: fixed;
 
+	left: 0px;
+	top: 0px;
+	width: 100%; /*100vw;*/
+	height: 100%; /*100vh;*/
+	z-index: -1;
+
+	opacity: 0.0;
+	-webkit-transition: opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
+	transition:         opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+div.fixed-background.visible {
+	opacity: 1.0;
 }
 
+/* ------------ layout: background map setting ------------ */
 
-/* ------------ chapter 01: page 00, 01, 02, 03 ------------ */
+
+#chapter-01-map, #chapter-04-map {
+	overflow: hidden;
+}
+
+	.leaflet-container {
+		background: rgba(221, 221, 221, 0.1);
+	}
+
+/* ------------ chapter 01: page 01-0, 01-1, 01-2 ------------ */
 
 
 	/* ------------ #chapter-01-map ------------ */
 
 
-	#chapter-01-map {
-		position: fixed;
+	/* ------------ page 01-0: #site_title ------------ */
 
-		left: 0px;
-		top: 0px;
-		width: 100%; /*100vw;*/
-		height: 100%; /*100vh;*/
-		z-index: -1;
-		overflow: hidden;
-	}
-
-		.leaflet-container {
-			background: rgba(221, 221, 221, 0.1);
-		}
-
-
-	/* ------------ page 00: #site_title, #text-00 ------------ */
-
-	#page-00 {
+	#page-01-0 {
 		height: 100vh;
 		padding-top: 52vh;
 	}
@@ -212,39 +244,160 @@ div {
 					cursor: pointer;
 				}
 
-	/* ------------ page 01:  ------------ */
+	/* ------------ page 01-1:  ------------ */
 
 
 
 
-	/* ------------ page 02:  ------------ */
+	/* ------------ page 01-2:  ------------ */
 
-	#page-02 {
+	#page-01-2 {
 		height: 100vh;
 		padding-top: 52vh;
 	}
 
 
 
-/* ------------ chapter 02: page 04 ------------ */
+/* ------------ chapter 02: page 02-0 ------------ */
 
 
-	/* ------------ #chapter-02-svgs ------------ */
+	/* ------------ #chapter-02-svgs-landscape ------------ */
 
-	#chapter-02-svgs {
-		position: fixed;
+	#chapter-02-svgs-landscape {
+		display: flex;
+		flex-direction: column;
 
-		left: 0px;
-		top: 0px;
-		width: 100%; /*100vw;*/
-		height: 100%; /*100vh;*/
-		z-index: -1;
+		justify-content: space-around;
+		justify-content: space-evenly;
+		align-items: center;
+
+		transition-property: opacity, width, height, top, left;
+		transition-delay: 3s, 0s, 0s, 0s, 0s;
+		-webkit-transition: 600ms cubic-bezier(0.77, 0, 0.175, 1);
+		transition:         600ms cubic-bezier(0.77, 0, 0.175, 1);
+	}
+		#chapter-02-svgs-landscape div.single-orange-maps-row {
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			align-items: center;
+			flex-wrap: wrap;
+
+			transition-property: width, height, margin-bottom;
+			-webkit-transition: 600ms cubic-bezier(0.77, 0, 0.175, 1);
+			transition:         600ms cubic-bezier(0.77, 0, 0.175, 1);
+		}
+
+		#chapter-02-svgs-landscape object {
+			flex-shrink: 0;
+
+			transition-property: width, height, margin-right;
+			-webkit-transition: 600ms cubic-bezier(0.77, 0, 0.175, 1);
+			transition:         600ms cubic-bezier(0.77, 0, 0.175, 1);
+		}
+
+	/*#chapter-02-svgs-landscape {
+		display: flex;
+		flex-direction: column;
+
+		justify-content: space-around;
+		justify-content: space-evenly;
+		align-items: center;
+
+		width: 90vw;
+		height: 90vh;
+		top: 5vh;
+		left: 5vw;
+	}
+		#chapter-02-svgs-landscape div.single-orange-maps-row {
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			align-items: center;
+			flex-wrap: wrap;
+
+			width: 100%;
+		}
+
+		#chapter-02-svgs-landscape object {
+			flex-shrink: 0;
+
+			width: 15vw;
+		}*/
+
+	/* ------------ #chapter-02-svgs-portrait ------------ */
+
+	#chapter-02-svgs-portrait {
+		display: none;
+	}
+
+
+
+
+
+/* ------------ chapter 03: page 03-0 ~ 03-6 ------------ */
+
+
+	/* ------------ #chapter-03-svgs ------------ */
+
+	#chapter-03-svgs {
 		overflow: hidden;
 	}
-		#chapter-02-svgs div {
+		#chapter-03-svgs .single-orange-maps {
 			position: absolute;
+			top: calc( (100vh - (30vw * 611/377)) / 2);
+			left: 10vw;
+			width: 30vw;
+		}
+			#chapter-03-svgs .single-orange-maps object {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+
+				opacity: 0.0;
+			}
+
+		#chapter-03-svgs .cumulative-red-maps {
+			position: absolute;
+			top: calc( (100vh - (30vw * 611/377)) / 2);
+			right: 10vw;
+			width: 30vw;
+		}
+			#chapter-03-svgs .cumulative-red-maps object {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+
+				opacity: 0.0;
+			}
+
+	/* ------------ #chapter-03 div.page ------------ */
+
+	#chapter-03 div.page {
+		padding-top: 25vh;
+		padding-bottom: 100vh;
+	}
+
+		#chapter-03 div.page div.layerMoving-div {
+			height: 25vh;
 		}
 
-		#chapter-02-svgs object {
-			position: absolute;
-		}
+	
+
+/* ------------ chapter 04: page 04-0 ~ 04-6 ------------ */
+
+
+	/* ------------ #chapter-04-background > #chapter-04-map, #chapter-04-svg ------------ */
+
+	#chapter-04-map, #chapter-04-svg {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	#chapter-04-map {
+		width: 100%; /*100vw;*/
+		height: 100%; /*100vh;*/
+	}
+	

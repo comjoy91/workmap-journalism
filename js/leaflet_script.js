@@ -64,21 +64,29 @@ function onEachFeature_municipal(_feature, _layer) { //
 	// 	mouseout: resetHighlight,
 	// 	click: zoomToFeature
 	// });
-
-	// functions for filling search_contents.
-	var prop = _layer.feature.properties;
-	search_contents.push({
-		title: prop.province_name + " <b>" + prop.municipal_name + "</b>",
-		title_string: prop.province_name + " " + prop.municipal_name,
-		province_name: prop.province_name,
-		municipal_name: prop.municipal_name,
-		layer: _layer
-	});	
 }
 
 
 // adding colour for choropleth map
-function styleFunc_municipal(feature) {
+function styleFunc_municipal_01(feature) {
+	if ( feature.properties.score_total <= 0 ) {
+		return {
+			fillColor: municipal_style.fillColor_invalid,
+			fillOpacity: municipal_style.fillOpacity_invalid,
+			color: municipal_style.color,
+			opacity: municipal_style.opacity_invalid,
+			weight: municipal_style.weight
+		}
+	}
+	else return {
+		fillColor: getColour_multiLayer(feature.properties.data[year_index].hiringRate_300.score),
+		fillOpacity: municipal_style.fillOpacity,
+		color: municipal_style.color,
+		opacity: municipal_style.opacity,
+		weight: municipal_style.weight
+	};
+}
+function styleFunc_municipal_04(feature) {
 	if ( feature.properties.score_total <= 0 ) {
 		return {
 			fillColor: municipal_style.fillColor_invalid,
@@ -107,18 +115,33 @@ function styleFunc_province_border(feature) {
 	}
 }
 
-var layer_municipal = L.geoJson(municipalGeoJSON, {
-	style: styleFunc_municipal,
+var layer_municipal_01 = L.geoJson(municipalGeoJSON, {
+	style: styleFunc_municipal_01,
 	onEachFeature: onEachFeature_municipal,
 	smoothFactor: 0, 
 	interactive: false
-}).addTo(map);
+}).addTo(map_01);
+// var layer_municipal_04 = L.geoJson(municipalGeoJSON, {
+// 	style: styleFunc_municipal_04,
+// 	onEachFeature: onEachFeature_municipal,
+// 	smoothFactor: 0, 
+// 	interactive: false
+// }).addTo(map_04);
 
-var layer_province_border = L.geoJson(provinceGeoJSON, {
+var layer_province_border_01 = L.geoJson(provinceGeoJSON, {
 	style: styleFunc_province_border,
 	smoothFactor: 0, 
 	interactive: false
-}).addTo(map);
+}).addTo(map_01);
+var layer_province_border_04 = L.geoJson(provinceGeoJSON, {
+	style: {
+		opacity: 0, 
+		fillOpacity: 0,
+		weight: province_style.weight
+	},
+	smoothFactor: 0, 
+	interactive: false
+}).addTo(map_04);
 
 
 
@@ -170,71 +193,71 @@ function updateScore_check() {
 
 
 
-function updateScore_radio() {
-	layer_municipal.eachLayer(function(_layer) {
+// function updateScore_radio() {
+// 	layer_municipal.eachLayer(function(_layer) {
 
-		var prop = _layer.feature.properties;
-		var data = prop.data[year_index];
-		var max_score;
+// 		var prop = _layer.feature.properties;
+// 		var data = prop.data[year_index];
+// 		var max_score;
 
-		if ( data.hiringRate_300.score > 0 ) {
-			if (radio_hiringRate_300.checked) {
-				prop.score_total = data.hiringRate_300.score;
-				max_score = 30;
-			}
-			else if (radio_hiringRate_1000.checked) {
-				prop.score_total = data.hiringRate_1000.score;
-				max_score = 10;
-			}
-			else if (radio_mainIndustryPortion.checked) {
-				prop.score_total = data.mainIndustryPortion.score;
-				max_score = 10;
-			}
-			else if (radio_rateOf20sInIndustry.checked) {
-				prop.score_total = data.rateOf20sInIndustry.score;
-				max_score = 10;
-			}
-			else if (radio_industryJobCreation.checked) {
-				prop.score_total = data.industryJobCreation.score;
-				max_score = 10;
-			}
-			else if (radio_incomeRate.checked) {
-				prop.score_total = data.incomeRate.score;
-				max_score = 10;
-			}
-			else if (radio_R_COSTII.checked) {
-				prop.score_total = data.R_COSTII.score;
-				max_score = 10;
-			}
-			else if (radio_expertRate.checked) {
-				prop.score_total = data.expertRate.score;
-				max_score = 10;
-			}
+// 		if ( data.hiringRate_300.score > 0 ) {
+// 			if (radio_hiringRate_300.checked) {
+// 				prop.score_total = data.hiringRate_300.score;
+// 				max_score = 30;
+// 			}
+// 			else if (radio_hiringRate_1000.checked) {
+// 				prop.score_total = data.hiringRate_1000.score;
+// 				max_score = 10;
+// 			}
+// 			else if (radio_mainIndustryPortion.checked) {
+// 				prop.score_total = data.mainIndustryPortion.score;
+// 				max_score = 10;
+// 			}
+// 			else if (radio_rateOf20sInIndustry.checked) {
+// 				prop.score_total = data.rateOf20sInIndustry.score;
+// 				max_score = 10;
+// 			}
+// 			else if (radio_industryJobCreation.checked) {
+// 				prop.score_total = data.industryJobCreation.score;
+// 				max_score = 10;
+// 			}
+// 			else if (radio_incomeRate.checked) {
+// 				prop.score_total = data.incomeRate.score;
+// 				max_score = 10;
+// 			}
+// 			else if (radio_R_COSTII.checked) {
+// 				prop.score_total = data.R_COSTII.score;
+// 				max_score = 10;
+// 			}
+// 			else if (radio_expertRate.checked) {
+// 				prop.score_total = data.expertRate.score;
+// 				max_score = 10;
+// 			}
 
-			prop.validForResearch = true;
-			prop.exist_300 = true;
-			_layer.setStyle({
-				fillColor: getColour_singleLayer(prop.score_total, max_score),
-				fillOpacity: municipal_style.fillOpacity
-			});
-		}
+// 			prop.validForResearch = true;
+// 			prop.exist_300 = true;
+// 			_layer.setStyle({
+// 				fillColor: getColour_singleLayer(prop.score_total, max_score),
+// 				fillOpacity: municipal_style.fillOpacity
+// 			});
+// 		}
 
-		else {
-			if (data.hiringRate_300.rawData == "0.00%") prop.exist_300 = false;
-			else prop.exist_300 = true; // prop.exist_300 -> 300인 이상 사업장이 존재하느냐 마느냐: if (prop.exist_300 && prop.validForResearch) hiringRate_300은 0~1% 사이.
+// 		else {
+// 			if (data.hiringRate_300.rawData == "0.00%") prop.exist_300 = false;
+// 			else prop.exist_300 = true; // prop.exist_300 -> 300인 이상 사업장이 존재하느냐 마느냐: if (prop.exist_300 && prop.validForResearch) hiringRate_300은 0~1% 사이.
 
-			prop.validForResearch = false; // prop.validForResearch -> 연구대상이냐 아니냐(지도에서 회색이냐 아니냐): hiringRate_300 >= 1%
-			_layer.setStyle({
-				fillColor: municipal_style.fillColor_invalid,
-				fillOpacity: municipal_style.fillOpacity_invalid
-			});
-		}
+// 			prop.validForResearch = false; // prop.validForResearch -> 연구대상이냐 아니냐(지도에서 회색이냐 아니냐): hiringRate_300 >= 1%
+// 			_layer.setStyle({
+// 				fillColor: municipal_style.fillColor_invalid,
+// 				fillOpacity: municipal_style.fillOpacity_invalid
+// 			});
+// 		}
 
-	});
+// 	});
 
-	if (current_municipal_layer)
-		change_dataInfo(current_municipal_layer.feature.properties);
-};
+// 	if (current_municipal_layer)
+// 		change_dataInfo(current_municipal_layer.feature.properties);
+// };
 
 
 
@@ -310,62 +333,62 @@ function resetHighlight(e) { //reset geojson(=map drawn by geoJSON) style just l
 
 // ---------- de-hightlight the feature when a user clicked X. More on "js/onLoad.js" ----------
 
-function cancel_selectingHighlight_layer() {
-	if (current_municipal_layer) {
-		current_municipal_layer.setStyle({
-			color: municipal_style.color,
-			opacity: municipal_style.opacity,
-			weight: municipal_style.weight
-		});
-		layer_province_border.resetStyle(current_province_layer);
-	}
-}
+// function cancel_selectingHighlight_layer() {
+// 	if (current_municipal_layer) {
+// 		current_municipal_layer.setStyle({
+// 			color: municipal_style.color,
+// 			opacity: municipal_style.opacity,
+// 			weight: municipal_style.weight
+// 		});
+// 		layer_province_border.resetStyle(current_province_layer);
+// 	}
+// }
 
 // ---------- zoom the map when a user clicked a polygon. ----------
 
-function zoomToFeature_layer(_layer) {
-	cancel_selectingHighlight_layer();
+// function zoomToFeature_layer(_layer) {
+// 	cancel_selectingHighlight_layer();
 
-	current_municipal_layer = _layer;
-	current_province_layer = municipal_toProvince_layer(_layer)
+// 	current_municipal_layer = _layer;
+// 	current_province_layer = municipal_toProvince_layer(_layer)
 
-	{ // define maximum area to zoom in, for each different browser window width.
-		if ( windowWidth >= 1025 ) {
-			map.fitBounds(current_province_layer.getBounds(), {paddingBottomRight: [382, 32], paddingTopLeft: [224, 32]});
-		}
+// 	{ // define maximum area to zoom in, for each different browser window width.
+// 		if ( windowWidth >= 1025 ) {
+// 			map.fitBounds(current_province_layer.getBounds(), {paddingBottomRight: [382, 32], paddingTopLeft: [224, 32]});
+// 		}
 
-		else if ( windowWidth >= 768 && wideRatio > 2/1) { // "iPhone X"
-			map.fitBounds(current_province_layer.getBounds(), {paddingBottomRight: [336, 16], paddingTopLeft: [40, 16]});
-		}
+// 		else if ( windowWidth >= 768 && wideRatio > 2/1) { // "iPhone X"
+// 			map.fitBounds(current_province_layer.getBounds(), {paddingBottomRight: [336, 16], paddingTopLeft: [40, 16]});
+// 		}
 
-		else if ( windowWidth >= 768 ) {
-			map.fitBounds(current_province_layer.getBounds(), {paddingBottomRight: [336, 16], paddingTopLeft: [16, 144]});
-		}
+// 		else if ( windowWidth >= 768 ) {
+// 			map.fitBounds(current_province_layer.getBounds(), {paddingBottomRight: [336, 16], paddingTopLeft: [16, 144]});
+// 		}
 
-		else { 
-			map.fitBounds(current_province_layer.getBounds(), {paddingBottomRight: [0, windowHeight/10*3], paddingTopLeft: [16, 48]});
-		}
-	}
+// 		else { 
+// 			map.fitBounds(current_province_layer.getBounds(), {paddingBottomRight: [0, windowHeight/10*3], paddingTopLeft: [16, 48]});
+// 		}
+// 	}
 
-	current_province_layer.setStyle({
-		color: province_style.color_selected, 
-		opacity: province_style.opacity_selected
-	});
-	_layer.setStyle({
-		color: municipal_style.color_selected,
-		opacity: municipal_style.opacity_selected, 
-		weight: municipal_style.weight_selected
-	});
-	change_dataInfo(_layer.feature.properties);
-	if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-		current_province_layer.bringToFront();
-		current_municipal_layer.bringToFront();
-	}
-}
-function zoomToFeature(e) {
-	zoomToFeature_layer(e.target);
-	tooltip.style("display", "none");
-}
+// 	current_province_layer.setStyle({
+// 		color: province_style.color_selected, 
+// 		opacity: province_style.opacity_selected
+// 	});
+// 	_layer.setStyle({
+// 		color: municipal_style.color_selected,
+// 		opacity: municipal_style.opacity_selected, 
+// 		weight: municipal_style.weight_selected
+// 	});
+// 	change_dataInfo(_layer.feature.properties);
+// 	if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+// 		current_province_layer.bringToFront();
+// 		current_municipal_layer.bringToFront();
+// 	}
+// }
+// function zoomToFeature(e) {
+// 	zoomToFeature_layer(e.target);
+// 	tooltip.style("display", "none");
+// }
 
 
 
