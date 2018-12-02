@@ -64,6 +64,8 @@ sanSerif {
 	vertical-align: -0.06em;
 }
 
+
+
 .map-title {
 	font-family: 'KoPub Batang', serif;
 	font-weight: 600;
@@ -402,4 +404,27 @@ div.fixed-background.visible {
 		width: 100%; /*100vw;*/
 		height: 100%; /*100vh;*/
 	}
-	
+	#chapter-04-svg svg {
+		width: 100%; 
+		height: 100%; 
+	}
+
+		.transparent_shape {
+			fill-opacity: 0;
+			stroke-opacity: 0;
+		}
+
+	/* ------------ page 04-0 ~ 04-4  ------------ */
+
+	#page-04-0, #page-04-1, #page-04-2, #page-04-3, #page-04-4, #page-04-5 {
+		height: 100vh;
+		margin-top: 52vh;
+	}
+
+		p.municipal-title {
+			font-family: 'Spoqa Han Sans', sans-serif;
+			font-weight: 600;
+			font-size: 1em;
+			vertical-align: -0.06em;
+			margin-bottom: 0;
+		}

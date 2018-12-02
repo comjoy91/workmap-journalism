@@ -203,41 +203,68 @@ function getBound (el) {
 
 	$(window).on("load", resizeWindow );
 
-	$(window).on("load", function() {//먼저 js파일들을 모두 로드. 
+	// $(window).on("load", function() {//먼저 js파일들을 모두 로드. 
 
 
-		//Create SVG element
-		// zoomedMap = d3.zoom()
-		// 				.scaleExtent([0.5, 15])
-		// 				// .translateExtent([[-width*1.5, -height*1.5], [width*5, height*5]])
-		// 				.on("zoom", function() {
-		// 					document.body.style.cursor="move";
-		// 					svgContainer.attr("transform", d3.event.transform); })
-		// 				.on("end", function() { document.body.style.cursor="default"; } );
+	// 	//Create SVG element
+	// 	// zoomedMap = d3.zoom()
+	// 	// 				.scaleExtent([0.5, 15])
+	// 	// 				// .translateExtent([[-width*1.5, -height*1.5], [width*5, height*5]])
+	// 	// 				.on("zoom", function() {
+	// 	// 					document.body.style.cursor="move";
+	// 	// 					svgContainer.attr("transform", d3.event.transform); })
+	// 	// 				.on("end", function() { document.body.style.cursor="default"; } );
 
 
 
-		// var q_init = d3.queue();
-		// q_init//.defer( d3.json, d3_mapping_config_json_file )
-		// .defer( d3.xml, map_svg )
-		// .await(function(error, _map_xml) {
-		// 	if (error) throw error;
+	// 	// var q_init = d3.queue();
+	// 	// q_init//.defer( d3.json, d3_mapping_config_json_file )
+	// 	// .defer( d3.xml, map_svg )
+	// 	// .await(function(error, _map_xml) {
+	// 	// 	if (error) throw error;
 
-		// 	var map_svg_imported = d3.select(_map_xml.documentElement).node().outerHTML;
-		// 	$("#chapter-02-svgs").html(map_svg_imported);
-		// 	// width = d3_config["width"];
-		// 	// height = d3_config["height"];
-		// 	// originX = (window.innerWidth-width)/2;
-		// 	// originY = (window.innerHeight-height+200)/2;			
-		// 	// d3.select("#map_background").call(zoomedMap);
-		// 	// d3.select("#map_background").call(zoomedMap.transform, d3.zoomIdentity.scale(1).translate(originX, originY));
+	// 	// 	var map_svg_imported = d3.select(_map_xml.documentElement).node().outerHTML;
+	// 	// 	$("#chapter-02-svgs").html(map_svg_imported);
+	// 	// 	// width = d3_config["width"];
+	// 	// 	// height = d3_config["height"];
+	// 	// 	// originX = (window.innerWidth-width)/2;
+	// 	// 	// originY = (window.innerHeight-height+200)/2;			
+	// 	// 	// d3.select("#map_background").call(zoomedMap);
+	// 	// 	// d3.select("#map_background").call(zoomedMap.transform, d3.zoomIdentity.scale(1).translate(originX, originY));
 
-		// });
+	// 	// });
 
-		// updateScore_check();
-		// if ( (windowWidth >= 768 && windowWidth < 1025 && wideRatio > 2/1) || (windowWidth < 768) )  { // show popup initially.
-		// 	$("#mapNav_popup").popup('show');
-		// }
+	// 	// updateScore_check();
+	// 	// if ( (windowWidth >= 768 && windowWidth < 1025 && wideRatio > 2/1) || (windowWidth < 768) )  { // show popup initially.
+	// 	// 	$("#mapNav_popup").popup('show');
+	// 	// }
+	// });
+
+	$(window).on(/*"DOMContentLoaded load"*/ "load", function() {//먼저 js파일들을 모두 로드. 
+
+		d3.xml("@images/svg_maps/02_cumulative-red-maps/02-8_expertRate_geographic.svg").mimeType("image/svg+xml")
+			.get(function(error, _map_xml) {
+				if (error) throw error;
+				var map_svg_imported = d3.select(_map_xml.documentElement).node().outerHTML;
+				$("#chapter-04-svg").html(map_svg_imported);
+
+				$("#chapter-04 div.page").each( function(index) {
+					var changeLayer_04 = function() {
+						var colorMunicipal = [ $("#chapter-04-svg g#02-8_expertRate_geographic #Gokseong"), 
+												$("#chapter-04-svg g#02-8_expertRate_geographic #Ulsan_dong, #chapter-04-svg g#02-8_expertRate_geographic #Ulsan_buk"), 
+												$("#chapter-04-svg g#02-8_expertRate_geographic #Gunsan"), 
+												$("#chapter-04-svg g#02-8_expertRate_geographic #Suwon"), 
+												$("#chapter-04-svg g#02-8_expertRate_geographic #Paju"), 
+												$("#chapter-04-svg g#02-8_expertRate_geographic .municipalShape") ];
+						$("#chapter-04-svg g#02-8_expertRate_geographic .municipalShape").not(colorMunicipal[index]).addClass("transparent_shape");
+						colorMunicipal[index].removeClass("transparent_shape");
+						console.log("chapter-04-pageChange-0"+index);
+					}
+					$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( $(this), changeLayer_04, function() {} )); // 트리거가 일시적으로 작동 
+					$(window).on('scroll', onUnderBottomOfViewport( $(this), changeLayer_04, function(){} ));
+				})
+			});
+
 	});
 
 	// $(window).on("resize", resizeWindow); // 창 크기가 바뀔 때에는 resizeWindow() 가동
