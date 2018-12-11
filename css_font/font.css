@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'SunBatang';
+  font-weight: 700;
+  src: url("fonts/SunBatang-Bold.eot");
+  src: local('\203B'), url("fonts/SunBatang-Bold.woff") format('woff')/*, url("fonts/SunBatang-Bold.ttf") format('truetype')*/;
+}
+@font-face {
+  font-family: 'SunBatang';
+  font-weight: 500;
+  src: url("fonts/SunBatang-Medium.eot");
+  src: local('\203B'), url("fonts/SunBatang-Medium.woff") format('woff')/*, url("fonts/SunBatang-Medium.ttf") format('truetype')*/;
+}
+@font-face {
+  font-family: 'SunBatang';
+  font-weight: 300;
+  src: url("fonts/SunBatang-Light.eot");
+  src: local('\203B'), url("fonts/SunBatang-Light.woff") format('woff')/*, url("fonts/SunBatang-Light.ttf") format('truetype')*/;
+}
