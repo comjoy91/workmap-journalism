@@ -135,13 +135,13 @@ $("#chapter-03 div.page").each( function(index) {
 		else if (scrollRatio < 0 ) scrollRatio = 0;
 
 		var marginBefore_L = 0;
-		var marginAfter_L = destinationBound.left - $(window).width() * 10/100;
+		var marginAfter_L = destinationBound.left - $(window).width() * 15/100;
 		var margin_L = marginAfter_L * scrollRatio + marginBefore_L * (1-scrollRatio);
 
 		$("#chapter-03-svgs .single-orange-maps object").eq(index).css( { left: margin_L+'px' } );
 
 	}
-	$(window).on('DOMContentLoaded load resize scroll', movingLayer_03); // load 시점에 모든 $("#chapter-03 div.page")에 대해서 트리거가 일어남.
+	// $(window).on('DOMContentLoaded load resize scroll', movingLayer_03); // load 시점에 모든 $("#chapter-03 div.page")에 대해서 트리거가 일어남.
 
 	var changeLayer_03 = function() {
 		$("#chapter-03-svgs .single-orange-maps object").not( $("#chapter-03-svgs .single-orange-maps object").eq(index) )

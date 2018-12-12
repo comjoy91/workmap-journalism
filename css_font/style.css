@@ -99,6 +99,12 @@ sanSerif {
 }
 
 
+.transparent-white-box {
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	/*box-shadow: 0 0 10px 2px rgba(0,0,0,0.30);*/
+}
+
 .white-box {
 	background: #ffffff;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -118,12 +124,12 @@ sanSerif {
 	margin-bottom: 6rem;
 }
 .article-graph {
-	height: 240px;
+	/*height: 240px;*/
+	width: 100%;
 	background: #dddddd;
 	margin-top: 1rem;
 	margin-bottom: 2rem;
 }
-
 
 
 .paragraph-leftBox {
@@ -345,9 +351,9 @@ div.fixed-background.visible {
 	}
 		#chapter-03-svgs .single-orange-maps {
 			position: absolute;
-			top: calc( (100vh - (30vw * 611/377)) / 2);
-			left: 10vw;
-			width: 30vw;
+			top: calc( (100vh - (25vw * 611/377)) / 2);
+			left: 15vw;
+			width: 25vw;
 		}
 			#chapter-03-svgs .single-orange-maps object {
 				position: absolute;
@@ -360,9 +366,9 @@ div.fixed-background.visible {
 
 		#chapter-03-svgs .cumulative-red-maps {
 			position: absolute;
-			top: calc( (100vh - (30vw * 611/377)) / 2);
-			right: 10vw;
-			width: 30vw;
+			top: calc( (100vh - (25vw * 611/377)) / 2);
+			right: 15vw;
+			width: 25vw;
 		}
 			#chapter-03-svgs .cumulative-red-maps object {
 				position: absolute;

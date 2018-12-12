@@ -23,7 +23,7 @@
 	<script type="text/javascript" src="js/plugin/jquery.easing.1.3.js"></script>
 
 	<!-- D3.js 가져오기. -->
-	<script src="https://d3js.org/d3.v4.js"></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
 
 	<!-- Leaflet.js 가져오기. https://leafletjs.com -->
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" 
@@ -77,7 +77,8 @@
 				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-4_20s.svg" class="single-orange-maps" id="01-4_20s"></object>
 				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-3_mainIndustry.svg" class="single-orange-maps" id="01-3_mainIndustry"></object>
 				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-2_hiring1000.svg" class="single-orange-maps" id="01-2_hiring1000"></object>
-				<object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-1_hiring300.svg" class="cumulative-red-maps" id="02-1_hiring300"></object>
+				<object type="image/svg+xml" data="@images/svg_maps/01_single-orange-maps/01-1_hiring300.svg" class="single-orange-maps" id="01-2_hiring1000"></object>
+				<!-- <object type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-1_hiring300.svg" class="cumulative-red-maps" id="02-1_hiring300"></object> -->
 			</div>
 		</div>
 		<div class="fixed-background" id="chapter-02-svgs-portrait">
@@ -141,10 +142,10 @@
 			</div>
 		</div>
 
-		<div class="page white-box box-screenwide" id="page-01-1">
+		<div class="page transparent-white-box box-screenwide" id="page-01-1">
 			<div class="section paragraph-screenwide">
 				<p>지금까지 한국 사회의 산업 구도에서 본다면 이 지도는 ‘고용의 질이 높은’ 지역을 보여주기 위한 것이라고 해석할 수도 있습니다. 실제로 제조업 대기업 종사자는 우리나라에서 전문직, 금융업 종사자와 함께 평균 임금 수준이 높은 그룹에 속합니다. </p>
-				<div class="article-graph"></div>
+				<img class="article-graph" src="@images/graph/graph_01.png"/>
 				<p>제조업 대기업 종사자들이 지역에서 거의 유일한 ‘안정적 중산층’인 소도시들도 있습니다. 그런 관점에서 볼 때 이 지도는 색깔이 진할수록 일자리의 질이 괜찮은 지역으로 보일 수 있습니다. </p>
 			</div>
 			<div class="section paragraph-screenwide">
@@ -154,13 +155,13 @@
 			<div class="section paragraph-screenwide">
 				<p>제조업은 두 가지 위기에 직면해 있습니다. 글로벌 산업 환경의 빠른 변화로 인해 경쟁력을 장기간 유지하기가 더욱 어려워졌습니다. 자동차 산업은 한동안 고용의 양과 질 모두에서 가장 높은 수준을 유지한 산업이었지만 이제는 그 변화의 방향을 예측하기가 힘듭니다. 제네럴모터스(GM)만 해도 지난 10여년 동안 한국의 군산을 포함해 세계 8개 국가의 도시에서 자동차공장을 폐쇄했습니다. </p>
 				<p>동시에 ‘4차 산업혁명’이라는 이름으로 자동화, 디지털화의 흐름이 밀어닥치고 있습니다. 유럽 국가들이 해외이전(off-shore)했던 공장을 자동화 한 뒤 자국으로 불러들이는 리쇼어(re-shore) 현상도 나타납니다. OECD는 자동화의 흐름 속에서 지역 별로 ‘중간 소득, 중간 기술’의 일자리들이 가장 큰 타격을 받을 것이라고 전망합니다. </p>
-				<div class="article-graph"></div>
+				<img class="article-graph" src="@images/graph/graph_02.png"/>
 			</div>
 		</div>
 
 		<div class="page" id="page-01-2">
 			<div class="section paragraph-leftBox white-outerLine">
-				<p>이제 지도를 다시 볼까요? <br>300인 이상 대기업에 종사하는 사람의 비중이 높은 지역은 바꿔 말하면 <sanSerif>그 기업이 위기에 처했을 때 대규모 실업이 일어날 가능성</sanSerif>이 상대적으로 높은 지역입니다.</p> 
+				<p>이제 지도를 다시 볼까요? <br>300인 이상 대기업에 종사하는 사람의 비중이 높은 지역은 바꿔 말하면 <sanSerif>그 기업이 위기에 처했을 때 대규모 실업이 일어날 가능성이</sanSerif> 상대적으로 높은 지역입니다.</p> 
 				<p>물론 산업마다, 기업마다 상황이 다르므로 모두 위기에 있다고는 할 수 없습니다. 그렇지만, 지역의 대규모 고용위기에 대응하고자 한다면 이 지도부터 주의깊게 봐야 합니다. 우리 지역의 색깔이 진하다면, 의존도가 높은 산업과 개별 사업장들의 상황이 어떤지, 얼마나 안전한지 다시 살펴볼 필요가 있습니다.</p>
 			</div>
 		</div>
