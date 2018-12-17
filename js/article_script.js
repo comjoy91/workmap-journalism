@@ -156,8 +156,8 @@ var handler_chapter_02 = onPartiallyCoverViewport( $("#chapter-02"),
 
 function scrollFunction_chapter_03() {
 	var mapSvgBound = layer_province_border_03.getBounds();
-	var mapSvgNW = map_03.latLngToLayerPoint(mapSvgBound.getNorthWest());
-	var mapSvgSE = map_03.latLngToLayerPoint(mapSvgBound.getSouthEast());
+	var mapSvgNW = map_03.latLngToContainerPoint(mapSvgBound.getNorthWest());
+	var mapSvgSE = map_03.latLngToContainerPoint(mapSvgBound.getSouthEast());
 	var mapSvgWidth = mapSvgSE.x - mapSvgNW.x;
 	var mapSvgLeft = mapSvgNW.x;
 	var mapSvgTop = mapSvgNW.y;
