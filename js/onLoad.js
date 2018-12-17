@@ -54,8 +54,8 @@ var attribution_04 = L.control.attribution({position: 'bottomright'}).addTo(map_
 
 { // initial map view setting by different browser window width.
 	if ( windowWidth >= 1025 ) {
-		map_01.setView([35.95, 125.7], 7.5);
-		map_04.setView([35.95, 125.7], 7.5);
+		map_01.setView([35.95, 125.5], 7.3);
+		map_04.setView([35.95, 125.5], 7.3);
 		// map_04.setView([40, -10], 7);
 	}
 	else if ( windowWidth >= 768 && wideRatio > 2/1) { // "iPhone X"
@@ -229,9 +229,50 @@ function getBound (el) {
 		// 		})
 		// 	});
 
+		d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orange-maps.svg")
+			.then( function(map_svg_imported) {
+				$("#chapter-03-svg-orange").html(map_svg_imported);
+
+				d3.text("@images/svg_maps/02_cumulative-red-maps/02-0_cumulative-red-maps.svg")
+					.then( function(map_svg_imported) {
+						$("#chapter-03-svg-red").html(map_svg_imported);
+
+						$("#chapter-03 div.page").each( function(index) {
+							var changeLayer_03 = function() {
+								var orangeLayer = [ $("#chapter-03-svg-orange g#01-1_hiring300"), 
+													$("#chapter-03-svg-orange g#01-2_hiring1000"), 
+													$("#chapter-03-svg-orange g#01-3_mainIndustry"), 
+													$("#chapter-03-svg-orange g#01-4_20s"), 
+													$("#chapter-03-svg-orange g#01-5_jobCreation"), 
+													$("#chapter-03-svg-orange g#01-6_incomeRate"), 
+													$("#chapter-03-svg-orange g#01-7_R-COSTII"), 
+													$("#chapter-03-svg-orange g#01-8_expertRate") ];
+													
+								var redLayer = [ $("#chapter-03-svg-red g#02-1_hiring300"), 
+													$("#chapter-03-svg-red g#02-2_hiring1000"), 
+													$("#chapter-03-svg-red g#02-3_mainIndustry"), 
+													$("#chapter-03-svg-red g#02-4_20s"), 
+													$("#chapter-03-svg-red g#02-5_jobCreation"), 
+													$("#chapter-03-svg-red g#02-6_incomeRate"), 
+													$("#chapter-03-svg-red g#02-7_R-COSTII"), 
+													$("#chapter-03-svg-red g#02-8_expertRate") ];
+
+								$("#chapter-03-svg-orange g.municipalLayer").not(orangeLayer[index+1]).addClass("transparent_layer");
+								$("#chapter-03-svg-red g.municipalLayer").not(redLayer[index+1]).addClass("transparent_layer");
+								orangeLayer[index+1].removeClass("transparent_layer");
+								redLayer[index+1].removeClass("transparent_layer");
+
+								console.log("chapter-03-pageChange-0"+index);
+							}
+							$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( $(this), changeLayer_03, function() {} )); // 트리거가 일시적으로 작동 
+							$(window).on('scroll', onUnderBottomOfViewport( $(this), changeLayer_03, function(){} ));
+						})
+					});
+			});
+
+
 		d3.text("@images/svg_maps/02_cumulative-red-maps/02-8_expertRate_geographic.svg").then( function(map_svg_imported) {
 			$("#chapter-04-svg").html(map_svg_imported);
-
 			$("#chapter-04 div.page").each( function(index) {
 				var changeLayer_04 = function() {
 					var colorMunicipal = [ $("#chapter-04-svg g#02-8_expertRate_geographic #Gokseong"), 

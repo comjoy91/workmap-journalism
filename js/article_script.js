@@ -98,6 +98,7 @@ var handler_chapter_01 = onPartiallyCoverViewport( $("#chapter-01"),
 													function() {
 														$(".fixed-background").removeClass("visible");
 														$("#chapter-01-map").addClass("visible");
+														$("#layer-names").removeClass("visible");
 														console.log("chapter-01");
 													}, 
 													function() {}
@@ -107,6 +108,7 @@ var handler_chapter_02_opacity = onPartiallyCoverViewport( $("#chapter-02"),
 															function() {
 																$(".fixed-background").removeClass("visible");
 																$("#chapter-02-svgs-landscape").addClass("visible");
+																$("#layer-names").removeClass("visible");
 																console.log("chapter-02-opacity")
 															}, 
 															function() {
@@ -117,46 +119,50 @@ var handler_chapter_03 = onPartiallyCoverViewport( $("#chapter-03"),
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-03-svgs").addClass("visible");
+															$("#layer-names").addClass("visible");
 															console.log("chapter-03-chapter");
 														}, 
 														function() {}
 														);
-$("#chapter-03 div.page").each( function(index) {
+// $("#chapter-03 div.page").each( function(index) {
 
-	var movingLayer_03 = function() {
+// 	var movingLayer_03 = function() {
 
-		var destinationBound = getBound($(".cumulative-red-maps object"));
+// 		var destinationBound = getBound($(".cumulative-red-maps object"));
 
-		var layerMoving_bound = getBound( $("#chapter-03 div.layerMoving-div").eq(index) );
-		var layerMoving_top = layerMoving_bound.top;
-		var layerMoving_height = layerMoving_bound.height;
-		var scrollRatio = -layerMoving_top / layerMoving_bound.height;
-		if ( scrollRatio > 1 ) scrollRatio = 1;
-		else if (scrollRatio < 0 ) scrollRatio = 0;
+// 		var layerMoving_bound = getBound( $("#chapter-03 div.layerMoving-div").eq(index) );
+// 		var layerMoving_top = layerMoving_bound.top;
+// 		var layerMoving_height = layerMoving_bound.height;
+// 		var scrollRatio = -layerMoving_top / layerMoving_bound.height;
+// 		if ( scrollRatio > 1 ) scrollRatio = 1;
+// 		else if (scrollRatio < 0 ) scrollRatio = 0;
 
-		var marginBefore_L = 0;
-		var marginAfter_L = destinationBound.left - $(window).width() * 15/100;
-		var margin_L = marginAfter_L * scrollRatio + marginBefore_L * (1-scrollRatio);
+// 		var marginBefore_L = 0;
+// 		var marginAfter_L = destinationBound.left - $(window).width() * 15/100;
+// 		var margin_L = marginAfter_L * scrollRatio + marginBefore_L * (1-scrollRatio);
 
-		$("#chapter-03-svgs .single-orange-maps object").eq(index).css( { left: margin_L+'px' } );
+// 		$("#chapter-03-svgs .single-orange-maps object").eq(index).css( { left: margin_L+'px' } );
 
-	}
-	// $(window).on('DOMContentLoaded load resize scroll', movingLayer_03); // load 시점에 모든 $("#chapter-03 div.page")에 대해서 트리거가 일어남.
+// 	}
+// 	// $(window).on('DOMContentLoaded load resize scroll', movingLayer_03); // load 시점에 모든 $("#chapter-03 div.page")에 대해서 트리거가 일어남.
 
-	var changeLayer_03 = function() {
-		$("#chapter-03-svgs .single-orange-maps object").not( $("#chapter-03-svgs .single-orange-maps object").eq(index) )
-														.animate({ opacity: 0.0 }, 300,'easeInCubic');
-		$("#chapter-03-svgs .cumulative-red-maps object").not( $("#chapter-03-svgs .cumulative-red-maps object").eq(index) )
-														.animate({ opacity: 0.0 }, 300,'easeInCubic');
-		$("#chapter-03-svgs .single-orange-maps object").eq(index)
-														.animate({ opacity: 1.0 }, 300,'linear');
-		$("#chapter-03-svgs .cumulative-red-maps object").eq(index)
-														.animate({ opacity: 1.0 }, 300,'linear');
-		console.log("chapter-03-pageChange-0"+index);
-	}
-	$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( $(this), changeLayer_03, function() {} )); // 트리거가 일시적으로 작동 
-	$(window).on('scroll', onUnderBottomOfViewport( $(this), changeLayer_03, function(){} ));
-})
+// 	var changeLayer_03 = function() {
+// 		$("#chapter-03-svgs .single-orange-maps object").not( $("#chapter-03-svgs .single-orange-maps object").eq(index) )
+// 														.animate({ opacity: 0.0 }, 300,'easeInCubic');
+// 		$("#chapter-03-svgs .cumulative-red-maps object").not( $("#chapter-03-svgs .cumulative-red-maps object").eq(index) )
+// 														.animate({ opacity: 0.0 }, 300,'easeInCubic');
+// 		$("#chapter-03-svgs .single-orange-maps object").eq(index)
+// 														.animate({ opacity: 1.0 }, 300,'linear');
+// 		$("#chapter-03-svgs .cumulative-red-maps object").eq(index)
+// 														.animate({ opacity: 1.0 }, 300,'linear');
+// 		$("#layer-names div").eq(index).removeClass('orange-background').addClass('red-background');
+// 		$("#layer-names div").eq(index+1).removeClass('red-background').addClass('orange-background');
+// 		$("#layer-names div").eq(index+2).removeClass('orange-background');
+// 		console.log("chapter-03-pageChange-0"+index);
+// 	}
+// 	$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( $(this), changeLayer_03, function() {} )); // 트리거가 일시적으로 작동 
+// 	$(window).on('scroll', onUnderBottomOfViewport( $(this), changeLayer_03, function(){} ));
+// })
 
 
 function scrollFunction_chapter_04() {
@@ -170,6 +176,8 @@ function scrollFunction_chapter_04() {
 
 	$(".fixed-background").removeClass("visible");
 	$("#chapter-04-background").addClass("visible");
+	$("#layer-names").addClass("visible");
+	$("#layer-names div").removeClass('orange-background').addClass('red-background');
 
 	console.log("chapter-04");
 }
@@ -255,6 +263,6 @@ function scrollFunction_chapter_05() {
 }
 //jQuery
 $(window).on('DOMContentLoaded load resize scroll', handler_chapter_01)
-			.on('DOMContentLoaded load resize scroll', handler_chapter_02_opacity)
+			// .on('DOMContentLoaded load resize scroll', handler_chapter_02_opacity)
 			.on('DOMContentLoaded load resize scroll', handler_chapter_03)
 			.on('DOMContentLoaded load resize scroll', handler_chapter_04);
