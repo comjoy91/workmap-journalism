@@ -86,7 +86,7 @@ function styleFunc_municipal_01(feature) {
 		weight: municipal_style.weight
 	};
 }
-function styleFunc_municipal_04(feature) {
+function styleFunc_municipal_03(feature) {
 	if ( feature.properties.score_total <= 0 ) {
 		return {
 			fillColor: municipal_style.fillColor_invalid,
@@ -121,19 +121,19 @@ var layer_municipal_01 = L.geoJson(municipalGeoJSON, {
 	smoothFactor: 0, 
 	interactive: true
 }).addTo(map_01);
-// var layer_municipal_04 = L.geoJson(municipalGeoJSON, {
-// 	style: styleFunc_municipal_04,
+// var layer_municipal_03 = L.geoJson(municipalGeoJSON, {
+// 	style: styleFunc_municipal_03,
 // 	onEachFeature: onEachFeature_municipal,
 // 	smoothFactor: 0, 
 // 	interactive: false
-// }).addTo(map_04);
+// }).addTo(map_03);
 
 var layer_province_border_01 = L.geoJson(provinceGeoJSON, {
 	style: styleFunc_province_border,
 	smoothFactor: 0, 
 	interactive: false
 }).addTo(map_01);
-var layer_province_border_04 = L.geoJson(provinceGeoJSON, {
+var layer_province_border_03 = L.geoJson(provinceGeoJSON, {
 	style: {
 		opacity: 0, 
 		fillOpacity: 0,
@@ -141,7 +141,7 @@ var layer_province_border_04 = L.geoJson(provinceGeoJSON, {
 	},
 	smoothFactor: 0, 
 	interactive: false
-}).addTo(map_04);
+}).addTo(map_03);
 
 
 
