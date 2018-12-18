@@ -282,7 +282,7 @@ function highlightFeature(e) {
 	if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
 		layer.bringToFront();
 	}
-	tooltip.style("display", "inline");
+	tooltip_left.style("display", "inline");
 }
 
 // 2. build a tooltip.
@@ -304,8 +304,8 @@ function districtTooltip(e) { //build tooltip for mouseover layer
 
 
 	tooltip_left.html( tooltipHTML )
-		.style("left", (e.containerPoint.x - $(".tooltip").innerWidth()/2) + "px")
-		.style("top", (e.containerPoint.y - $(".tooltip").innerHeight()) + "px");
+		.style("left", (e.containerPoint.x - $("#tooltip-left").innerWidth()/2) + "px")
+		.style("top", (e.containerPoint.y - $("#tooltip-left").innerHeight()) + "px");
 }
 
 
@@ -325,7 +325,7 @@ function resetHighlight_layer(_layer) {
 			}
 		}
 	}
-	tooltip.style("display", "none");
+	tooltip_left.style("display", "none");
 }
 function resetHighlight(e) { //reset geojson(=map drawn by geoJSON) style just like it had been initialized
 	resetHighlight_layer(e.target);
