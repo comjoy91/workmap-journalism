@@ -286,9 +286,9 @@ function highlightFeature(e) {
 }
 
 // 2. build a tooltip.
-var tooltip = d3.select("#background-bounding").append("div")
-	.attr("class", "tooltip")
-	.style("display", "none");
+var tooltip_left = d3.select("#tooltip-left");
+var tooltip_right = d3.select("#tooltip-right");
+
 function districtTooltip(e) { //build tooltip for mouseover layer
 	var tooltipHTML;
 	if ( e.target.feature.properties.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
@@ -303,7 +303,7 @@ function districtTooltip(e) { //build tooltip for mouseover layer
 					+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 없음";
 
 
-	tooltip.html( tooltipHTML )
+	tooltip_left.html( tooltipHTML )
 		.style("left", (e.containerPoint.x - $(".tooltip").innerWidth()/2) + "px")
 		.style("top", (e.containerPoint.y - $(".tooltip").innerHeight()) + "px");
 }
