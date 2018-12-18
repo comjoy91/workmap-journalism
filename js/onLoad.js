@@ -153,9 +153,9 @@ function dataInsertion(_featureArray, _dataArray) {
 };
 
 var municipalData = [_dataJSON_2016.municipals];
-var provinceData = [_dataJSON_2016.provinces];
+// var provinceData = [_dataJSON_2016.provinces];
 dataInsertion(municipalGeoJSON, municipalData);
-dataInsertion(provinceGeoJSON, provinceData);
+// dataInsertion(provinceGeoJSON, provinceData);
 
 // ---------- variable which is related to #mapYear_slider
 // var updateScore = function() { updateScore_check(); }; // recent "updateScore" function variable, depends on which #menu_mapNav is selected.
@@ -233,11 +233,40 @@ function getBound (el) {
 													$("#chapter-02-svg-red g#02-7_R-COSTII"), 
 													$("#chapter-02-svg-red g#02-8_expertRate") ];
 
-								$("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[index+1]).addClass("transparent_layer");
-								$("#chapter-02-svg-red g.municipalLayer").not(redLayer[index+1]).addClass("transparent_layer");
-								orangeLayer[index+1].removeClass("transparent_layer");
-								redLayer[index+1].removeClass("transparent_layer");
-								
+
+								$("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[index+1]).each( function() {
+									$(this).children(".active-shape").each( function( _index, _ele ) {
+										setTimeout( function() { 
+											$(_ele).addClass("transform-transparent-shape"); 
+										}, _index * 5 );
+									});
+								});
+								$("#chapter-02-svg-red g.municipalLayer").not(redLayer[index]).each( function() {
+									$(this).children(".active-shape").each( function( _index, _ele ) {
+										setTimeout( function() { 
+											$(_ele).addClass("transparent-shape"); 
+										}, _index * 5 );
+									});
+								});
+
+								redLayer[index].children(".active-shape").each( function( _index, _ele ) {
+									setTimeout( function() { 
+										$(_ele).removeClass("transparent-shape"); 
+									}, _index * 5 );
+								});
+
+								orangeLayer[index+1].children(".active-shape").each( function( _index, _ele ) {
+									setTimeout( function() { 
+										$(_ele).removeClass("transform-transparent-shape"); 
+									}, _index * 5 + 600);
+								});
+
+
+								// $("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[index+1]).addClass("transparent-layer");
+								// $("#chapter-02-svg-red g.municipalLayer").not(redLayer[index]).addClass("transparent-layer");
+								// orangeLayer[index+1].removeClass("transparent-layer");
+								// redLayer[index].removeClass("transparent-layer");
+
 								$("#layer-names div").eq(index).removeClass('orange-background').addClass('red-background');
 								$("#layer-names div").eq(index+1).removeClass('red-background').addClass('orange-background');
 								$("#layer-names div").eq(index+2).removeClass('orange-background');
@@ -261,8 +290,8 @@ function getBound (el) {
 											$("#chapter-03-svg g#02-8_expertRate_geographic #Suwon"), 
 											$("#chapter-03-svg g#02-8_expertRate_geographic #Paju"), 
 											$("#chapter-03-svg g#02-8_expertRate_geographic .municipalShape") ];
-					$("#chapter-03-svg g#02-8_expertRate_geographic .municipalShape").not(colorMunicipal[index]).addClass("transparent_shape");
-					colorMunicipal[index].removeClass("transparent_shape");
+					$("#chapter-03-svg g#02-8_expertRate_geographic .municipalShape").not(colorMunicipal[index]).addClass("transparent-shape");
+					colorMunicipal[index].removeClass("transparent-shape");
 					console.log("chapter-03-pageChange-0"+index);
 				}
 				$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( $(this), changeLayer_03, function() {} )); // 트리거가 일시적으로 작동 
