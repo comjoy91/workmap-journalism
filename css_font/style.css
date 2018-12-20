@@ -194,12 +194,16 @@ div.fixed-background {
 	height: 100%; /*100vh;*/
 	z-index: -1;
 
+	pointer-events: none;
+
 	opacity: 0.0;
 	visibility: hidden;
 	-webkit-transition: visibility 0ms 600ms/*delay: 600mx*/, opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
 	transition:         visibility 0ms 600ms, opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
 }
 div.fixed-background.visible {
+	pointer-events: auto;
+
 	opacity: 1.0;
 	visibility: visible;
 	-webkit-transition: opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
@@ -258,24 +262,47 @@ div.fixed-background.visible {
 
 /* ------------ map SVGs ------------ */
 
+
 .municipalLayer .active-shape {
 	visibility: visible;
-	-webkit-transition: visibility 0ms 400ms/*delay: 400ms*/, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
+	-webkit-transition: visibility 0ms 400ms/*delay = 400ms*/, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
 	transition:         visibility 0ms 400ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
 }
-	.municipalLayer .active-shape.transparent-shape {
-		/*fill-opacity: 0;
-		stroke-opacity: 0;*/
-		visibility: hidden;
-		/*-webkit-transition: visibility 0ms 400ms;
-		transition:         visibility 0ms 400ms;*/
+	.municipalLayer .active-shape.visibility-noDelay {
+		-webkit-transition: visibility 0ms 0ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
+		transition:         visibility 0ms 0ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
 	}
-	.municipalLayer .active-shape.transform-transparent-shape {
+	.municipalLayer .active-shape.transparent-shape/*, .municipalLayer.transparent-layer .active-shape*/ {
+		visibility: hidden;
+	}
+	.municipalLayer .active-shape.transform-toRight-shape {
+		transform: translateX(calc( 43/30 * 377px ));
+	}
+
+	/*.municipalLayer .active-shape.transparent-shape {
+		visibility: hidden;
+	}
+	.municipalLayer .active-shape.transparent-immediately-shape {
+		visibility: hidden;
+		-webkit-transition: visibility 0ms 0ms;
+		transition:         visibility 0ms 0ms;
+	}
+	.municipalLayer .active-shape.transformToRight-transparent-shape {
 		visibility: hidden;
 		transform: translateX(40vw);
-		/*-webkit-transition: visibility 0ms 400ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
-		transition:         visibility 0ms 400ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);*/
-	}
+	}*/
+
+.municipalLayer .highlighted {
+	stroke: #248;
+	stroke-opacity: 0.7;
+	stroke-width: 4.0;
+}
+
+.municipal-edge .highlighted {
+	/*stroke: #248;*/
+	stroke-width: 4;
+	stroke-opacity: 0.7;
+}
 
 .transparent-layer {
 	visibility: hidden;
@@ -308,7 +335,7 @@ div.fixed-background.visible {
 /* ------------ layout: background map setting ------------ */
 
 
-#chapter-01-map, #chapter-04-map {
+#chapter-01-map, #chapter-03-map {
 	overflow: hidden;
 }
 
@@ -428,8 +455,7 @@ div.fixed-background.visible {
 	#chapter-02-svg-red {
 		position: absolute;
 		top: calc( (100vh - (30vw * 611/377)) / 2);
-		left: auto;
-		right: 15vw;
+		left: 55vw;
 		width: 30vw;
 		line-height: 0;
 	}

@@ -282,12 +282,12 @@ function highlightFeature(e) {
 	if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
 		layer.bringToFront();
 	}
-	tooltip_left.style("display", "inline");
+	tooltip_orange.style("display", "inline");
 }
 
 // 2. build a tooltip.
-var tooltip_left = d3.select("#tooltip-left");
-var tooltip_right = d3.select("#tooltip-right");
+var tooltip_orange = d3.select("#tooltip-orange");
+var tooltip_red = d3.select("#tooltip-red");
 
 function districtTooltip(e) { //build tooltip for mouseover layer
 	var tooltipHTML;
@@ -303,9 +303,9 @@ function districtTooltip(e) { //build tooltip for mouseover layer
 					+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 없음";
 
 
-	tooltip_left.html( tooltipHTML )
-		.style("left", (e.containerPoint.x - $("#tooltip-left").innerWidth()/2) + "px")
-		.style("top", (e.containerPoint.y - $("#tooltip-left").innerHeight()) + "px");
+	tooltip_orange.html( tooltipHTML )
+		.style("left", (e.containerPoint.x - $("#tooltip-orange").innerWidth()/2) + "px")
+		.style("top", (e.containerPoint.y - $("#tooltip-orange").innerHeight()) + "px");
 }
 
 
@@ -325,7 +325,7 @@ function resetHighlight_layer(_layer) {
 			}
 		}
 	}
-	tooltip_left.style("display", "none");
+	tooltip_orange.style("display", "none");
 }
 function resetHighlight(e) { //reset geojson(=map drawn by geoJSON) style just like it had been initialized
 	resetHighlight_layer(e.target);

@@ -74,7 +74,7 @@ var attribution_03 = L.control.attribution({position: 'bottomright'}).addTo(map_
 
 // ---------- functions for implementing rawData and score into initial geoJSON data.
 
-function data_object(_dataJson_district) {
+function data_object_leaflet(_dataJson_district) {
 	var returnObject = {	
 		"hiringRate_300": {
 			"rawData": _dataJson_district.hiringRate_300,
@@ -119,14 +119,14 @@ function data_object(_dataJson_district) {
 	return returnObject;
 };
 
-function dataInsertion(_featureArray, _dataArray) {
+function dataInsertion_leaflet(_featureArray, _dataArray) {
 	for (var i=0; i<_featureArray.features.length; i++) {
 		var prop = _featureArray.features[i].properties;
 		prop.data = [];
 		prop.score_total = 0;
 
 		for (var j=0; j<_dataArray.length; j++) {
-			prop.data.push(data_object(_dataArray[j][i]));
+			prop.data.push(data_object_leaflet(_dataArray[j][i]));
 		}
 		
 		if ( prop.data[j-1].hiringRate_300.score > 0 ) {
@@ -154,7 +154,7 @@ function dataInsertion(_featureArray, _dataArray) {
 
 var municipalData = [_dataJSON_2016.municipals];
 // var provinceData = [_dataJSON_2016.provinces];
-dataInsertion(municipalGeoJSON, municipalData);
+dataInsertion_leaflet(municipalGeoJSON, municipalData);
 // dataInsertion(provinceGeoJSON, provinceData);
 
 // ---------- variable which is related to #mapYear_slider
@@ -204,80 +204,6 @@ function getBound (el) {
 
 
 	$(window).on(/*"DOMContentLoaded load"*/ "load", function() {//먼저 js파일들을 모두 로드. 
-
-		d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orange-maps.svg")
-			.then( function(map_svg_imported) {
-				$("#chapter-02-svg-orange").html(map_svg_imported);
-
-				d3.text("@images/svg_maps/02_cumulative-red-maps/02-0_cumulative-red-maps.svg")
-					.then( function(map_svg_imported) {
-						$("#chapter-02-svg-red").html(map_svg_imported);
-
-						$("#chapter-02 div.page").each( function(index) {
-							var changeLayer_02 = function() {
-								var orangeLayer = [ $("#chapter-02-svg-orange g#01-1_hiring300"), 
-													$("#chapter-02-svg-orange g#01-2_hiring1000"), 
-													$("#chapter-02-svg-orange g#01-3_mainIndustry"), 
-													$("#chapter-02-svg-orange g#01-4_20s"), 
-													$("#chapter-02-svg-orange g#01-5_jobCreation"), 
-													$("#chapter-02-svg-orange g#01-6_incomeRate"), 
-													$("#chapter-02-svg-orange g#01-7_R-COSTII"), 
-													$("#chapter-02-svg-orange g#01-8_expertRate") ];
-													
-								var redLayer = [ $("#chapter-02-svg-red g#02-1_hiring300"), 
-													$("#chapter-02-svg-red g#02-2_hiring1000"), 
-													$("#chapter-02-svg-red g#02-3_mainIndustry"), 
-													$("#chapter-02-svg-red g#02-4_20s"), 
-													$("#chapter-02-svg-red g#02-5_jobCreation"), 
-													$("#chapter-02-svg-red g#02-6_incomeRate"), 
-													$("#chapter-02-svg-red g#02-7_R-COSTII"), 
-													$("#chapter-02-svg-red g#02-8_expertRate") ];
-
-
-								$("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[index+1]).each( function() {
-									$(this).children(".active-shape").each( function( _index, _ele ) {
-										setTimeout( function() { 
-											$(_ele).addClass("transform-transparent-shape"); 
-										}, _index * 5 );
-									});
-								});
-								$("#chapter-02-svg-red g.municipalLayer").not(redLayer[index]).each( function() {
-									$(this).children(".active-shape").each( function( _index, _ele ) {
-										setTimeout( function() { 
-											$(_ele).addClass("transparent-shape"); 
-										}, _index * 5 );
-									});
-								});
-
-								redLayer[index].children(".active-shape").each( function( _index, _ele ) {
-									setTimeout( function() { 
-										$(_ele).removeClass("transparent-shape"); 
-									}, _index * 5 );
-								});
-
-								orangeLayer[index+1].children(".active-shape").each( function( _index, _ele ) {
-									setTimeout( function() { 
-										$(_ele).removeClass("transform-transparent-shape"); 
-									}, _index * 5 + 600);
-								});
-
-
-								// $("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[index+1]).addClass("transparent-layer");
-								// $("#chapter-02-svg-red g.municipalLayer").not(redLayer[index]).addClass("transparent-layer");
-								// orangeLayer[index+1].removeClass("transparent-layer");
-								// redLayer[index].removeClass("transparent-layer");
-
-								$("#layer-names div").eq(index).removeClass('orange-background').addClass('red-background');
-								$("#layer-names div").eq(index+1).removeClass('red-background').addClass('orange-background');
-								$("#layer-names div").eq(index+2).removeClass('orange-background');
-
-								console.log("chapter-02-pageChange-0"+index);
-							}
-							$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( $(this), changeLayer_02, function() {} )); // 트리거가 일시적으로 작동 
-							$(window).on('scroll', onUnderBottomOfViewport( $(this), changeLayer_02, function(){} ));
-						})
-					});
-			});
 
 
 		d3.text("@images/svg_maps/02_cumulative-red-maps/02-8_expertRate_geographic.svg").then( function(map_svg_imported) {

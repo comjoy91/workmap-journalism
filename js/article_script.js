@@ -31,8 +31,8 @@ function isElementUnderBottomOfViewport (el) {
 	);
 }
 
-function onUnderBottomOfViewport(el, callback_fullyCover, callback_notFullyCover) { // viewport 전체를 가리는/가리지 않는 순간, 발동.
-	var old_cover=true; // initial value = false: 맨 처음(onLoad) 시점에서 viewport에 보이지 않으면, callback이 없도록 함.
+function onUnderBottomOfViewport(el, callback_fullyCover, callback_notFullyCover) { // el이 viewport 최하단보다 아래쪽으로 살짝만 뻗어나오면/완전히 최하단 위쪽으로 올라가버리면, 발동.
+	var old_cover=true; // 처음 onLoad할 때에, cover=true면 callback이 없도록 함.
 	return function () {
 		var cover = isElementUnderBottomOfViewport(el);
 		if (cover != old_cover) {
@@ -47,8 +47,8 @@ function onUnderBottomOfViewport(el, callback_fullyCover, callback_notFullyCover
 	}
 }
 
-function onAboveBottomOfViewport(el, callback_fullyCover, callback_notFullyCover) { // viewport 전체를 가리는/가리지 않는 순간, 발동.
-	var old_cover; // initial value = false: 맨 처음(onLoad) 시점에서 viewport에 보이지 않으면, callback이 없도록 함.
+function onAboveBottomOfViewport(el, callback_fullyCover, callback_notFullyCover) { // el이 viewport 최하단보다 위쪽으로 살짝만 뻗어나오면/완전히 최하단 아래로 내려가버리면, 발동.
+	var old_cover=true; // 처음 onLoad할 때에, cover=true면 callback이 없도록 함.
 	return function () {
 		var cover = isElementAboveBottomOfViewport(el);
 		if (cover != old_cover) {
@@ -64,8 +64,8 @@ function onAboveBottomOfViewport(el, callback_fullyCover, callback_notFullyCover
 }
 
 
-function onPartiallyCoverViewport(el, callback_fullyCover, callback_notFullyCover) { // viewport 전체를 가리는/가리지 않는 순간, 발동.
-	var old_cover; // initial value = false: 맨 처음(onLoad) 시점에서 viewport에 보이지 않으면, callback이 없도록 함.
+function onPartiallyCoverViewport(el, callback_fullyCover, callback_notFullyCover) { // viewport의 일부를 가리는 순간/전혀 보이지 않는 순간, 발동.
+	var old_cover=null; // 처음 onLoad할 때에 무조건 발동되게 함.
 	return function () {
 		var cover = isElementPartiallyInViewport(el);
 		if (cover != old_cover) {
@@ -178,3 +178,339 @@ var handler_chapter_03 = onPartiallyCoverViewport( $("#chapter-03"), scrollFunct
 $(window).on('DOMContentLoaded load resize scroll', handler_chapter_01)
 			.on('DOMContentLoaded load resize scroll', handler_chapter_02)
 			.on('DOMContentLoaded load resize scroll', handler_chapter_03);
+
+
+
+
+
+
+// --------------- CSS transition while scrolling --------------
+
+// var orangeLayer = [ // $("#chapter-02-svg-orange g#01-1_hiring300"), 
+// 					$("#chapter-02-svg-orange g#01-2_hiring1000"), 
+// 					$("#chapter-02-svg-orange g#01-3_mainIndustry"), 
+// 					$("#chapter-02-svg-orange g#01-4_20s"), 
+// 					$("#chapter-02-svg-orange g#01-5_jobCreation"), 
+// 					$("#chapter-02-svg-orange g#01-6_incomeRate"), 
+// 					$("#chapter-02-svg-orange g#01-7_R-COSTII"), 
+// 					$("#chapter-02-svg-orange g#01-8_expertRate") ];
+					
+// var redLayer = [ $("#chapter-02-svg-red g#02-1_hiring300"), 
+// 					$("#chapter-02-svg-red g#02-2_hiring1000"), 
+// 					$("#chapter-02-svg-red g#02-3_mainIndustry"), 
+// 					$("#chapter-02-svg-red g#02-4_20s"), 
+// 					$("#chapter-02-svg-red g#02-5_jobCreation"), 
+// 					$("#chapter-02-svg-red g#02-6_incomeRate"), 
+// 					$("#chapter-02-svg-red g#02-7_R-COSTII"), 
+// 					$("#chapter-02-svg-red g#02-8_expertRate") ];
+
+// var changeLayer_02_scrollToTop = function( _layerIndex ) {
+// 	orangeLayer[_layerIndex].prevAll("#chapter-02-svg-orange g.municipalLayer").each( function() {
+// 		$(this).children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 			setTimeout( function() { 
+// 				$(_ele).addClass("transform-toRight-shape transparent-shape"); 
+// 			}, _shapeIndex * 5 );
+// 		});
+// 	});
+// 	orangeLayer[_layerIndex].nextAll("#chapter-02-svg-orange g.municipalLayer").each( function() {
+// 		$(this).children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 			setTimeout( function() { 
+// 				$(_ele).addClass("transparent-shape visibility-noDelay").removeClass("transform-toRight-shape"); 
+// 			}, _shapeIndex * 5 );
+// 		});
+// 	});
+
+// 	redLayer[_layerIndex].prevAll("#chapter-02-svg-red g.municipalLayer").each( function() {
+// 		$(this).children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 			setTimeout( function() { 
+// 				$(_ele).addClass("transparent-shape").removeClass("visibility-noDelay"); 
+// 			}, _shapeIndex * 5 );
+// 		});
+// 	});
+// 	redLayer[_layerIndex].nextAll("#chapter-02-svg-red g.municipalLayer").each( function() {
+// 		$(this).children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 			setTimeout( function() { 
+// 				$(_ele).addClass("transparent-shape visibility-noDelay"); 
+// 			}, _shapeIndex * 5 );
+// 		});
+// 	});
+
+// 	redLayer[_layerIndex].children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 		setTimeout( function() { 
+// 			$(_ele).addClass("visibility-noDelay").removeClass("transparent-shape"); 
+// 		}, _shapeIndex * 5 );
+// 	});
+
+// 	orangeLayer[_layerIndex].children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 		setTimeout( function() { 
+// 			$(_ele).addClass("visibility-noDelay").removeClass("transform-toRight-shape transparent-shape"); 
+// 		}, _shapeIndex * 5 );
+// 	});
+
+// 	$("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[_layerIndex]).addClass("transparent-layer");
+// 	$("#chapter-02-svg-red g.municipalLayer").not(redLayer[_layerIndex]).addClass("transparent-layer");
+// 	orangeLayer[_layerIndex].removeClass("transparent-layer");
+// 	redLayer[_layerIndex].removeClass("transparent-layer");
+
+// 	$("#layer-names div").eq(_layerIndex).removeClass('orange-background').addClass('red-background');
+// 	$("#layer-names div").eq(_layerIndex+1).removeClass('red-background').addClass('orange-background');
+// 	$("#layer-names div").eq(_layerIndex+2).removeClass('orange-background');
+
+// 	console.log("chapter-02-pageChange-0"+_layerIndex);
+// };
+
+// // var handler_changeLayer_02_scrollToTop = onUnderBottomOfViewport( chapter_02_thisPage, changeLayer_02_scrollToTop, function(){} )
+
+
+// var changeLayer_02_scrollToBottom = function( _layerIndex ) {
+// 	orangeLayer[_layerIndex].prevAll("#chapter-02-svg-orange g.municipalLayer").each( function() {
+// 		$(this).children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 			setTimeout( function() { 
+// 				$(_ele).addClass("transform-toRight-shape transparent-shape").removeClass("visibility-noDelay"); 
+// 			}, _shapeIndex * 5 );
+// 		});
+// 	});
+// 	orangeLayer[_layerIndex].nextAll("#chapter-02-svg-orange g.municipalLayer").each( function() {
+// 		$(this).children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 			setTimeout( function() { 
+// 				$(_ele).addClass("transparent-shape").removeClass("transform-toRight-shape"); 
+// 			}, _shapeIndex * 5 );
+// 		});
+// 	});
+
+// 	redLayer[_layerIndex].prevAll("#chapter-02-svg-red g.municipalLayer").each( function() {
+// 		$(this).children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 			setTimeout( function() { 
+// 				$(_ele).addClass("transparent-shape").removeClass("visibility-noDelay"); 
+// 			}, _shapeIndex * 5 );
+// 		});
+// 	});
+// 	redLayer[_layerIndex].nextAll("#chapter-02-svg-red g.municipalLayer").each( function() {
+// 		$(this).children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 			setTimeout( function() { 
+// 				$(_ele).addClass("transparent-shape visibility-noDelay"); 
+// 			}, _shapeIndex * 5 );
+// 		});
+// 	});
+
+// 	redLayer[_layerIndex].children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 		setTimeout( function() { 
+// 			$(_ele).removeClass("transparent-shape visibility-noDelay"); 
+// 		}, _shapeIndex * 5 );
+// 	});
+
+// 	orangeLayer[_layerIndex].children(".active-shape").each( function( _shapeIndex, _ele ) {
+// 		setTimeout( function() { 
+// 			$(_ele).removeClass("transparent-shape visibility-noDelay").removeClass("transform-toRight-shape"); 
+// 		}, _shapeIndex * 5 + 300);
+// 	});
+
+
+// 	$("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[_layerIndex]).addClass("transparent-layer");
+// 	$("#chapter-02-svg-red g.municipalLayer").not(redLayer[_layerIndex]).addClass("transparent-layer");
+// 	orangeLayer[_layerIndex].removeClass("transparent-layer");
+// 	redLayer[_layerIndex].removeClass("transparent-layer");
+
+// 	$("#layer-names div").eq(_layerIndex).removeClass('orange-background').addClass('red-background');
+// 	$("#layer-names div").eq(_layerIndex+1).removeClass('red-background').addClass('orange-background');
+// 	$("#layer-names div").eq(_layerIndex+2).removeClass('orange-background');
+
+// 	console.log("chapter-02-pageChange-0"+_layerIndex);
+// };
+
+
+
+
+
+						
+						// $("#chapter-02 div.page").each( function(index) { 
+
+						// var chapter_02_thisPage = $("#chapter-02 div.page").eq(index);
+						// 	var changeLayer_02_scrollToTop = function() {
+
+						// var orangeLayer = [ // $("#chapter-02-svg-orange g#01-1_hiring300"), 
+						// 					$("#chapter-02-svg-orange g#01-2_hiring1000"), 
+						// 					$("#chapter-02-svg-orange g#01-3_mainIndustry"), 
+						// 					$("#chapter-02-svg-orange g#01-4_20s"), 
+						// 					$("#chapter-02-svg-orange g#01-5_jobCreation"), 
+						// 					$("#chapter-02-svg-orange g#01-6_incomeRate"), 
+						// 					$("#chapter-02-svg-orange g#01-7_R-COSTII"), 
+						// 					$("#chapter-02-svg-orange g#01-8_expertRate") ];
+											
+						// var redLayer = [ $("#chapter-02-svg-red g#02-1_hiring300"), 
+						// 					$("#chapter-02-svg-red g#02-2_hiring1000"), 
+						// 					$("#chapter-02-svg-red g#02-3_mainIndustry"), 
+						// 					$("#chapter-02-svg-red g#02-4_20s"), 
+						// 					$("#chapter-02-svg-red g#02-5_jobCreation"), 
+						// 					$("#chapter-02-svg-red g#02-6_incomeRate"), 
+						// 					$("#chapter-02-svg-red g#02-7_R-COSTII"), 
+						// 					$("#chapter-02-svg-red g#02-8_expertRate") ];
+
+
+						// 		orangeLayer[index].prevAll("#chapter-02-svg-orange g.municipalLayer").each( function() {
+						// 			$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 				setTimeout( function() { 
+						// 					$(_ele).addClass("transform-toRight-shape transparent-shape"); 
+						// 				}, _index * 5 );
+						// 			});
+						// 		});
+						// 		orangeLayer[index].nextAll("#chapter-02-svg-orange g.municipalLayer").each( function() {
+						// 			$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 				setTimeout( function() { 
+						// 					$(_ele).addClass("transparent-shape visibility-noDelay").removeClass("transform-toRight-shape"); 
+						// 				}, _index * 5 );
+						// 			});
+						// 		});
+
+						// 		redLayer[index].prevAll("#chapter-02-svg-red g.municipalLayer").each( function() {
+						// 			$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 				setTimeout( function() { 
+						// 					$(_ele).addClass("transparent-shape").removeClass("visibility-noDelay"); 
+						// 				}, _index * 5 );
+						// 			});
+						// 		});
+						// 		redLayer[index].nextAll("#chapter-02-svg-red g.municipalLayer").each( function() {
+						// 			$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 				setTimeout( function() { 
+						// 					$(_ele).addClass("transparent-shape visibility-noDelay"); 
+						// 				}, _index * 5 );
+						// 			});
+						// 		});
+
+						// 		redLayer[index].children(".active-shape").each( function( _index, _ele ) {
+						// 			setTimeout( function() { 
+						// 				$(_ele).addClass("visibility-noDelay").removeClass("transparent-shape"); 
+						// 			}, _index * 5 );
+						// 		});
+
+						// 		orangeLayer[index].children(".active-shape").each( function( _index, _ele ) {
+						// 			setTimeout( function() { 
+						// 				$(_ele).addClass("visibility-noDelay").removeClass("transform-toRight-shape transparent-shape"); 
+						// 			}, _index * 5 );
+						// 		});
+
+						// 		$("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[index]).addClass("transparent-layer");
+						// 		$("#chapter-02-svg-red g.municipalLayer").not(redLayer[index]).addClass("transparent-layer");
+						// 		orangeLayer[index].removeClass("transparent-layer");
+						// 		redLayer[index].removeClass("transparent-layer");
+
+						// 		$("#layer-names div").eq(index).removeClass('orange-background').addClass('red-background');
+						// 		$("#layer-names div").eq(index+1).removeClass('red-background').addClass('orange-background');
+						// 		$("#layer-names div").eq(index+2).removeClass('orange-background');
+
+						// 		console.log("chapter-02-pageChange-0"+index);
+						// 	}
+
+						// 	var changeLayer_02_scrollToBottom = function() {
+
+
+						// var orangeLayer = [ // $("#chapter-02-svg-orange g#01-1_hiring300"), 
+						// 					$("#chapter-02-svg-orange g#01-2_hiring1000"), 
+						// 					$("#chapter-02-svg-orange g#01-3_mainIndustry"), 
+						// 					$("#chapter-02-svg-orange g#01-4_20s"), 
+						// 					$("#chapter-02-svg-orange g#01-5_jobCreation"), 
+						// 					$("#chapter-02-svg-orange g#01-6_incomeRate"), 
+						// 					$("#chapter-02-svg-orange g#01-7_R-COSTII"), 
+						// 					$("#chapter-02-svg-orange g#01-8_expertRate") ];
+											
+						// var redLayer = [ $("#chapter-02-svg-red g#02-1_hiring300"), 
+						// 					$("#chapter-02-svg-red g#02-2_hiring1000"), 
+						// 					$("#chapter-02-svg-red g#02-3_mainIndustry"), 
+						// 					$("#chapter-02-svg-red g#02-4_20s"), 
+						// 					$("#chapter-02-svg-red g#02-5_jobCreation"), 
+						// 					$("#chapter-02-svg-red g#02-6_incomeRate"), 
+						// 					$("#chapter-02-svg-red g#02-7_R-COSTII"), 
+						// 					$("#chapter-02-svg-red g#02-8_expertRate") ];
+
+
+						// 		// ORIGINAL!!
+
+						// 		// $("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[index]).each( function() {
+						// 		// 	$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 		// 		setTimeout( function() { 
+						// 		// 			$(_ele).addClass("transform-toRight-shape transparent-shape"); 
+						// 		// 		}, _index * 5 );
+						// 		// 	});
+						// 		// });
+						// 		// $("#chapter-02-svg-red g.municipalLayer").not(redLayer[index]).each( function() {
+						// 		// 	$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 		// 		setTimeout( function() { 
+						// 		// 			$(_ele).addClass("transparent-shape"); 
+						// 		// 		}, _index * 5 );
+						// 		// 	});
+						// 		// });
+
+						// 		// redLayer[index].children(".active-shape").each( function( _index, _ele ) {
+						// 		// 	setTimeout( function() { 
+						// 		// 		$(_ele).removeClass("transparent-shape"); 
+						// 		// 	}, _index * 5 );
+						// 		// });
+
+						// 		// orangeLayer[index].children(".active-shape").each( function( _index, _ele ) {
+						// 		// 	setTimeout( function() { 
+						// 		// 		$(_ele).removeClass("transform-toRight-shape transparent-shape"); 
+						// 		// 	}, _index * 5 + 600);
+						// 		// });
+
+
+
+
+						// 		orangeLayer[index].prevAll("#chapter-02-svg-orange g.municipalLayer").each( function() {
+						// 			$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 				setTimeout( function() { 
+						// 					$(_ele).addClass("transform-toRight-shape transparent-shape").removeClass("visibility-noDelay"); 
+						// 				}, _index * 5 );
+						// 			});
+						// 		});
+						// 		orangeLayer[index].nextAll("#chapter-02-svg-orange g.municipalLayer").each( function() {
+						// 			$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 				setTimeout( function() { 
+						// 					$(_ele).addClass("transparent-shape").removeClass("transform-toRight-shape"); 
+						// 				}, _index * 5 );
+						// 			});
+						// 		});
+
+						// 		redLayer[index].prevAll("#chapter-02-svg-red g.municipalLayer").each( function() {
+						// 			$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 				setTimeout( function() { 
+						// 					$(_ele).addClass("transparent-shape").removeClass("visibility-noDelay"); 
+						// 				}, _index * 5 );
+						// 			});
+						// 		});
+						// 		redLayer[index].nextAll("#chapter-02-svg-red g.municipalLayer").each( function() {
+						// 			$(this).children(".active-shape").each( function( _index, _ele ) {
+						// 				setTimeout( function() { 
+						// 					$(_ele).addClass("transparent-shape visibility-noDelay"); 
+						// 				}, _index * 5 );
+						// 			});
+						// 		});
+
+						// 		redLayer[index].children(".active-shape").each( function( _index, _ele ) {
+						// 			setTimeout( function() { 
+						// 				$(_ele).removeClass("transparent-shape visibility-noDelay"); 
+						// 			}, _index * 5 );
+						// 		});
+
+						// 		orangeLayer[index].children(".active-shape").each( function( _index, _ele ) {
+						// 			setTimeout( function() { 
+						// 				$(_ele).removeClass("transparent-shape visibility-noDelay").removeClass("transform-toRight-shape"); 
+						// 			}, _index * 5 + 300);
+						// 		});
+
+
+						// 		$("#chapter-02-svg-orange g.municipalLayer").not(orangeLayer[index]).addClass("transparent-layer");
+						// 		$("#chapter-02-svg-red g.municipalLayer").not(redLayer[index]).addClass("transparent-layer");
+						// 		orangeLayer[index].removeClass("transparent-layer");
+						// 		redLayer[index].removeClass("transparent-layer");
+
+						// 		$("#layer-names div").eq(index).removeClass('orange-background').addClass('red-background');
+						// 		$("#layer-names div").eq(index+1).removeClass('red-background').addClass('orange-background');
+						// 		$("#layer-names div").eq(index+2).removeClass('orange-background');
+
+						// 		console.log("chapter-02-pageChange-0"+index);
+						// 	}
+
+
+						// 	$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( chapter_02_thisPage, changeLayer_02_scrollToBottom, function() {} )); // 아랫방향(순방향)으로 스크롤할 때.
+						// 	$(window).on('scroll', onUnderBottomOfViewport( chapter_02_thisPage, changeLayer_02_scrollToTop, function(){} )); // 윗방향(역방향)으로 스크롤할 때.
+						// })

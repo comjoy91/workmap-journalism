@@ -5,7 +5,7 @@
 	<desc>Created with Sketch.</desc>
 	<defs></defs>
 	<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-		<g id="01-1_hiring300" class="municipalLayer" transform="translate(7.000000, 1.000000)" stroke="#0000FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5">
+		<!-- <g id="01-1_hiring300" class="municipalLayer" transform="translate(7.000000, 1.000000)" stroke="#0000FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5">
 			<polygon id="Shape" stroke-opacity="0" fill-opacity="1.0" fill="#AAAAAA" points="122 113 123 113 124 115 124 118 127 119 127 120 122 121 121 119 120 116 121 114"></polygon>
 			<polygon id="Shape" stroke-opacity="0" fill-opacity="1.0" fill="#AAAAAA" points="127 120 126 123 124 122 122 123 122 122 122 121"></polygon>
 			<polygon id="Shape" stroke-opacity="0" fill-opacity="1.0" fill="#AAAAAA" points="126 123 127 124 126 125 123 127 120 126 120 125 122 123 124 122"></polygon>
@@ -235,7 +235,7 @@
 			<polygon id="Shape" stroke-opacity="0" fill-opacity="1.0" fill="#AAAAAA" points="231 324 231 326 233 326 234 330 234 334 231 336 231 338 233 337 234 339 240 339 241 338 244 338 248 339 249 342 248 343 249 346 248 349 248 351 250 353 250 355 248 355 245 353 241 354 239 356 235 357 235 361 233 364 233 366 230 368 228 367 225 370 223 369 224 368 221 365 219 364 215 361 213 355 212 353 212 349 214 348 216 341 218 338 220 337 221 335 224 335 220 327 221 324 219 323 221 321 222 321 224 318 227 319 228 323"></polygon>
 			<path d="M121,573 L122,576 L120,577 L120,575 L121,573 Z M116,578 L115,578 L109,582 L106,582 L103,585 L101,584 L98,584 L97,587 L94,587 L87,590 L84,590 L83,591 L79,592 L75,591 L74,593 L72,594 L68,593 L65,593 L63,595 L60,596 L58,598 L55,599 L52,598 L50,599 L49,600 L49,595 L49,593 L53,589 L58,585 L58,583 L62,581 L62,580 L65,579 L69,577 L70,578 L78,575 L79,574 L81,574 L83,573 L84,574 L87,573 L88,572 L92,572 L93,570 L94,570 L103,569 L105,569 L107,570 L109,569 L110,571 L112,573 L113,572 L116,573 L117,576 L116,578 Z" id="Shape" stroke-opacity="0" fill-opacity="1.0" fill="#AAAAAA"></path>
 			<polygon id="Shape" stroke-opacity="0" fill-opacity="1.0" fill="#AAAAAA" points="49 600 50 599 52 598 55 599 58 598 60 596 63 595 65 593 68 593 72 594 74 593 75 591 79 592 83 591 84 590 87 590 94 587 97 587 98 584 101 584 103 585 106 582 109 582 115 578 116 578 117 579 119 579 117 586 117 588 113 590 113 592 111 594 110 597 108 598 105 597 102 600 97 601 94 601 92 601 90 604 88 605 87 604 84 605 81 604 80 605 77 606 75 604 73 605 72 604 69 605 63 604 61 606 61 608 59 609 55 605 52 604 51 602"></polygon>
-		</g>
+		</g> -->
 		<g id="01-2_hiring1000" class="municipalLayer" transform="translate(7.000000, 1.000000)" stroke="#0000FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5">
 			<polygon id="Shape" stroke-opacity="0" fill-opacity="1.0" fill="#AAAAAA" points="122 113 123 113 124 115 124 118 127 119 127 120 122 121 121 119 120 116 121 114"></polygon>
 			<polygon id="Shape" stroke-opacity="0" fill-opacity="1.0" fill="#AAAAAA" points="127 120 126 123 124 122 122 123 122 122 122 121"></polygon>
