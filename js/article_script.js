@@ -97,7 +97,7 @@ function triggerFunction(_el, _callback) {
 var handler_chapter_01 = onPartiallyCoverViewport( $("#chapter-01"), 
 													function() {
 														$(".fixed-background").removeClass("visible");
-														$("#chapter-01-map").addClass("visible");
+														$("#chapter-01-background").addClass("visible");
 														$("#layer-names").removeClass("visible");
 														console.log("chapter-01");
 													}, 
@@ -128,13 +128,13 @@ var handler_chapter_03 = onPartiallyCoverViewport( $("#chapter-03"),
 
 function resizeMap_chapter_01_03() {
 
-	// var mapSvgBound_01 = layer_province_border_01.getBounds();
-	// var mapSvgNW_01 = map_01.latLngToContainerPoint(mapSvgBound_01.getNorthWest());
-	// var mapSvgSE_01 = map_01.latLngToContainerPoint(mapSvgBound_01.getSouthEast());
-	// var mapSvgWidth_01 = mapSvgSE_01.x - mapSvgNW_01.x;
-	// var mapSvgLeft_01 = mapSvgNW_01.x;
-	// var mapSvgTop_01 = mapSvgNW_01.y;
-	// $("#chapter-01-svg").width( mapSvgWidth_01 ).css( { top: mapSvgTop_01+'px', left: mapSvgLeft_01+'px' } );
+	var mapSvgBound_01 = layer_province_border_01.getBounds();
+	var mapSvgNW_01 = map_01.latLngToContainerPoint(mapSvgBound_01.getNorthWest());
+	var mapSvgSE_01 = map_01.latLngToContainerPoint(mapSvgBound_01.getSouthEast());
+	var mapSvgWidth_01 = mapSvgSE_01.x - mapSvgNW_01.x;
+	var mapSvgLeft_01 = mapSvgNW_01.x;
+	var mapSvgTop_01 = mapSvgNW_01.y;
+	$("#chapter-01-svg").width( mapSvgWidth_01 ).css( { top: mapSvgTop_01+'px', left: mapSvgLeft_01+'px' } );
 
 	var mapSvgBound_03 = layer_province_border_03.getBounds();
 	var mapSvgNW_03 = map_03.latLngToContainerPoint(mapSvgBound_03.getNorthWest());
@@ -152,4 +152,4 @@ function resizeMap_chapter_01_03() {
 $(window).on('DOMContentLoaded load resize scroll', handler_chapter_01)
 			.on('DOMContentLoaded load resize scroll', handler_chapter_02)
 			.on('DOMContentLoaded load resize scroll', handler_chapter_03)
-			.on('DOMContentLoaded load resize scroll', resizeMap_chapter_01_03);
+			.on('DOMContentLoaded load resize', resizeMap_chapter_01_03);

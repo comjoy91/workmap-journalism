@@ -1,11 +1,10 @@
 
 
-Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300_geographic.svg"), 
-				d3.text("@images/svg_maps/02_cumulative-red-maps/02-8_expertRate_geographic.svg") ])
-		.then( function( _map_svg_array ) {
-					var map_svg_red = _map_svg_array[0];
+d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300_geographic.svg")
+		.then( function( _map_svg_text ) {
+					var map_svg_red = _map_svg_text;
 
-					$("#chapter-03-svg").html(map_svg_red);
+					$("#chapter-01-svg").html(map_svg_red);
 
 
 
@@ -27,6 +26,7 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 							var tooltipHTML;
 							if ( data.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
 								tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
+											+ "<br>" + data.rawDataName + ": " + data.rawData
 											+ "<br> total 색상반영도: " + d3.format(".1f")(data.score_total);// + " / 100.0";
 							else if ( data.exist_300 ) // feature가 회색이고, 300인 이상 업체가 존재: 300인 이상 업체 0~1%
 								tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
@@ -47,8 +47,8 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 							d3.select( _this_shape ).classed("highlighted", false);
 						}
 
-						d3.select("#chapter-03-svg g.municipalLayer").selectAll("polygon, path").each( function( _datum, _shapeIndex) {
-							d3.select(this).datum( mainInfo_byLayer( mainInfoArray, 7/* 7 == _layerIndex */, _shapeIndex ) )
+						d3.select("#chapter-01-svg g.municipalLayer").selectAll("polygon, path").each( function( _datum, _shapeIndex) {
+							d3.select(this).datum( mainInfo_byLayer( mainInfoArray, 0/* 0 == _layerIndex */, _shapeIndex ) )
 											.on("mouseover", function() { 
 													tooltip_visible( this ); 
 													highlight_shape( this ); 
@@ -61,46 +61,6 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 													tooltip_red.style("left", (event.clientX - $("#tooltip-red").innerWidth()/2) + "px")
 																.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
 											});
-						});
-
-
-
-
-
-
-						// --------------- CSS transition while scrolling --------------
-
-						var colorMunicipal = [ $("#chapter-03-svg .active-shape#Gokseong"), 
-												$("#chapter-03-svg .active-shape#Ulsan_dong, #chapter-03-svg .active-shape#Ulsan_buk"), 
-												$("#chapter-03-svg .active-shape#Gunsan"), 
-												$("#chapter-03-svg .active-shape#Suwon"), 
-												$("#chapter-03-svg .active-shape#Paju"), 
-												$("#chapter-03-svg .active-shape") ];
-
-						var changeLayer_03 = function( _index ) {
-							$("#chapter-03-svg .active-shape").not( colorMunicipal[_index] ).addClass("transparent-shape");
-							colorMunicipal[_index].removeClass("transparent-shape");
-							console.log("chapter-03-pageChange-0"+_index);
-						}
-
-						$("#chapter-03 div.page").each( function( index ) {
-							var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
-							var changeLayer_03_index = function() { changeLayer_03(index) };
-							
-							$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function() {} )); // 트리거가 일시적으로 작동 
-							$(window).on('scroll', onUnderBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} ));
-						})
-
-						$("#chapter-03 div.page").each( function(index) { 
-							var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
-
-							if ( !isElementAboveBottomOfViewport( chapter_03_thisPage ) ) {
-								if (index < 1) changeLayer_03( 0 ); 
-								else changeLayer_03( index-1 );
-								return false; // pause .each() loop
-							}
-							else if ( index >= $("#chapter-03 div.page").length-1 ) 
-								changeLayer_03( index );
 						});
 						
 				});

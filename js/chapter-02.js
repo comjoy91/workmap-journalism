@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orange-maps.svg"), 
 				d3.text("@images/svg_maps/02_cumulative-red-maps/02-0_cumulative-red-maps.svg") ])
 		.then( function( _map_svg_array ) {

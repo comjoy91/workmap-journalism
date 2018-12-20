@@ -263,7 +263,7 @@ div.fixed-background.visible {
 		}
 
 
-/* ------------ map SVGs ------------ */
+/* ------------ map SVGs: .tooltip, highlighted shapes; ------------ */
 
 
 
@@ -303,6 +303,8 @@ div.fixed-background.visible {
 
 #chapter-01-map, #chapter-03-map {
 	overflow: hidden;
+	width: 100%; /*100vw;*/
+	height: 100%; /*100vh;*/
 }
 
 	.leaflet-container {
@@ -317,6 +319,17 @@ div.fixed-background.visible {
 
 	.leaflet-interactive {
 		cursor: default;
+	}
+
+	#chapter-01-map, #chapter-01-svg {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		line-height: 0;
+	}
+	#chapter-01-svg svg {
+		width: 100%; 
+		height: 100%; 
 	}
 
 	/* ------------ page 01-0: #site_title ------------ */
@@ -484,10 +497,6 @@ div.fixed-background.visible {
 		top: 0px;
 		left: 0px;
 		line-height: 0;
-	}
-	#chapter-03-map {
-		width: 100%; /*100vw;*/
-		height: 100%; /*100vh;*/
 	}
 	#chapter-03-svg svg {
 		width: 100%; 

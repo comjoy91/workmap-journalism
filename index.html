@@ -64,7 +64,10 @@
 <body>
 
 	<div id="background-bounding">
-		<div class="fixed-background visible" id="chapter-01-map"></div>
+		<div class="fixed-background visible" id="chapter-01-background">
+			<div id="chapter-01-map"></div>
+			<object id="chapter-01-svg" class="cumulative-red-map"></object>
+		</div>
 
 		<div class="fixed-background" id="chapter-02-background">
 			<object id="chapter-02-svg-orange"></object>
@@ -73,7 +76,6 @@
 
 		<div class="fixed-background" id="chapter-03-background">
 			<div id="chapter-03-map"></div>
-			<!-- <object id="chapter-04-svg" type="image/svg+xml" data="@images/svg_maps/02_cumulative-red-maps/02-8_expertRate_geographic.svg" class="cumulative-red-map"></object> -->
 			<object id="chapter-03-svg" class="cumulative-red-map"></object>
 		</div>
 
@@ -275,6 +277,7 @@
 	<script type="text/javascript" src="js/onLoad.js"></script>
 	<script type="text/javascript" src="js/dataInfo.js"></script>
 	<!-- <script type="text/javascript" src="js/dataLegend_modal.js"></script> -->
+	<script type="text/javascript" src="js/chapter-01.js"></script>
 	<script type="text/javascript" src="js/chapter-02.js"></script>
 	<script type="text/javascript" src="js/chapter-03.js"></script>
 	<script type="text/javascript" src="js/leaflet_script.js"></script>

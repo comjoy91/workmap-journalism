@@ -115,12 +115,12 @@ function styleFunc_province_border(feature) {
 	}
 }
 
-var layer_municipal_01 = L.geoJson(municipalGeoJSON, {
-	style: styleFunc_municipal_01,
-	onEachFeature: onEachFeature_municipal,
-	smoothFactor: 0, 
-	interactive: true
-}).addTo(map_01);
+// var layer_municipal_01 = L.geoJson(municipalGeoJSON, {
+// 	style: styleFunc_municipal_01,
+// 	onEachFeature: onEachFeature_municipal,
+// 	smoothFactor: 0, 
+// 	interactive: true
+// }).addTo(map_01);
 // var layer_municipal_03 = L.geoJson(municipalGeoJSON, {
 // 	style: styleFunc_municipal_03,
 // 	onEachFeature: onEachFeature_municipal,
@@ -128,8 +128,22 @@ var layer_municipal_01 = L.geoJson(municipalGeoJSON, {
 // 	interactive: false
 // }).addTo(map_03);
 
+// var layer_province_border_01 = L.geoJson(provinceGeoJSON, {
+// 	style: styleFunc_province_border,
+// 	smoothFactor: 0, 
+// 	interactive: false
+// }).addTo(map_01);
+// var layer_province_border_03 = L.geoJson(provinceGeoJSON, {
+// 	style: styleFunc_province_border,
+// 	smoothFactor: 0, 
+// 	interactive: false
+// }).addTo(map_03);
 var layer_province_border_01 = L.geoJson(provinceGeoJSON, {
-	style: styleFunc_province_border,
+	style: {
+		opacity: 0, 
+		fillOpacity: 0,
+		weight: province_style.weight
+	},
 	smoothFactor: 0, 
 	interactive: false
 }).addTo(map_01);
