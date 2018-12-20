@@ -213,8 +213,8 @@ var _dataJSON_2016 = {
 		{
 			"code_data": 27,
 			"districtType": "province_metroCity",
-			"province_name": "세종특별자치시",
-			"municipal_name": "(전체)",
+			"province_name": "(광역)",
+			"municipal_name": "세종특별자치시",
 			"hiringRate_300": "10.44%",
 			"score_hiringRate_300": 24,
 			"hiringRate_1000": "2.35%",
