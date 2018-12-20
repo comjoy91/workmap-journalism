@@ -243,4 +243,4 @@ var municipalGeoJSON = {
 };
 
 
-// municipalGeoJSON.features.sort(function(a, b){return a.properties.code - b.properties.code});
+municipalGeoJSON.features.sort(function(a, b){return a.properties.code - b.properties.code});
