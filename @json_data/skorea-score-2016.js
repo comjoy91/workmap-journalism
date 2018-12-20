@@ -6426,7 +6426,7 @@ var _dataJSON_2016 = {
 			"code_data": 3712,
 			"districtType": "municipal_do",
 			"province_name": "경상북도",
-			"municipal_name": "고흥군",
+			"municipal_name": "의성군",
 			"hiringRate_300": "0.00%",
 			"score_hiringRate_300": 0,
 			"hiringRate_1000": "0.00%",
