@@ -492,6 +492,10 @@ div.fixed-background.visible {
 	}
 		/* ------------ #chapter-03-svg control. ------------ */
 
+		#chapter-03-svg g.municipalLayer .non-active-shape {
+			pointer-events: none;
+		}
+
 		#chapter-03-svg g.municipalLayer .active-shape {
 			opacity: 1.0;
 			-webkit-transition: opacity 400ms cubic-bezier(0.77, 0, 0.175, 1);
