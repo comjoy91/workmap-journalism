@@ -27,7 +27,7 @@ d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300_geographic.svg")
 							if ( data.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
 								tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
 											+ "<br>" + data.rawDataName + ": " + data.rawData
-											+ "<br> total 색상반영도: " + d3.format(".1f")(data.score_total);// + " / 100.0";
+											+ "<br> 현재 색상반영도: " + d3.format(".1f")(data.score_total);// + " / 100.0";
 							else if ( data.exist_300 ) // feature가 회색이고, 300인 이상 업체가 존재: 300인 이상 업체 0~1%
 								tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
 											+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 종사자 비율이 1% 미만임";

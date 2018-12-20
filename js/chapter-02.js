@@ -26,10 +26,10 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 					}
 
 					function tooltip_visible( _this_shape, _layerIndex ) {
-						tooltip_info_orange( matching_DOMshape_orange( _this_shape, _layerIndex ) );
-						tooltip_info_red( matching_DOMshape_red( _this_shape, _layerIndex ) );
 						tooltip_orange.style("display", "inline");
 						tooltip_red.style("display", "inline");
+						tooltip_info_orange( matching_DOMshape_orange( _this_shape, _layerIndex ) );
+						tooltip_info_red( matching_DOMshape_red( _this_shape, _layerIndex ) );
 					}
 
 
@@ -41,6 +41,11 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 					}
 
 					function tooltip_info_orange( _this_shape ) {
+						if (!_this_shape) {
+							tooltip_orange.style("display", "none");
+							return false;
+						}
+
 						var data = d3.select(_this_shape).datum();
 						var tooltipHTML;
 						if ( data.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
@@ -58,6 +63,11 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 					}
 
 					function tooltip_info_red( _this_shape ) {
+						if (!_this_shape) {
+							tooltip_red.style("display", "none");
+							return false;
+						}
+
 						var data = d3.select(_this_shape).datum();
 						var tooltipHTML;
 						if ( data.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
@@ -138,7 +148,8 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 											$("#chapter-02-svg-orange g#01-5_jobCreation"), 
 											$("#chapter-02-svg-orange g#01-6_incomeRate"), 
 											$("#chapter-02-svg-orange g#01-7_R-COSTII"), 
-											$("#chapter-02-svg-orange g#01-8_expertRate") ];
+											$("#chapter-02-svg-orange g#01-8_expertRate"), 
+											$("#chapter-02-svg-orange g#dummy_not-active-shape") ];
 											
 						var redLayer = [ $("#chapter-02-svg-red g#02-1_hiring300"), 
 											$("#chapter-02-svg-red g#02-2_hiring1000"), 
@@ -158,7 +169,7 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 							$("#layer-names div").eq(_layerIndex).removeClass('orange-background').addClass('red-background')
 																.prevAll().removeClass('orange-background').addClass('red-background');
 							$("#layer-names div").eq(_layerIndex+1).removeClass('red-background').addClass('orange-background')
-																.nextAll().removeClass('orange-background');
+																.nextAll().removeClass('red-background orange-background');
 
 							console.log("chapter-02-pageChange-0"+_layerIndex);
 						}

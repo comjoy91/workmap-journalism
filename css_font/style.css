@@ -63,6 +63,16 @@ sanSerif {
 	font-size: 1em;
 	vertical-align: -0.06em;
 }
+redHighlight {
+	/*font-family: 'Spoqa Han Sans', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+	vertical-align: -0.06em;*/
+
+	background-color: hsla(0, 100%, 75%, 1.0);
+	color: #ffffff;
+	padding: 0.2em 0 0.15em 0;
+}
 
 
 
@@ -71,6 +81,9 @@ sanSerif {
 	font-weight: 600;
 	font-size: calc( 1em * 10/9 );
 	text-align: center;
+
+    background: hsla(35, 100%, 80%, 1.0);
+    padding-top: 0.2em;
 }
 
 .map-description {
@@ -78,6 +91,14 @@ sanSerif {
 	font-weight: 300;
 	font-size: calc( 1em * 5/6 );
 	line-height: 1.8;
+}
+
+.municipal-title {
+	font-family: 'Spoqa Han Sans', sans-serif;
+	font-weight: 600;
+	font-size: 1em;
+	vertical-align: -0.06em;
+	margin-bottom: 0;
 }
 
 
@@ -113,13 +134,24 @@ sanSerif {
 	background: #ffffff;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 	/*box-shadow: 0 0 10px 2px rgba(0,0,0,0.30);*/
+
+	width: 480px;
+	padding: 33px 40px 18px 40px;
+	/*padding-bottom: calc(40px - 4/3em);*/
+}
+.transparent-box {
+	background: transparent;
+	width: 525px;
 }
 
 
 
-.box-screenwide {
+.white-box-screenwide {
 	padding-top: 6rem;
 	padding-bottom: 1px;
+	background: #ffffff;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	/*box-shadow: 0 0 10px 2px rgba(0,0,0,0.30);*/
 }
 .paragraph-screenwide {
 	width: 630px;
@@ -138,18 +170,12 @@ sanSerif {
 
 .paragraph-leftBox {
 	margin-left: 15%;
-	width: 525px;
 }
 .paragraph-centerBox {
 	margin-left: calc( (100% - 480px) / 2);
-	width: 480px;
-	padding: 33px 40px 18px 40px;
-	/*padding-bottom: calc(40px - 4/3em);*/
 }
 .paragraph-rightBox {
 	margin-left: calc(100% - 15% - 480px);
-	width: 480px;
-	padding: 33px 40px 18px 40px;
 }
 
 .white-outerLine p {
@@ -525,11 +551,3 @@ div.fixed-background.visible {
 		height: 100vh;
 		margin-top: 52vh;
 	}
-
-		p.municipal-title {
-			font-family: 'Spoqa Han Sans', sans-serif;
-			font-weight: 600;
-			font-size: 1em;
-			vertical-align: -0.06em;
-			margin-bottom: 0;
-		}
