@@ -60,6 +60,9 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 											.on("mousemove", function() { 
 													tooltip_red.style("left", (event.clientX - $("#tooltip-red").innerWidth()/2) + "px")
 																.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
+											})
+											.classed("gteq-50", function(_shape_datum) { // 이 shape의 전체 색상반영도가 50 이상이면 gteq-50 class를 가짐.
+												return _shape_datum.score_total >= 50
 											});
 						});
 
@@ -75,6 +78,7 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 												$("#chapter-03-svg .active-shape#Gunsan"), 
 												$("#chapter-03-svg .active-shape#Suwon"), 
 												$("#chapter-03-svg .active-shape#Paju"), 
+												$("#chapter-03-svg .active-shape.gteq-50"), 
 												$("#chapter-03-svg .active-shape") ];
 
 						var changeLayer_03 = function( _index ) {
