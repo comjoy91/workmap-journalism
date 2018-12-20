@@ -88,6 +88,9 @@ sanSerif {
 	margin-bottom: 100vh;
 	pointer-events: none; /* background에서 hover event가 작동되도록 함. */
 }
+	.chapter p, .chapter a, .chapter img {
+		pointer-events: auto; /* 하지만 p, a, img tag에서는 마우스가 이들과 상호작용해서 작동되도록 함. */
+	}
 
 
 /* ------------ layout: .paragraph-leftBox ------------ */
