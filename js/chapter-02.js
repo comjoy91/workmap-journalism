@@ -2,76 +2,7 @@
 
 
 
-function matching_DOMshape_orange( _this_shape, _layerIndex ) {
-	var index_orange = $("#chapter-02-svg-orange g.municipalLayer").eq( _layerIndex ).children().index( _this_shape );
-	var index_red = $("#chapter-02-svg-red g.municipalLayer").eq( _layerIndex ).children().index( _this_shape );
-	var shape_index = Math.max(index_orange, index_red); // 만약 _this_shape가 존재하지 않으면, index_orange(index_red)는 -1을 가리킴.
-	return $("#chapter-02-svg-orange g.municipalLayer").eq( _layerIndex ).children().eq(shape_index)[0];
-}
-function matching_DOMshape_red( _this_shape, _layerIndex ) {
-	var index_orange = $("#chapter-02-svg-orange g.municipalLayer").eq( _layerIndex ).children().index( _this_shape );
-	var index_red = $("#chapter-02-svg-red g.municipalLayer").eq( _layerIndex ).children().index( _this_shape );
-	var shape_index = Math.max(index_orange, index_red); // 만약 _this_shape가 존재하지 않으면, index_orange(index_red)는 -1을 가리킴.
-	return $("#chapter-02-svg-red g.municipalLayer").eq( _layerIndex ).children().eq(shape_index)[0];
-}
 
-function tooltip_visible( _this_shape, _layerIndex ) {
-	tooltip_info_orange( matching_DOMshape_orange( _this_shape, _layerIndex ) );
-	tooltip_info_red( matching_DOMshape_red( _this_shape, _layerIndex ) );
-	tooltip_orange.style("display", "inline");
-	tooltip_red.style("display", "inline");
-}
-
-
-function highlight_shape( _this_shape, _layerIndex ) {
-	var DOMshape_orange = matching_DOMshape_orange( _this_shape, _layerIndex );
-	var DOMshape_red = matching_DOMshape_red( _this_shape, _layerIndex );
-	d3.select( DOMshape_orange ).classed("highlighted", true).raise();
-	d3.select( DOMshape_red ).classed("highlighted", true).raise();
-}
-
-function tooltip_info_orange( _this_shape ) {
-	var data = d3.select(_this_shape).datum();
-	var tooltipHTML;
-	if ( data.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
-		tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
-					+ "<br>" + data.rawDataName + ": " + data.rawData
-					+ "<br> 색상반영도: " + d3.format(".1f")(data.score);// + " / 100.0";
-	else if ( data.exist_300 ) // feature가 회색이고, 300인 이상 업체가 존재: 300인 이상 업체 0~1%
-		tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
-					+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 종사자 비율이 1% 미만임";
-	else // feature가 회색이고, 300인 이상 업체가 존재하지 않음: 300인 이상 업체 0%
-		tooltipHTML = data.province_name + " <b>"  + data.municipal_name + "</b>"
-					+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 없음";	
-
-	tooltip_orange.html( tooltipHTML );
-}
-
-function tooltip_info_red( _this_shape ) {
-	var data = d3.select(_this_shape).datum();
-	var tooltipHTML;
-	if ( data.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
-		tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
-					+ "<br> 지금까지 겹쳐진 색상반영도: " + d3.format(".1f")(data.score_total);// + " / 100.0";
-	else if ( data.exist_300 ) // feature가 회색이고, 300인 이상 업체가 존재: 300인 이상 업체 0~1%
-		tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
-					+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 종사자 비율이 1% 미만임";
-	else // feature가 회색이고, 300인 이상 업체가 존재하지 않음: 300인 이상 업체 0%
-		tooltipHTML = data.province_name + " <b>"  + data.municipal_name + "</b>"
-					+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 없음";	
-
-	tooltip_red.html( tooltipHTML );
-}
-
-
-function tooltip_hidden() {
-	tooltip_orange.style("display", "none");
-	tooltip_red.style("display", "none");
-}
-function dehighlight_shape( _this_shape, _layerIndex ) {
-	d3.select( matching_DOMshape_orange( _this_shape, _layerIndex ) ).classed("highlighted", false);
-	d3.select( matching_DOMshape_red( _this_shape, _layerIndex ) ).classed("highlighted", false);
-}
 
 
 
@@ -85,7 +16,80 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 					$("#chapter-02-svg-orange").html(map_svg_orange);
 					$("#chapter-02-svg-red").html(map_svg_red);
 
+
+
 					// --------------- tooltip implementation ------------------
+
+					function matching_DOMshape_orange( _this_shape, _layerIndex ) {
+						var index_orange = $("#chapter-02-svg-orange g.municipalLayer").eq( _layerIndex ).children().index( _this_shape );
+						var index_red = $("#chapter-02-svg-red g.municipalLayer").eq( _layerIndex ).children().index( _this_shape );
+						var shape_index = Math.max(index_orange, index_red); // 만약 _this_shape가 존재하지 않으면, index_orange(index_red)는 -1을 가리킴.
+						return $("#chapter-02-svg-orange g.municipalLayer").eq( _layerIndex ).children().eq(shape_index)[0];
+					}
+					function matching_DOMshape_red( _this_shape, _layerIndex ) {
+						var index_orange = $("#chapter-02-svg-orange g.municipalLayer").eq( _layerIndex ).children().index( _this_shape );
+						var index_red = $("#chapter-02-svg-red g.municipalLayer").eq( _layerIndex ).children().index( _this_shape );
+						var shape_index = Math.max(index_orange, index_red); // 만약 _this_shape가 존재하지 않으면, index_orange(index_red)는 -1을 가리킴.
+						return $("#chapter-02-svg-red g.municipalLayer").eq( _layerIndex ).children().eq(shape_index)[0];
+					}
+
+					function tooltip_visible( _this_shape, _layerIndex ) {
+						tooltip_info_orange( matching_DOMshape_orange( _this_shape, _layerIndex ) );
+						tooltip_info_red( matching_DOMshape_red( _this_shape, _layerIndex ) );
+						tooltip_orange.style("display", "inline");
+						tooltip_red.style("display", "inline");
+					}
+
+
+					function highlight_shape( _this_shape, _layerIndex ) {
+						var DOMshape_orange = matching_DOMshape_orange( _this_shape, _layerIndex );
+						var DOMshape_red = matching_DOMshape_red( _this_shape, _layerIndex );
+						d3.select( DOMshape_orange ).classed("highlighted", true).raise();
+						d3.select( DOMshape_red ).classed("highlighted", true).raise();
+					}
+
+					function tooltip_info_orange( _this_shape ) {
+						var data = d3.select(_this_shape).datum();
+						var tooltipHTML;
+						if ( data.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
+							tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
+										+ "<br>" + data.rawDataName + ": " + data.rawData
+										+ "<br> 색상반영도: " + d3.format(".1f")(data.score);// + " / 100.0";
+						else if ( data.exist_300 ) // feature가 회색이고, 300인 이상 업체가 존재: 300인 이상 업체 0~1%
+							tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
+										+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 종사자 비율이 1% 미만임";
+						else // feature가 회색이고, 300인 이상 업체가 존재하지 않음: 300인 이상 업체 0%
+							tooltipHTML = data.province_name + " <b>"  + data.municipal_name + "</b>"
+										+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 없음";	
+
+						tooltip_orange.html( tooltipHTML );
+					}
+
+					function tooltip_info_red( _this_shape ) {
+						var data = d3.select(_this_shape).datum();
+						var tooltipHTML;
+						if ( data.validForResearch ) // feature가 회색이 아님: 300인 이상 업체가 존재 (1% 이상) 
+							tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
+										+ "<br> 지금까지 겹쳐진 색상반영도: " + d3.format(".1f")(data.score_total);// + " / 100.0";
+						else if ( data.exist_300 ) // feature가 회색이고, 300인 이상 업체가 존재: 300인 이상 업체 0~1%
+							tooltipHTML = data.province_name + " <b>" + data.municipal_name + "</b>"
+										+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 종사자 비율이 1% 미만임";
+						else // feature가 회색이고, 300인 이상 업체가 존재하지 않음: 300인 이상 업체 0%
+							tooltipHTML = data.province_name + " <b>"  + data.municipal_name + "</b>"
+										+ "<br> 색상 표시하지 않음: 300인 이상 제조업체 없음";	
+
+						tooltip_red.html( tooltipHTML );
+					}
+
+
+					function tooltip_hidden() {
+						tooltip_orange.style("display", "none");
+						tooltip_red.style("display", "none");
+					}
+					function dehighlight_shape( _this_shape, _layerIndex ) {
+						d3.select( matching_DOMshape_orange( _this_shape, _layerIndex ) ).classed("highlighted", false);
+						d3.select( matching_DOMshape_red( _this_shape, _layerIndex ) ).classed("highlighted", false);
+					}
 
 
 						d3.selectAll("#chapter-02-svg-orange g.municipalLayer").each( function( _datum, _layerIndex) {
@@ -127,6 +131,10 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 												});
 							})
 						});
+
+
+
+
 
 
 						// --------------- CSS transition while scrolling --------------
