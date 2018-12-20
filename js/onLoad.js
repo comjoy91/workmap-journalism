@@ -208,21 +208,39 @@ function getBound (el) {
 
 		d3.text("@images/svg_maps/02_cumulative-red-maps/02-8_expertRate_geographic.svg").then( function(map_svg_imported) {
 			$("#chapter-03-svg").html(map_svg_imported);
-			$("#chapter-03 div.page").each( function(index) {
-				var changeLayer_03 = function() {
-					var colorMunicipal = [ $("#chapter-03-svg g#02-8_expertRate_geographic #Gokseong"), 
-											$("#chapter-03-svg g#02-8_expertRate_geographic #Ulsan_dong, #chapter-03-svg g#02-8_expertRate_geographic #Ulsan_buk"), 
-											$("#chapter-03-svg g#02-8_expertRate_geographic #Gunsan"), 
-											$("#chapter-03-svg g#02-8_expertRate_geographic #Suwon"), 
-											$("#chapter-03-svg g#02-8_expertRate_geographic #Paju"), 
-											$("#chapter-03-svg g#02-8_expertRate_geographic .municipalShape") ];
-					$("#chapter-03-svg g#02-8_expertRate_geographic .municipalShape").not(colorMunicipal[index]).addClass("transparent-shape");
-					colorMunicipal[index].removeClass("transparent-shape");
-					console.log("chapter-03-pageChange-0"+index);
-				}
-				$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( $(this), changeLayer_03, function() {} )); // 트리거가 일시적으로 작동 
-				$(window).on('scroll', onUnderBottomOfViewport( $(this), changeLayer_03, function(){} ));
+
+			var colorMunicipal = [ $("#chapter-03-svg .active-shape#Gokseong"), 
+									$("#chapter-03-svg .active-shape#Ulsan_dong, #chapter-03-svg .active-shape#Ulsan_buk"), 
+									$("#chapter-03-svg .active-shape#Gunsan"), 
+									$("#chapter-03-svg .active-shape#Suwon"), 
+									$("#chapter-03-svg .active-shape#Paju"), 
+									$("#chapter-03-svg .active-shape") ];
+
+			var changeLayer_03 = function( _index ) {
+				$("#chapter-03-svg .active-shape").not( colorMunicipal[_index] ).addClass("transparent-shape");
+				colorMunicipal[_index].removeClass("transparent-shape");
+				console.log("chapter-03-pageChange-0"+_index);
+			}
+
+			$("#chapter-03 div.page").each( function( index ) {
+				var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
+				var changeLayer_03_index = function() { changeLayer_03(index) };
+				
+				$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function() {} )); // 트리거가 일시적으로 작동 
+				$(window).on('scroll', onUnderBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} ));
 			})
+
+			$("#chapter-03 div.page").each( function(index) { 
+				var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
+
+				if ( !isElementAboveBottomOfViewport( chapter_03_thisPage ) ) {
+					if (index < 1) changeLayer_03( 0 ); 
+					else changeLayer_03( index-1 );
+					return false; // pause .each() loop
+				}
+				else if ( index >= $("#chapter-03 div.page").length-1 ) 
+					changeLayer_03( index );
+			});
 		});
 		
 

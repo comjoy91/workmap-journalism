@@ -114,27 +114,42 @@ var handler_chapter_02 = onPartiallyCoverViewport( $("#chapter-02"),
 														function() {}
 														);
 
-function scrollFunction_chapter_03() {
-	var mapSvgBound = layer_province_border_03.getBounds();
-	var mapSvgNW = map_03.latLngToContainerPoint(mapSvgBound.getNorthWest());
-	var mapSvgSE = map_03.latLngToContainerPoint(mapSvgBound.getSouthEast());
-	var mapSvgWidth = mapSvgSE.x - mapSvgNW.x;
-	var mapSvgLeft = mapSvgNW.x;
-	var mapSvgTop = mapSvgNW.y;
-	$("#chapter-03-svg").width( mapSvgWidth ).css( { top: mapSvgTop+'px', left: mapSvgLeft+'px' } );
+var handler_chapter_03 = onPartiallyCoverViewport( $("#chapter-03"), 
+														function() {
+															$(".fixed-background").removeClass("visible");
+															$("#chapter-03-background").addClass("visible");
+															$("#layer-names").removeClass("visible");
+															$("#layer-names div").removeClass('orange-background').addClass('red-background');
+															console.log("chapter-03");
+														}, 
+														function() {} 
+														);
 
-	$(".fixed-background").removeClass("visible");
-	$("#chapter-03-background").addClass("visible");
-	$("#layer-names").addClass("visible");
-	$("#layer-names div").removeClass('orange-background').addClass('red-background');
 
-	console.log("chapter-03");
+function resizeMap_chapter_01_03() {
+
+	// var mapSvgBound_01 = layer_province_border_01.getBounds();
+	// var mapSvgNW_01 = map_01.latLngToContainerPoint(mapSvgBound_01.getNorthWest());
+	// var mapSvgSE_01 = map_01.latLngToContainerPoint(mapSvgBound_01.getSouthEast());
+	// var mapSvgWidth_01 = mapSvgSE_01.x - mapSvgNW_01.x;
+	// var mapSvgLeft_01 = mapSvgNW_01.x;
+	// var mapSvgTop_01 = mapSvgNW_01.y;
+	// $("#chapter-01-svg").width( mapSvgWidth_01 ).css( { top: mapSvgTop_01+'px', left: mapSvgLeft_01+'px' } );
+
+	var mapSvgBound_03 = layer_province_border_03.getBounds();
+	var mapSvgNW_03 = map_03.latLngToContainerPoint(mapSvgBound_03.getNorthWest());
+	var mapSvgSE_03 = map_03.latLngToContainerPoint(mapSvgBound_03.getSouthEast());
+	var mapSvgWidth_03 = mapSvgSE_03.x - mapSvgNW_03.x;
+	var mapSvgLeft_03 = mapSvgNW_03.x;
+	var mapSvgTop_03 = mapSvgNW_03.y;
+	$("#chapter-03-svg").width( mapSvgWidth_03 ).css( { top: mapSvgTop_03+'px', left: mapSvgLeft_03+'px' } );	
 }
-var handler_chapter_03 = onPartiallyCoverViewport( $("#chapter-03"), scrollFunction_chapter_03, function() {} );
+
 
 
 
 //jQuery
 $(window).on('DOMContentLoaded load resize scroll', handler_chapter_01)
 			.on('DOMContentLoaded load resize scroll', handler_chapter_02)
-			.on('DOMContentLoaded load resize scroll', handler_chapter_03);
+			.on('DOMContentLoaded load resize scroll', handler_chapter_03)
+			.on('DOMContentLoaded load resize scroll', resizeMap_chapter_01_03);
