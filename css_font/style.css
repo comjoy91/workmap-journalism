@@ -468,9 +468,9 @@ div.fixed-background.visible {
 /* ------------ chapter 02: page 02-0 ~ 02-7 ------------ */
 
 
-	#chapter-02 {
+	/*#chapter-02 {
 		margin-bottom: 0;
-	}
+	}*/
 
 	/* ------------ #chapter-02-background ------------ */
 
@@ -524,13 +524,12 @@ div.fixed-background.visible {
 		padding-bottom: 100vh;
 	}
 
-		#chapter-02 div.page div.layerMoving-div {
-			height: 25vh;
+/*		#chapter-02 div.page#page-02-7 {
+			height: 100vh;
+			padding-top: 0;
+			padding-bottom: 0;
 		}
-
-	
-
-
+*/
 
 
 /* ------------ chapter 03: page 03-0 ~ 03-6 ------------ */
@@ -572,12 +571,17 @@ div.fixed-background.visible {
 	/* ------------ page 03-layerMoving  ------------ */
 
 	#page-03-layerMoving {
-		height: 60vh;
+		padding-top: 25vh;
+		padding-bottom: 100vh;
 	}
 
 	/* ------------ page 03-0 ~ 03-4  ------------ */
 
 	#page-03-0, #page-03-1, #page-03-2, #page-03-3, #page-03-4, #page-03-5 {
 		height: 100vh;
-		margin-top: 52vh;
+		margin-bottom: 52vh;
+	}
+
+	#page-03-6 {
+		margin-bottom: 40vh;
 	}
