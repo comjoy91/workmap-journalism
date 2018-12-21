@@ -103,7 +103,7 @@
 				<a id="site_title_text" href="">우리 지역 <br>고용위기 시그널</a>
 			</div>
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
-				<p>이 지도는 한국의 시군구 가운데 <sanSerif>제조업 대기업(300인 이상)을 보유한 지역들을</sanSerif> 보여줍니다. 지역의 전체 일하는 사람 중에서 제조업 대기업에서 일하는 사람의 비중이 높을수록 색깔이 진해집니다. </p>
+				<p>이 지도는 한국의 시군구 가운데 <sanSerif>제조업 대기업(300인 이상)을 보유한 지역들을</sanSerif> 보여줍니다. 지역의 전체 일하는 사람 중에서 <redHighlight>제조업 대기업에서 일하는 사람의 비중이 높을수록</redHighlight> 색깔이 진해집니다. </p>
 			</div>
 		</div>
 
@@ -111,7 +111,7 @@
 			<div class="section paragraph-screenwide">
 				<p>지금까지 한국 사회의 산업 구도에서 본다면 이 지도는 ‘고용의 질이 높은’ 지역을 보여주기 위한 것이라고 해석할 수도 있습니다. 실제로 제조업 대기업 종사자는 우리나라에서 전문직, 금융업 종사자와 함께 평균 임금 수준이 높은 그룹에 속합니다. </p>
 				<img class="article-graph" src="@images/graph/graph_01.png"/>
-				<p>제조업 대기업 종사자들이 지역에서 거의 유일한 ‘안정적 중산층’인 소도시들도 있습니다. 그런 관점에서 볼 때 이 지도는 색깔이 진할수록 일자리의 질이 괜찮은 지역으로 보일 수 있습니다. </p>
+				<p>제조업 대기업 종사자들이 지역에서 거의 유일한 ‘안정적 중산층’인 소도시들도 있습니다. 그런 관점에서 볼 때 <redHighlight>앞의 지도</redHighlight>는 색깔이 진할수록 일자리의 질이 괜찮은 지역으로 보일 수 있습니다. </p>
 			</div>
 			<div class="section paragraph-screenwide">
 				<p>한때는 분명 그랬습니다. </p>
@@ -126,7 +126,7 @@
 
 		<div class="page" id="page-01-2">
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
-				<p>이제 지도를 다시 볼까요? <br>300인 이상 대기업에 종사하는 사람의 비중이 높은 지역은 바꿔 말하면 <sanSerif>그 기업이 위기에 처했을 때 대규모 실업이 일어날 가능성이</sanSerif> 상대적으로 높은 지역입니다.</p> 
+				<p>이제 지도를 다시 볼까요? <br><redHighlight>300인 이상 대기업에 종사하는 사람의 비중이 높은 지역은</redHighlight> 바꿔 말하면 <sanSerif>그 기업이 위기에 처했을 때 대규모 실업이 일어날 가능성이</sanSerif> 상대적으로 높은 지역입니다.</p> 
 				<p>물론 산업마다, 기업마다 상황이 다르므로 모두 위기에 있다고는 할 수 없습니다. 그렇지만, 지역의 대규모 고용위기에 대응하고자 한다면 이 지도부터 주의깊게 봐야 합니다. 우리 지역의 색깔이 진하다면, 의존도가 높은 산업과 개별 사업장들의 상황이 어떤지, 얼마나 안전한지 다시 살펴볼 필요가 있습니다.</p>
 			</div>
 		</div>
@@ -135,28 +135,41 @@
 		<div class="page white-box-screenwide" id="page-01-3">
 			<div class="section paragraph-screenwide">
 				<div id="single-orange-maps">
-					<div class="single-layer-name">300인 이상 제조업 집중도</div>
-					<div class="single-layer-name">1000인 이상 제조업 집중도</div>
-					<div class="single-layer-name">제1제조업 집중도</div>
-					<div class="single-layer-name">제조업 고령화</div>
-					<img src="@images/svg_maps/01_single-orange-maps/01-8_expertRate.svg" id="01-8_expertRate"></img>
-					<img src="@images/svg_maps/01_single-orange-maps/01-7_R-COSTII.svg" id="01-7_R-COSTII"></img>
-					<img src="@images/svg_maps/01_single-orange-maps/01-6_incomeRate.svg" id="01-6_incomeRate"></img>
-					<img src="@images/svg_maps/01_single-orange-maps/01-5_jobCreation.svg" id="01-5_jobCreation"></img>
-
-					<div class="single-layer-name">일자리 창출 위험도</div>
-					<div class="single-layer-name">직장인-주민 괴리도</div>
-					<div class="single-layer-name">과학기술혁신역량 위험도</div>
-					<div class="single-layer-name">관리자·전문가 비중 위험도</div>
-					<img src="@images/svg_maps/01_single-orange-maps/01-4_20s.svg" id="01-4_20s"></img>
-					<img src="@images/svg_maps/01_single-orange-maps/01-3_mainIndustry.svg" id="01-3_mainIndustry"></img>
-					<img src="@images/svg_maps/01_single-orange-maps/01-2_hiring1000.svg" id="01-2_hiring1000"></img>
-					<!-- <div>＋</div> -->
-					<!-- <img src="@images/svg_maps/01_single-orange-maps/01-1_hiring300.svg" id="01-1_hiring300"></img> -->
-					<img src="@images/svg_maps/02_cumulative-red-maps/02-1_hiring300.svg" id="02-1_hiring300"></img>
+					<div class="layer-and-name">
+						<div class="single-layer-name">300인 이상 제조업 집중도</div>
+						<img src="@images/svg_maps/02_cumulative-red-maps/02-1_hiring300.svg" id="02-1_hiring300"></img>
+					</div>
+					<div class="layer-and-name">
+						<div class="single-layer-name">1000인 이상 제조업 집중도</div>
+						<img src="@images/svg_maps/01_single-orange-maps/01-2_hiring1000.svg" id="01-2_hiring1000"></img>
+					</div>
+					<div class="layer-and-name">
+						<div class="single-layer-name">제1제조업 집중도</div>
+						<img src="@images/svg_maps/01_single-orange-maps/01-3_mainIndustry.svg" id="01-3_mainIndustry"></img>
+					</div>
+					<div class="layer-and-name">
+						<div class="single-layer-name">제조업 고령화</div>
+						<img src="@images/svg_maps/01_single-orange-maps/01-4_20s.svg" id="01-4_20s"></img>
+					</div>
+					<div class="layer-and-name">
+						<div class="single-layer-name">일자리 창출 위험도</div>
+						<img src="@images/svg_maps/01_single-orange-maps/01-5_jobCreation.svg" id="01-5_jobCreation"></img>
+					</div>
+					<div class="layer-and-name">
+						<div class="single-layer-name">직장인-주민 괴리도</div>
+						<img src="@images/svg_maps/01_single-orange-maps/01-6_incomeRate.svg" id="01-6_incomeRate"></img>
+					</div>
+					<div class="layer-and-name">
+						<div class="single-layer-name">과학기술혁신역량 위험도</div>
+						<img src="@images/svg_maps/01_single-orange-maps/01-7_R-COSTII.svg" id="01-7_R-COSTII"></img>
+					</div>
+					<div class="layer-and-name">
+						<div class="single-layer-name">관리자·전문가 비중 위험도</div>
+						<img src="@images/svg_maps/01_single-orange-maps/01-8_expertRate.svg" id="01-8_expertRate"></img>
+					</div>
 				</div>
-				<p>이제부터는 실제로 그 지역의 제조업 일자리가 얼마나 위험한지를 가늠할 수 있는 정보들을 지도 위에 추가해 보려고 합니다. 7가지의 정보가 추가되어, <sanSerif>지도 위에서 총 8가지 정보를 겹쳐서 볼 수 있습니다.</sanSerif></p>
-				<p>우리의 문제의식은 ‘300인 이상 제조업 종사자가 있는 지역’에서 출발하기 때문에 그 외의 지역은 정보가 더해지더라도 지도 상에서 계속 회색으로 남아있게 됩니다.</p>
+				<p>이제부터는 실제로 그 지역의 제조업 일자리가 얼마나 위험한지를 가늠할 수 있는 정보들을 지도 위에 추가해 보려고 합니다. <orangeHighlight>7가지의 정보</orangeHighlight>가 추가되어, <sanSerif>지도 위에서 총 8가지 정보를 <redHighlight>겹쳐서</redHighlight> 볼 수 있습니다.</sanSerif></p>
+				<p>우리의 문제의식은 ‘300인 이상 제조업 종사자가 있는 지역’에서 출발하기 때문에 <grayHighlight>그 외의 지역</grayHighlight>은 정보가 더해지더라도 지도 상에서 계속 회색으로 남아있게 됩니다.</p>
 			</div>
 		</div>
 	</div>
@@ -165,7 +178,7 @@
 		<div class="page" id="page-02-0">
 			<div class="section paragraph-rightBox white-box">
 				<p class="map-title">1000인 이상 제조업 집중도</p>
-				<p class="map-description">‘1000인 이상 제조업 집중도’라는 정보를 더해 보겠습니다. 물론 한 지역에 1000인 이상을 고용한 제조업 대기업이 있다는 것 자체가 문제는 아닙니다. 그 기업에 대한 의존도가 지나치게 높은 것이 문제입니다. 지역의 일하는 사람 전체의 20%, 혹은 30% 이상이 그 기업에서 일한다면 어떨까요? 그 기업, 산업이 위기에 빠지고 구조조정이 이뤄지면 지역 경제 전체가 위태로워집니다. 조선업 위기 하에서 울산 동구와 북구의 상황이 지금 바로 그렇습니다.</p>
+				<p class="map-description">‘1000인 이상 제조업 집중도’라는 정보를 더해 보겠습니다. 물론 한 지역에 1000인 이상을 고용한 제조업 대기업이 있다는 것 자체가 문제는 아닙니다. <orangeHighlight>그 기업에 대한 의존도가 지나치게 높은 것</orangeHighlight>이 문제입니다. 지역의 일하는 사람 전체의 20%, 혹은 30% 이상이 그 기업에서 일한다면 어떨까요? 그 기업, 산업이 위기에 빠지고 구조조정이 이뤄지면 지역 경제 전체가 위태로워집니다. 조선업 위기 하에서 울산 동구와 북구의 상황이 지금 바로 그렇습니다.</p>
 			</div>
 			<div class="layerMoving-div"></div>
 		</div>
@@ -173,7 +186,7 @@
 		<div class="page" id="page-02-1">
 			<div class="section paragraph-rightBox white-box">
 				<p class="map-title">제1제조업 집중도</p>
-				<p class="map-description">이번에는 ‘제1제조업 집중도’를 보겠습니다. 한 지역에서 제조업의 고용 비중이 높더라도, 그 업종이 다양하다면 한꺼번에 위험에 빠지지는 않을 것입니다. 그렇지만 제1제조업 집중도가 100%이거나 90% 이상이라면 단일 산업에 대한 의존도가 지나치게 큰 상태인 것이 분명합니다.</p>
+				<p class="map-description">이번에는 ‘제1제조업 집중도’를 보겠습니다. 한 지역에서 제조업의 고용 비중이 높더라도, 그 업종이 다양하다면 한꺼번에 위험에 빠지지는 않을 것입니다. 그렇지만 제1제조업 집중도가 100%이거나 90% 이상이라면 <orangeHighlight>단일 산업에 대한 의존도</orangeHighlight>가 지나치게 큰 상태인 것이 분명합니다.</p>
 			</div>
 			<div class="layerMoving-div"></div>
 		</div>
@@ -181,7 +194,7 @@
 		<div class="page" id="page-02-2">
 			<div class="section paragraph-rightBox white-box">
 				<p class="map-title">제조업 고령화</p>
-				<p class="map-description">이제 제조업에서 일하는 사람들의 연령을 보겠습니다. ‘제조업 고령화’ 지도는 지역의 제조업 종사자 중에서 20대의 비중을 뽑아본 것입니다. 제조업은 대체로 10대 후반에서 20대 초에 입사한 직원들이 이직 없이 은퇴까지 다니는 구조입니다. 그런데 20대의 비중이 낮다면 한동안 신입직원을 뽑지 않았거나 채용 규모를 줄이고 있는 것입니다. 이런 사업장은 당장은 정리해고 등 눈에 띄는 조치를 하지 않더라도 장기적으로 인력을 축소하려는 것일 수 있습니다.</p>
+				<p class="map-description">이제 제조업에서 일하는 사람들의 연령을 보겠습니다. ‘제조업 고령화’ 지도는 지역의 제조업 종사자 중에서 20대의 비중을 뽑아본 것입니다. 제조업은 대체로 10대 후반에서 20대 초에 입사한 직원들이 이직 없이 은퇴까지 다니는 구조입니다. 그런데 <orangeHighlight>제조업 종사자 중에서 20대의 비중이 낮다면</orangeHighlight> 한동안 신입직원을 뽑지 않았거나 채용 규모를 줄이고 있는 것입니다. 이런 사업장은 당장은 정리해고 등 눈에 띄는 조치를 하지 않더라도 장기적으로 인력을 축소하려는 것일 수 있습니다.</p>
 			</div>
 			<div class="layerMoving-div"></div>
 		</div>
@@ -189,7 +202,7 @@
 		<div class="page" id="page-02-3">
 			<div class="section paragraph-rightBox white-box">
 				<p class="map-title">일자리 창출 위험도</p>
-				<p class="map-description">다음은 ‘일자리 창출 위험도’입니다. 지역 제조업 부문에서 일자리 창출이 얼마나 되고 있는지, 그 정도가 작을수록 색깔을 진하게 표시했습니다. 그 지역 제조업 대기업이 위기에 빠지더라도, 주위에 크고 작은 제조업체들이 잘 자리잡고 있다면 그 위험을 일정 정도 흡수할 수 있습니다. 실업자들도 어느 정도는 지역 내에서 재취업 할 수 있습니다. 그렇지만 지역에서 일자리 수요가 거의 나타나지 않고 있다면, 제조업 대기업의 위기는 곧바로 지역 전체의 위기가 될 것입니다.</p>
+				<p class="map-description">다음은 ‘일자리 창출 위험도’입니다. 지역 제조업 부문에서 일자리 창출이 얼마나 되고 있는지, 그 정도가 작을수록 색깔을 진하게 표시했습니다. 그 지역 제조업 대기업이 위기에 빠지더라도, 주위에 크고 작은 제조업체들이 잘 자리잡고 있다면 그 위험을 일정 정도 흡수할 수 있습니다. 실업자들도 어느 정도는 지역 내에서 재취업 할 수 있습니다. 그렇지만 <orangeHighlight>지역에서 일자리 수요가 거의 나타나지 않고 있다</orangeHighlight>면, 제조업 대기업의 위기는 곧바로 지역 전체의 위기가 될 것입니다.</p>
 			</div>
 			<div class="layerMoving-div"></div>
 		</div>
@@ -197,7 +210,7 @@
 		<div class="page" id="page-02-4">
 			<div class="section paragraph-rightBox white-box">
 				<p class="map-title">직장인-주민 괴리도</p>
-				<p class="map-description">다음은 ‘직장인-주민 괴리도’입니다. 이 지역에서 일하는 사람들과 거주하는 사람들 간의 관계를 국세청 연말정산 급여 정보를 가지고 살펴본 것입니다. 이 정보에서 색깔이 진한 곳은 이 지역에서 일하는 사람들의 소득에 비해서 거주하는 사람들의 소득은 적은 곳입니다. 즉, 이 지역 사업체에 종사하는 사람들이 다른 지역에서 살고 있을 가능성이 높습니다. 가족들과 함께 살아갈 만한 생활 인프라가 충분치 않거나 상대적으로 낙후한 지역입니다. 이런 곳은 종사자들이 일자리를 잃어버리면 지역에 남아서 다른 가능성을 찾기보다는 아예 떠나버릴 가능성이 높습니다. <br>색깔이 옅을수록 일하는 사람들의 소득과 거주하는 사람들의 소득이 비슷합니다. 거주하는 사람들의 소득이 더 높은 지역은 색깔이 표시되지 않았습니다.</p>
+				<p class="map-description">다음은 ‘직장인-주민 괴리도’입니다. 이 지역에서 일하는 사람들과 거주하는 사람들 간의 관계를 국세청 연말정산 급여 정보를 가지고 살펴본 것입니다. 이 정보에서 색깔이 진한 곳은 이 지역에서 일하는 사람들의 소득에 비해서 거주하는 사람들의 소득은 적은 곳입니다. 즉, <orangeHighlight>이 지역 사업체에 종사하는 사람들이 다른 지역에서 살고 있을 가능성</orangeHighlight>이 높습니다. 가족들과 함께 살아갈 만한 생활 인프라가 충분치 않거나 상대적으로 낙후한 지역입니다. 이런 곳은 종사자들이 일자리를 잃어버리면 지역에 남아서 다른 가능성을 찾기보다는 아예 떠나버릴 가능성이 높습니다. <br>색깔이 옅을수록 일하는 사람들의 소득과 거주하는 사람들의 소득이 비슷합니다. 거주하는 사람들의 소득이 더 높은 지역은 색깔이 표시되지 않았습니다.</p>
 			</div>
 			<div class="layerMoving-div"></div>
 		</div>
@@ -205,7 +218,7 @@
 		<div class="page" id="page-02-5">
 			<div class="section paragraph-rightBox white-box">
 				<p class="map-title">과학기술혁신역량 위험도</p>
-				<p class="map-description">‘과학기술혁신역량 위험도’는 제조업체의 지속가능성 면에서 중요한 정보입니다. 그 지역에 연구개발(R&D) 기반이 얼마나 존재하는지를 보여주기 때문입니다. 색깔이 진할수록 지역에 연구개발을 할 만한 기반이 없다는 뜻입니다. 지역의 제조업은 단순 반복적 공정 위주일 가능성이 높다는 뜻이기도 합니다. 기업 경영진으로서는 단순 공정 위주의 공장일수록 경영 상황에 따라 폐쇄, 축소하거나 자동화, 무인화를 결정하기 쉽습니다. <br>이 정보는 한국과학기술평가원(KISTEP)의 지표를 사용했으며 광역 단위로 적용됐습니다. 이를 보면 서울과 수도권, 대전 중심으로 과학기술혁신역량이 집중돼 있는 것을 알 수 있습니다. 최근 삼성전자가 네트워크사업부 수원 이전을 발표한 것처럼, 제조업에 연구역량 및 혁신성이 요구될수록 수도권으로 집중되는 현상이 심해질 수 있습니다. 이것은 지역 소도시 관점에서는 또 하나의 분명한 위험 요소입니다.</p>
+				<p class="map-description">‘과학기술혁신역량 위험도’는 제조업체의 지속가능성 면에서 중요한 정보입니다. 그 지역에 연구개발(R&D) 기반이 얼마나 존재하는지를 보여주기 때문입니다. 색깔이 진할수록 지역에 <orangeHighlight>연구개발을 할 만한 기반이 없다</orangeHighlight>는 뜻입니다. 지역의 제조업은 단순 반복적 공정 위주일 가능성이 높다는 뜻이기도 합니다. 기업 경영진으로서는 단순 공정 위주의 공장일수록 경영 상황에 따라 폐쇄, 축소하거나 자동화, 무인화를 결정하기 쉽습니다. <br>이 정보는 한국과학기술평가원(KISTEP)의 지표를 사용했으며 광역 단위로 적용됐습니다. 이를 보면 서울과 수도권, 대전 중심으로 과학기술혁신역량이 집중돼 있는 것을 알 수 있습니다. 최근 삼성전자가 네트워크사업부 수원 이전을 발표한 것처럼, 제조업에 연구역량 및 혁신성이 요구될수록 수도권으로 집중되는 현상이 심해질 수 있습니다. 이것은 지역 소도시 관점에서는 또 하나의 분명한 위험 요소입니다.</p>
 			</div>
 			<div class="layerMoving-div"></div>
 		</div>
@@ -213,22 +226,23 @@
 		<div class="page" id="page-02-6">
 			<div class="section paragraph-rightBox white-box">
 				<p class="map-title">관리자·전문가 비중 위험도</p>
-				<p class="map-description">마지막 정보는 ‘관리자 전문가 비중 위험도’입니다. 바로 앞의 ‘과학기술혁신역량 위험도’와 연관됩니다. 지역 제조업이 단순 공정 위주인지, 관리자와 전문가가 상주해야 하는 연구개발 및 기술 기반 공정인지를 보여주기 때문입니다. 이 지도를 봐도 수도권과 대도시들이 안전한 반면 지역 소도시들은 상대적으로 위험한 것을 알 수 있습니다.</p>
+				<p class="map-description">마지막 정보는 ‘관리자 전문가 비중 위험도’입니다. 바로 앞의 ‘과학기술혁신역량 위험도’와 연관됩니다. 지역 제조업이 <orangeHighlight>단순 공정 위주</orangeHighlight>인지, 관리자와 전문가가 상주해야 하는 연구개발 및 기술 기반 공정인지를 보여주기 때문입니다. 이 지도를 봐도 수도권과 대도시들이 안전한 반면 지역 소도시들은 상대적으로 위험한 것을 알 수 있습니다.</p>
 			</div>
 			<div class="layerMoving-div"></div>
 		</div>
 
 		<div class="page" id="page-02-7">
 			<div class="section paragraph-leftBox white-box">
-				<p>이렇게 <redHighlight>모든 정보를 겹쳐놓고 보니</redHighlight>, 진한 색깔이 도드라지는 지역, 반대로 옅은 색깔이 도드라지는 지역이 나타납니다. <br>주목할 지역들을 살펴보겠습니다. </p>
+				<p class="map-description">이렇게 <redHighlight>모든 정보를 겹쳐놓고 보니,</redHighlight> 진한 색깔이 도드라지는 지역, 반대로 옅은 색깔이 도드라지는 지역이 나타납니다. <br>주목할 지역들을 살펴보겠습니다. </p>
 			</div>
-			<div class="layerMoving-div"></div>
+			<!-- <div class="layerMoving-div"></div> -->
 		</div>
 
 	</div>
 
 
 	<div class="chapter" id="chapter-03">
+		<div class="page" id="page-03-layerMoving"></div>
 		<div class="page" id="page-03-0">
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
 				<p class="municipal-title">전라남도 곡성군</p>
@@ -272,7 +286,8 @@
 		<div class="page" id="page-03-5">
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
 				<p class="municipal-title">중간 이상의 색상 진하기</p>
-				<p class="map-description">2016년 지도 기준으로 중간(50.0) 이상의 색깔 진하기를 보이는 시,군,구만 표시해봅시다. <sanSerif>전체 228개 중에서 40개입니다.</sanSerif> <br>색깔이 진한 지역들을 다시 보게 되지 않으시나요? 이 지역에서는 지금 무엇을 해야 할까요? <br>고용위기가 오지 않도록 사전 조치를 해야 할까요? 할 수 있다면 그런 노력도 해야겠지만 그 못지않게 중요한 것이 ‘고용위기가 발생할 경우’를 위한 대응 방안을 지금부터 마련하는 것입니다. 그러기 위한 출발점은 ‘우리 지역에 고용위기가 올 수 있다’는 사실을 냉정하게 인정하는 것이 아닐까요? </p>
+				<p class="map-description">2016년 지도 기준으로 중간(50.0) 이상의 색깔 진하기를 보이는 시,군,구만 표시해봅시다. <sanSerif>전체 228개 중에서 40개입니다.</sanSerif> </p>
+				<p>색깔이 진한 지역들을 다시 보게 되지 않으시나요? 이 지역에서는 지금 무엇을 해야 할까요? <br>고용위기가 오지 않도록 사전 조치를 해야 할까요? 할 수 있다면 그런 노력도 해야겠지만 그 못지않게 중요한 것이 ‘고용위기가 발생할 경우’를 위한 대응 방안을 지금부터 마련하는 것입니다. 그러기 위한 출발점은 ‘우리 지역에 고용위기가 올 수 있다’는 사실을 냉정하게 인정하는 것이 아닐까요? </p>
 			</div>
 		</div>
 

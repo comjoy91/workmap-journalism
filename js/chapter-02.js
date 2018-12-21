@@ -165,6 +165,10 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 							$("#chapter-02-svg-red g.municipalLayer").not(redLayer[_layerIndex]).addClass("transparent-layer");
 							orangeLayer[_layerIndex].removeClass("transparent-layer");
 							redLayer[_layerIndex].removeClass("transparent-layer");
+							if (_layerIndex >= orangeLayer.length-1)
+								$("#chapter-02-svg-orange g#dummy_not-active-shape").removeClass("transparent-layer");
+							else
+								$("#chapter-02-svg-orange g#dummy_not-active-shape").addClass("transparent-layer");
 
 							$("#layer-names div").eq(_layerIndex).removeClass('orange-background').addClass('red-background')
 																.prevAll().removeClass('orange-background').addClass('red-background');

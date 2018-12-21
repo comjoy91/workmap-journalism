@@ -34,7 +34,7 @@ var map_01 = L.map( 'chapter-01-map', {
 					dragging: false, 
 					tap: false, 
 					touchZoom: false } );
-var attribution_01 = L.control.attribution({position: 'bottomright'}).addTo(map_01);
+var attribution_01 = L.control.attribution({position: 'topright'}).addTo(map_01);
 var map_03 = L.map( 'chapter-03-map', {
 					layers: [grayscale_03], 
 					zoomControl: false, 
@@ -49,7 +49,7 @@ var map_03 = L.map( 'chapter-03-map', {
 					dragging: false, 
 					tap: false, 
 					touchZoom: false } );
-var attribution_03 = L.control.attribution({position: 'bottomright'}).addTo(map_03);
+var attribution_03 = L.control.attribution({position: 'topright'}).addTo(map_03);
 // L.control.zoom({position: 'topleft'}).addTo(map);
 
 { // initial map view setting by different browser window width.

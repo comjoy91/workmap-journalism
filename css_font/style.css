@@ -72,6 +72,21 @@ redHighlight {
 	background-color: hsla(0, 100%, 75%, 1.0);
 	color: #ffffff;
 	padding: 0.2em 0 0.15em 0;
+
+	text-shadow: none;
+}
+orangeHighlight {
+	background: hsla(35, 100%, 80%, 1.0);
+    padding: 0.2em 0 0.15em 0;
+
+    text-shadow: none;
+}
+grayHighlight {
+	background-color: #aaaaaa;
+	color: #ffffff;
+	padding: 0.2em 0 0.15em 0;
+
+	text-shadow: none;
 }
 
 
@@ -209,7 +224,7 @@ redHighlight {
 
 
 
-/* ------------ layout: background opacity ------------ */
+/* ------------ layout: background opacity, leaflet attributions ------------ */
 
 #background-bounding {
 	z-index: -1;
@@ -237,6 +252,10 @@ div.fixed-background.visible {
 	visibility: visible;
 	-webkit-transition: opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
 	transition:         opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.leaflet-control-attribution.leaflet-control {
+	top: 0.5em;
 }
 
 
@@ -424,21 +443,24 @@ div.fixed-background.visible {
 		justify-content: space-between;
 
 	}
-		#single-orange-maps img {
-			width: 24%;
-			margin-bottom: 32px;
-		}
 
-		#single-orange-maps div.single-layer-name {
-			font-family: 'Spoqa Han Sans', sans-serif;
-			font-weight: 700;
-			font-size: 0.6em;
-			text-align: center;
-
+		#single-orange-maps .layer-and-name {			
 			width: 24%;
-			margin-bottom: 8px;
-			padding-left: 1em;
 		}
+			.layer-and-name img {
+				width: 100%;
+				margin-bottom: 32px;
+			}
+
+			.layer-and-name div.single-layer-name {
+				font-family: 'Spoqa Han Sans', sans-serif;
+				font-weight: 700;
+				font-size: 0.6em;
+				text-align: center;
+
+				margin-bottom: 8px;
+				padding-left: 1em;
+			}
 
 
 
@@ -446,52 +468,54 @@ div.fixed-background.visible {
 /* ------------ chapter 02: page 02-0 ~ 02-7 ------------ */
 
 
+	#chapter-02 {
+		margin-bottom: 0;
+	}
 
 	/* ------------ #chapter-02-background ------------ */
 
-
-	#chapter-02-svg-orange {
-		position: absolute;
-		top: calc( (100vh - (30vw * 611/377)) / 2);
-		left: 12vw;
-		width: 30vw;
-		line-height: 0;
+	#chapter-02-background {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-left: 12vw;
+		padding-right: 15vw;
 	}
-	#chapter-02-svg-red {
-		position: absolute;
-		top: calc( (100vh - (30vw * 611/377)) / 2);
-		left: 55vw;
-		width: 30vw;
-		line-height: 0;
-	}
-		#chapter-02-svg-orange svg, #chapter-02-svg-red svg {
-			width: 100%; 
-			height: 100%; 
 
-			overflow: visible;
+		#chapter-02-svg-orange, #chapter-02-svg-red {
+			width: 30vw;
+			height: 80vh;
+			margin-top: 2vh;
+			line-height: 0;
 		}
+			#chapter-02-svg-orange svg, #chapter-02-svg-red svg {
+				width: 100%; 
+				height: 100%; 
 
-		/* ------------ #chapter-02-background > #chapter-02-svg-orange, #chapter-02-svg-red control. ------------ */
-
-		#chapter-02-background g.municipalLayer .active-shape {
-			visibility: visible;
-			-webkit-transition: visibility 0ms 400ms/*delay = 400ms*/, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
-			transition:         visibility 0ms 400ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
-		}
-			#chapter-02-background g.municipalLayer .active-shape.visibility-noDelay {
-				-webkit-transition: visibility 0ms 0ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
-				transition:         visibility 0ms 0ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
+				overflow: visible;
 			}
-			#chapter-02-background g.municipalLayer .active-shape.transparent-shape {
+
+			/* ------------ #chapter-02-background > #chapter-02-svg-orange, #chapter-02-svg-red control. ------------ */
+
+			#chapter-02-background g.municipalLayer .active-shape {
+				visibility: visible;
+				-webkit-transition: visibility 0ms 400ms/*delay = 400ms*/, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
+				transition:         visibility 0ms 400ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
+			}
+				#chapter-02-background g.municipalLayer .active-shape.visibility-noDelay {
+					-webkit-transition: visibility 0ms 0ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
+					transition:         visibility 0ms 0ms, transform 400ms cubic-bezier(0.77, 0, 0.175, 1);
+				}
+				#chapter-02-background g.municipalLayer .active-shape.transparent-shape {
+					visibility: hidden;
+				}
+				#chapter-02-background g.municipalLayer .active-shape.transform-toRight-shape {
+					transform: translateX(calc( 43/30 * 377px ));
+				}
+
+			#chapter-02-background g.municipalLayer.transparent-layer, #chapter-02-background g#dummy_not-active-shape.transparent-layer {
 				visibility: hidden;
 			}
-			#chapter-02-background g.municipalLayer .active-shape.transform-toRight-shape {
-				transform: translateX(calc( 43/30 * 377px ));
-			}
-
-		#chapter-02-background g.municipalLayer.transparent-layer {
-			visibility: hidden;
-		}
 
 	/* ------------ #chapter-02 div.page ------------ */
 
@@ -544,6 +568,12 @@ div.fixed-background.visible {
 				pointer-events: none;
 			}
 
+
+	/* ------------ page 03-layerMoving  ------------ */
+
+	#page-03-layerMoving {
+		height: 60vh;
+	}
 
 	/* ------------ page 03-0 ~ 03-4  ------------ */
 
