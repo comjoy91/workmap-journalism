@@ -52,6 +52,8 @@ d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300_geographic.svg")
 											.on("mouseover", function() { 
 													tooltip_visible( this ); 
 													highlight_shape( this ); 
+													tooltip_red.style("left", (event.clientX - $("#tooltip-red").innerWidth()/2) + "px")
+																.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
 											})
 											.on("mouseout", function() {
 													tooltip_hidden( this );

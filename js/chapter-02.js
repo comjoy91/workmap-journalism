@@ -100,6 +100,10 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 												.on("mouseover", function() { 
 														tooltip_visible( this, _layerIndex ); 
 														highlight_shape( this, _layerIndex ); 
+														tooltip_orange.style("left", (event.clientX - $("#tooltip-orange").innerWidth()/2) + "px")
+																		.style("top", (event.clientY - $("#tooltip-orange").innerHeight()) + "px");
+														tooltip_red.style("left", (event.clientX + $(window).width()*43/100 - $("#tooltip-red").innerWidth()/2) + "px")
+																	.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
 												})
 												.on("mouseout", function() {
 														tooltip_hidden( this, _layerIndex );
