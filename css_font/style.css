@@ -209,12 +209,15 @@ grayHighlight {
 }
 
 
-/*.paragraph-leftBox {
-	margin-left: 15%;
-}*/
 .paragraph-leftBox {
-	margin-left: 5%;
+	margin-left: 12%;
 }
+@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+	.paragraph-leftBox {
+		margin-left: 5%;
+	}
+}
+
 .paragraph-centerBox {
 	margin-left: auto;
 	margin-right: auto;
