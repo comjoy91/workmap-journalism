@@ -1,12 +1,3 @@
-// ---------- importing SVG: define its path ----------
-
-const map_svg = "@images/svg_maps/01_single-orange-maps/01-1_hiring300.svg";
-
-const modified_mapWidth_const = 377 / 574;
-const modified_mapLeft_const = 85;
-const modified_mapWidth = 377;
-
-
 
 // ---------- BACKGROUND MAP LAYER ----------
 
@@ -172,49 +163,8 @@ var current_province_layer = null;
 
 
 
-// ---------- function for getting "getBoundingClientRect()"
-function getBound (el) {
-
-	//special bonus for those using jQuery
-	if (typeof jQuery === "function" && el instanceof jQuery) {
-		el = el[0];
-	}
-
-	return el.getBoundingClientRect();
-};
-
-
 
 (function($){
-
-	function resizeWindow() { // extra working by different browser window width.		
-		windowWidth = $(window).width();
-		windowHeight = $(window).height();
-		wideRatio = windowWidth / windowHeight;
-		if ( windowWidth >= 1025 ) {
-		}
-
-		else if ( windowWidth >= 768 && wideRatio > 2/1) { // "iPhone X"
-		}
-
-		else if ( windowWidth >= 768 ) {
-		}
-
-		else { 
-		}
-	}
-
-	$(window).on("load", resizeWindow );
-
-
-	$(window).on(/*"DOMContentLoaded load"*/ "load", function() {//먼저 js파일들을 모두 로드. 
-
-
-		
-
-	});
-
-	// $(window).on("resize", resizeWindow); // 창 크기가 바뀔 때에는 resizeWindow() 가동
 
 })(jQuery);
 

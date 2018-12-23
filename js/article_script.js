@@ -1,3 +1,17 @@
+// ---------- function for getting "getBoundingClientRect()"
+function getBound (el) {
+
+	//special bonus for those using jQuery
+	if (typeof jQuery === "function" && el instanceof jQuery) {
+		el = el[0];
+	}
+
+	return el.getBoundingClientRect();
+};
+
+
+
+
 
 /* ------------ detecting if a div is FULLY visible in viewport ------------ */
 
@@ -91,6 +105,33 @@ function triggerFunction(_el, _callback) {
 		}
 	);
 }
+
+
+
+
+(function() {
+
+	window.addEventListener("resize", resizeThrottler, false);
+
+	var resizeTimeout;
+	function resizeThrottler() {
+		// ignore resize events as long as an actualResizeHandler execution is in the queue
+		if ( !resizeTimeout ) {
+			resizeTimeout = setTimeout(function() {
+				resizeTimeout = null;
+				actualResizeHandler();
+
+			// The actualResizeHandler will execute at a rate of 15fps
+		}, 66);
+    }
+}
+
+function actualResizeHandler() {
+    // handle the resize event
+    ...
+}
+
+}());
 
 
 
