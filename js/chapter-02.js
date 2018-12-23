@@ -98,22 +98,34 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 							d3.select(this).selectAll("polygon, path").each( function( _datum, _shapeIndex) {
 								d3.select(this).datum( mainInfo_byLayer( mainInfoArray, _layerIndex+1, _shapeIndex ) )
 												.on("mouseover", function() { 
+														var svgs_dx = getBound( $("#chapter-02-svg-red") ).left - getBound( $("#chapter-02-svg-orange") ).left;
+														var svgs_dy = getBound( $("#chapter-02-svg-red") ).top - getBound( $("#chapter-02-svg-orange") ).top;
 														tooltip_visible( this, _layerIndex ); 
 														highlight_shape( this, _layerIndex ); 
+														// tooltip_orange.style("left", (event.clientX - $("#tooltip-orange").innerWidth()/2) + "px")
+														// 				.style("top", (event.clientY - $("#tooltip-orange").innerHeight()) + "px");
+														// tooltip_red.style("left", (event.clientX + $(window).width()*39/100 - $("#tooltip-red").innerWidth()/2) + "px")
+														// 			.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
 														tooltip_orange.style("left", (event.clientX - $("#tooltip-orange").innerWidth()/2) + "px")
 																		.style("top", (event.clientY - $("#tooltip-orange").innerHeight()) + "px");
-														tooltip_red.style("left", (event.clientX + $(window).width()*43/100 - $("#tooltip-red").innerWidth()/2) + "px")
-																	.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
+														tooltip_red.style("left", (event.clientX + svgs_dx - $("#tooltip-red").innerWidth()/2) + "px")
+																	.style("top", (event.clientY + svgs_dy - $("#tooltip-red").innerHeight()) + "px");
 												})
 												.on("mouseout", function() {
 														tooltip_hidden( this, _layerIndex );
 														dehighlight_shape( this, _layerIndex );
 												})
 												.on("mousemove", function() { 
+														var svgs_dx = getBound( $("#chapter-02-svg-red") ).left - getBound( $("#chapter-02-svg-orange") ).left;
+														var svgs_dy = getBound( $("#chapter-02-svg-red") ).top - getBound( $("#chapter-02-svg-orange") ).top;
+														// tooltip_orange.style("left", (event.clientX - $("#tooltip-orange").innerWidth()/2) + "px")
+														// 				.style("top", (event.clientY - $("#tooltip-orange").innerHeight()) + "px");
+														// tooltip_red.style("left", (event.clientX + $(window).width()*39/100 - $("#tooltip-red").innerWidth()/2) + "px")
+														// 			.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
 														tooltip_orange.style("left", (event.clientX - $("#tooltip-orange").innerWidth()/2) + "px")
 																		.style("top", (event.clientY - $("#tooltip-orange").innerHeight()) + "px");
-														tooltip_red.style("left", (event.clientX + $(window).width()*43/100 - $("#tooltip-red").innerWidth()/2) + "px")
-																	.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
+														tooltip_red.style("left", (event.clientX + svgs_dx - $("#tooltip-red").innerWidth()/2) + "px")
+																	.style("top", (event.clientY + svgs_dy - $("#tooltip-red").innerHeight()) + "px");
 												});
 							})
 						});
@@ -122,18 +134,26 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 							d3.select(this).selectAll("polygon, path").each( function( _datum, _shapeIndex) {
 								d3.select(this).datum( mainInfo_byLayer( mainInfoArray, _layerIndex, _shapeIndex ) )
 												.on("mouseover", function() { 
+														var svgs_dx = getBound( $("#chapter-02-svg-red") ).left - getBound( $("#chapter-02-svg-orange") ).left;
+														var svgs_dy = getBound( $("#chapter-02-svg-red") ).top - getBound( $("#chapter-02-svg-orange") ).top;
 														tooltip_visible( this, _layerIndex ); 
 														highlight_shape( this, _layerIndex ); 
+														tooltip_red.style("left", (event.clientX - $("#tooltip-red").innerWidth()/2) + "px")
+																	.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
+														tooltip_orange.style("left", (event.clientX - svgs_dx - $("#tooltip-orange").innerWidth()/2) + "px")
+																		.style("top", (event.clientY - svgs_dy - $("#tooltip-orange").innerHeight()) + "px");
 												})
 												.on("mouseout", function() {
 														tooltip_hidden( this, _layerIndex );
 														dehighlight_shape( this, _layerIndex );
 												})
 												.on("mousemove", function() { 
+														var svgs_dx = getBound( $("#chapter-02-svg-red") ).left - getBound( $("#chapter-02-svg-orange") ).left;
+														var svgs_dy = getBound( $("#chapter-02-svg-red") ).top - getBound( $("#chapter-02-svg-orange") ).top;
 														tooltip_red.style("left", (event.clientX - $("#tooltip-red").innerWidth()/2) + "px")
 																	.style("top", (event.clientY - $("#tooltip-red").innerHeight()) + "px");
-														tooltip_orange.style("left", (event.clientX - $(window).width()*43/100 - $("#tooltip-orange").innerWidth()/2) + "px")
-																		.style("top", (event.clientY - $("#tooltip-orange").innerHeight()) + "px");
+														tooltip_orange.style("left", (event.clientX - svgs_dx - $("#tooltip-orange").innerWidth()/2) + "px")
+																		.style("top", (event.clientY - svgs_dy - $("#tooltip-orange").innerHeight()) + "px");
 												});
 							})
 						});
