@@ -53,21 +53,25 @@ var attribution_03 = L.control.attribution({position: 'topright'}).addTo(map_03)
 // L.control.zoom({position: 'topleft'}).addTo(map);
 
 { // initial map view setting by different browser window width.
-	if ( windowWidth >= 1025 ) {
+	if ( windowWidth >= 1024 ) {
 		map_01.setView([35.95, 125.5], 7.3);
 		map_03.setView([35.95, 125.5], 7.3);
 	}
 	else if ( windowWidth >= 768 && wideRatio > 2/1) { // "iPhone X"
-		map_01.setView([36, 131], 6.5);
-		map_03.setView([36, 131], 6.5);
+		map_01.setView([36, 125.5], 6);
+		map_03.setView([36, 125.5], 6);
 	}
 	else if ( windowWidth >= 768 ) {
-		map_01.setView([36.3, 129.3], 7.5);
-		map_03.setView([36.3, 129.3], 7.5);
+		map_01.setView([35.95, 127.6], 7.3);
+		map_03.setView([35.95, 127.6], 7.3);
+	}
+	else if ( wideRatio > 1/1 ) { 
+		map_01.setView([36, 125.5], 6);
+		map_03.setView([36, 125.5], 6);
 	}
 	else { 
-		map_01.setView([34.5, 127.7], 6.5);
-		map_03.setView([34.5, 127.7], 6.5);
+		map_01.setView([35.95, 127.6], 6.5);
+		map_03.setView([35.95, 127.6], 6.5);
 	}
 }
 
@@ -206,11 +210,6 @@ function getBound (el) {
 	$(window).on(/*"DOMContentLoaded load"*/ "load", function() {//먼저 js파일들을 모두 로드. 
 
 
-		// d3.text("@images/svg_maps/02_cumulative-red-maps/02-8_expertRate_geographic.svg").then( function(map_svg_imported) {
-		// 	$("#chapter-03-svg").html(map_svg_imported);
-
-			
-		// });
 		
 
 	});

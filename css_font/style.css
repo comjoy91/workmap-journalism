@@ -22,6 +22,24 @@ html {
 	height: 100%;
 	/*width: 100vw; */
 }
+
+@media all and (min-width:768px) and (min-aspect-ratio: 2/1), /* "iPhone X", widescreen aspect */ 
+		all and (max-width:767px) { /* mobile phone */ 
+	html {
+		font-size: 15px;
+	}
+}
+
+
+::-moz-selection { /* Code for Firefox */
+	color: #FFFFFF; /*selected text color*/
+	background-color: rgba(40, 97, 177, 0.85); /*block color*/
+}
+::selection {
+	color: #FFFFFF; /*selected text color*/ 
+	background-color: rgba(40, 97, 177, 0.85); /*block color*/
+}
+
 body {
 	padding: 0;
 	margin: 0;
@@ -31,6 +49,7 @@ body {
 div, p {
 	box-sizing: border-box;
 	position: relative;
+    word-break: keep-all;
 
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
@@ -129,7 +148,7 @@ grayHighlight {
 	}
 
 
-/* ------------ layout: .paragraph-leftBox ------------ */
+/* ------------ layout: paragraph ------------ */
 
 .blank-page {
 	height: 100vh;
@@ -154,40 +173,51 @@ grayHighlight {
 	padding: 33px 40px 18px 40px;
 	/*padding-bottom: calc(40px - 4/3em);*/
 }
+@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+	.white-box {	
+		width: 88%;
+		max-width: 525px;
+		padding: 33px 24px 18px 24px;
+	}
+}
 .transparent-box {
 	background: transparent;
-	width: 525px;
+	width: 92%;
+	max-width: 525px;
 }
 
 
 
 .white-box-screenwide {
 	padding-top: 6rem;
-	padding-bottom: 1px;
 	background: #ffffff;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 	/*box-shadow: 0 0 10px 2px rgba(0,0,0,0.30);*/
 }
 .paragraph-screenwide {
-	width: 630px;
-	margin-left: calc((100% - 630px) / 2); /*calc((100vw - 630px) / 2);*/
-	margin-right: calc((100% - 630px) / 2); /*calc((100vw - 630px) / 2);*/
-	margin-bottom: 6rem;
+	max-width: 650px;
+	padding-left: 10px;
+    padding-right: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 6rem;
 }
 .article-graph {
-	/*height: 240px;*/
 	width: 100%;
-	/*background: #dddddd;*/
 	margin-top: 1rem;
 	margin-bottom: 2rem;
 }
 
 
-.paragraph-leftBox {
+/*.paragraph-leftBox {
 	margin-left: 15%;
+}*/
+.paragraph-leftBox {
+	margin-left: 5%;
 }
 .paragraph-centerBox {
-	margin-left: calc( (100% - 480px) / 2);
+	margin-left: auto;
+	margin-right: auto;
 }
 .paragraph-rightBox {
 	margin-left: calc(100% - 15% - 480px);
@@ -259,53 +289,6 @@ div.fixed-background.visible {
 }
 
 
-/* ------------ layout: background -> #layer-names ------------ */
-
-
-#layer-names {
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	display: flex;
-
-	opacity: 0.0;
-	visibility: hidden;
-	-webkit-transition: visibility 0ms 600ms/*delay: 600mx*/, opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
-	transition:         visibility 0ms 600ms, opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
-}
-	#layer-names.visible {
-		opacity: 1.0;
-		visibility: visible;
-		-webkit-transition: opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
-		transition:         opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
-	}
-	#layer-names div {
-		font-family: 'Spoqa Han Sans', sans-serif;
-		font-weight: 400;
-		font-size: 0.6em;
-		text-align: center;
-		align-self: center;
-
-		background-color: #ffffff;
-
-		width: 10px;
-		height: 2em;
-		flex-grow: 1;
-
-		-webkit-transition: background-color 600ms cubic-bezier(0.77, 0, 0.175, 1);
-		transition:         background-color 600ms cubic-bezier(0.77, 0, 0.175, 1);
-	}
-		#layer-names div.red-background {
-			background-color: hsla(0, 100%, 50%, 0.7);
-			color: #ffffff;
-		}
-		#layer-names div.orange-background {
-			background-color: hsla(35, 100%, 50%, 0.65);
-			transition-property: background-color;
-			-webkit-transition: 600ms 600ms/*delay: 600ms*/ cubic-bezier(0.77, 0, 0.175, 1);
-			transition:         600ms 600ms cubic-bezier(0.77, 0, 0.175, 1);
-		}
 
 
 /* ------------ map SVGs: .tooltip, highlighted shapes; ------------ */
@@ -392,7 +375,7 @@ div.fixed-background.visible {
 			line-height: 1.25;
 			display: flex;
 
-			width: 396px;
+			max-width: 396px;
 			margin-bottom: 6vh;
 			/*padding: 16px 16px 15px 13px;*/
 
@@ -401,6 +384,12 @@ div.fixed-background.visible {
 
 			color: #000000;
 			text-decoration: none;
+		}
+		@media all and (min-width:768px) and (min-aspect-ratio: 2/1), /* "iPhone X", widescreen aspect */ 
+				all and (max-width:767px) { /* mobile phone */ 
+			#site_title {
+				font-size: 28px;
+			}
 		}
 				#site_title_logo {
 					width: 1.2em;
@@ -438,7 +427,7 @@ div.fixed-background.visible {
 		width: 100%;
 
 		display: flex;
-		align-items: center;
+		align-items: flex-end;
 		flex-wrap: wrap;
 		justify-content: space-between;
 
@@ -456,11 +445,26 @@ div.fixed-background.visible {
 				font-family: 'Spoqa Han Sans', sans-serif;
 				font-weight: 700;
 				font-size: 0.6em;
+				line-height: 1.4;
 				text-align: center;
 
-				margin-bottom: 8px;
-				padding-left: 1em;
+				margin-bottom: 12px;
+				padding-left: 8%;
 			}
+
+
+	@media all and (max-width:630px) { /* mobile phone */ 
+		#single-orange-maps {
+			justify-content: center;
+			flex-direction: row-reverse;
+		}
+			#single-orange-maps .layer-and-name {			
+				width: 30%;
+			}
+				.layer-and-name div.single-layer-name {
+					/*padding-left: 0%;*/
+				}
+	}
 
 
 
@@ -468,9 +472,93 @@ div.fixed-background.visible {
 /* ------------ chapter 02: page 02-0 ~ 02-7 ------------ */
 
 
-	/*#chapter-02 {
-		margin-bottom: 0;
-	}*/
+	/* ------------ layout: background -> #layer-names ------------ */
+
+
+	#layer-names {
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		/*top: 0px;
+		left: 0px;
+		width: 100%;*/
+		top: calc( (100vh - 8*(1.9*0.6em + 0.25em + 2px)) / 2 );
+		left: 0px;
+		width: 15vw;
+
+		opacity: 0.0;
+		visibility: hidden;
+		-webkit-transition: visibility 0ms 600ms/*delay: 600mx*/, opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
+		transition:         visibility 0ms 600ms, opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
+	}
+		#layer-names.visible {
+			opacity: 1.0;
+			visibility: visible;
+			-webkit-transition: opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
+			transition:         opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
+		}
+		#layer-names div {
+			font-family: 'Spoqa Han Sans', sans-serif;
+			font-weight: 400;
+			font-size: 0.6em;
+			text-align: center;
+			color: #bbbbbb;
+
+			background-color: transparent;
+
+			/*width: 10px;
+			height: 2em;
+			flex-grow: 1;*/
+			margin: 1px;
+			padding: 0em 0.5em 0.25em 0.5em;
+			width: auto;
+
+			transition-property: background-color, color, transform;
+			-webkit-transition: 600ms cubic-bezier(0.77, 0, 0.175, 1);
+			transition:         600ms cubic-bezier(0.77, 0, 0.175, 1);
+		}
+			#layer-names div.red-background {
+				background-color: hsla(0, 100%, 50%, 0.7);
+				color: #ffffff;
+				transform: translateX(85vw);
+			}
+			#layer-names div.orange-background {
+				background-color: hsla(35, 100%, 50%, 0.65);
+				color: #000000;
+			}
+
+
+	@media all and (max-width:768px) and (max-aspect-ratio: 1/1) { /* tablet portrait layout*/
+		#layer-names {
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			top: auto;
+			bottom: 84vh;
+			left: 6vw;
+			width: 45vw;
+		}
+				#layer-names div.red-background {
+					transform: translateX(46vw);
+				}
+	}
+
+	@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+		#layer-names {
+			flex-direction: row-reverse;
+			flex-wrap: wrap;
+			justify-content: right;
+			top: 4vw;
+			bottom: auto;
+			left: auto;
+			right: 4vw;
+			width: 240px;
+		}
+				#layer-names div.red-background {
+					transform: none;
+				}
+	}
 
 	/* ------------ #chapter-02-background ------------ */
 
@@ -479,13 +567,13 @@ div.fixed-background.visible {
 		align-items: center;
 		justify-content: space-between;
 
-		width: 100vw;
+		width: /*100%;*/ 100vw;
 		padding-left: /*12%;*/ 12vw;
-		padding-right: /*15%;*/ 15vw;
+		padding-right: /*14%;*/ 14vw;
 	}
 
 		#chapter-02-svg-orange, #chapter-02-svg-red {
-			width: /*30%;*/ 30vw;
+			width: /*35%;*/ 35vw;
 			height: 80vh;
 			margin-top: 2vh;
 			line-height: 0;
@@ -512,12 +600,61 @@ div.fixed-background.visible {
 					visibility: hidden;
 				}
 				#chapter-02-background g.municipalLayer .active-shape.transform-toRight-shape {
-					transform: translateX(calc( 43/30 * 377px ));
+					transform: translateX(calc( (100 - 12 - 14 - 35)/35 * 377px ));
 				}
 
 			#chapter-02-background g.municipalLayer.transparent-layer, #chapter-02-background g#dummy_not-active-shape.transparent-layer {
 				visibility: hidden;
 			}
+
+
+	@media all and (max-width:1024px) and (min-width:601px) and (max-aspect-ratio: 1/1) { /* tablet portrait layout */
+		#chapter-02-background {
+			width: /*100%;*/ 100vw;
+			padding-left: /*4%;*/ 4vw;
+			padding-right: /*5%;*/ 5vw;
+		}
+			#chapter-02-svg-orange, #chapter-02-svg-red {
+				width: /*45%;*/ 45vw;
+			}
+
+				#chapter-02-background g.municipalLayer .active-shape.transform-toRight-shape {
+					transform: translateX(calc( 46/45 * 377px ));
+				}
+	}
+
+	@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+		#chapter-02-background {
+			display: inline;
+
+			width: /*100%;*/ 100vw;
+			height: 150vw;
+			padding-left: 0;
+			padding-right: 0;
+			left: 0;
+			top: calc( 10vw + (100vh - 150vw) / 2);
+		}
+			#chapter-02-svg-orange, #chapter-02-svg-red {
+				position: absolute;
+				/*width: calc( 50vh * 377/611 );*/
+				width: 58vw;
+				height: calc( 58vw * 611/377 );
+				margin-top: 0;
+			}
+			#chapter-02-svg-orange {
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+			#chapter-02-svg-red {
+				bottom: 0;
+				right: 0;
+				z-index: 0;
+			}
+				#chapter-02-background g.municipalLayer .active-shape.transform-toRight-shape {
+					transform: translateY(calc( (150 - 58*611/377)/58 * 377px )) translateX(calc( 42/58 * 377px ));
+				}
+	}
 
 	/* ------------ #chapter-02 div.page ------------ */
 

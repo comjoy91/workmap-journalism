@@ -149,7 +149,7 @@ function resizeMap_chapter_01_03() {
 
 
 //jQuery
-$(window).on('DOMContentLoaded load resize scroll', handler_chapter_01)
-			.on('DOMContentLoaded load resize scroll', handler_chapter_02)
-			.on('DOMContentLoaded load resize scroll', handler_chapter_03)
-			.on('DOMContentLoaded load resize', resizeMap_chapter_01_03);
+$(window).on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_01)
+			.on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_02)
+			.on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_03)
+			.on('DOMContentLoaded load orientationchange resize', resizeMap_chapter_01_03);
