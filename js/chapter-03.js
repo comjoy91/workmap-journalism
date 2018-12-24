@@ -93,7 +93,6 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 						$("#chapter-03 div.page").each( function( index ) {
 							var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
 							var changeLayer_03_index = function() { changeLayer_03(index) };
-							var changeLayer_03_prevIndex = function() { if (index < 1) return changeLayer_03(index-1) };
 							
 							$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} )); // 트리거가 일시적으로 작동 
 							$(window).on('scroll', onUnderBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} ));

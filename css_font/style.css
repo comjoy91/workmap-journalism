@@ -140,7 +140,8 @@ grayHighlight {
 /* ------------ layout: .chapter ------------ */
 
 .chapter {
-	margin-bottom: 100vh;
+	/*margin-bottom: 100vh;*/
+	margin-bottom: 0;
 	pointer-events: none; /* background에서 hover event가 작동되도록 함. */
 }
 	.chapter p, .chapter a, .chapter img {
@@ -343,6 +344,10 @@ div.fixed-background.visible {
 	}
 
 /* ------------ chapter 01: page 01-0, 01-1, 01-2 ------------ */
+
+	#chapter-01 {
+		margin-bottom: 100vh;
+	}
 
 
 	/* ------------ #chapter-01-map ------------ */
@@ -666,12 +671,11 @@ div.fixed-background.visible {
 		padding-bottom: 100vh;
 	}
 
-/*		#chapter-02 div.page#page-02-7 {
-			height: 100vh;
-			padding-top: 0;
-			padding-bottom: 0;
+		#chapter-02 div.page#page-02-7 {
+			padding-bottom: 50vh;
 		}
-*/
+
+
 
 
 /* ------------ chapter 03: page 03-0 ~ 03-6 ------------ */
@@ -714,7 +718,7 @@ div.fixed-background.visible {
 
 	#page-03-layerMoving {
 		padding-top: 25vh;
-		padding-bottom: 100vh;
+		padding-bottom: 25vh;
 	}
 
 	/* ------------ page 03-0 ~ 03-4  ------------ */

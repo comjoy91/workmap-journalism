@@ -32,6 +32,18 @@ function isElementPartiallyInViewport (el) {
 		rect.bottom >= 0 
 	);
 }
+// function isElementAboveTopOfViewport (el) {
+// 	var rect = getBound(el);
+// 	return (
+// 		rect.top <= 0
+// 	);
+// }
+// function isElementUnderTopOfViewport (el) {
+// 	var rect = getBound(el);
+// 	return (
+// 		rect.bottom >= 0
+// 	);
+// }
 function isElementAboveBottomOfViewport (el) {
 	var rect = getBound(el);
 	return (
@@ -44,6 +56,57 @@ function isElementUnderBottomOfViewport (el) {
 		rect.bottom >= (window.innerHeight || document.documentElement.clientHeight)
 	);
 }
+
+
+
+
+function onPartiallyCoverViewport(el, callback_fullyCover, callback_notFullyCover) { // viewport의 일부를 가리는 순간/전혀 보이지 않는 순간, 발동.
+	var old_cover=null; // 처음 onLoad할 때에 무조건 발동되게 함.
+	return function () {
+		var cover = isElementPartiallyInViewport(el);
+		if (cover != old_cover) {
+			old_cover = cover;
+			if (cover && typeof callback_fullyCover == 'function') {
+				callback_fullyCover();
+			}
+			else if (!cover && typeof callback_notFullyCover == 'function') {
+				callback_notFullyCover();
+			}
+		}
+	}
+}
+
+// function onUnderTopOfViewport(el, callback_fullyCover, callback_notFullyCover) { // el이 viewport 최상단보다 아래쪽으로 살짝만 뻗어나오면/완전히 최상단 위쪽으로 올라가버리면, 발동.
+// 	var old_cover=true; // 처음 onLoad할 때에, cover=true면 callback이 없도록 함.
+// 	return function () {
+// 		var cover = isElementUnderTopOfViewport(el);
+// 		if (cover != old_cover) {
+// 			old_cover = cover;
+// 			if (cover && typeof callback_fullyCover == 'function') {
+// 				callback_fullyCover();
+// 			}
+// 			else if (!cover && typeof callback_notFullyCover == 'function') {
+// 				callback_notFullyCover();
+// 			}
+// 		}
+// 	}
+// }
+
+// function onAboveTopOfViewport(el, callback_fullyCover, callback_notFullyCover) { // el이 viewport 최상단보다 위쪽으로 살짝만 뻗어나오면/완전히 최상단 아래로 내려가버리면, 발동.
+// 	var old_cover=true; // 처음 onLoad할 때에, cover=true면 callback이 없도록 함.
+// 	return function () {
+// 		var cover = isElementAboveTopOfViewport(el);
+// 		if (cover != old_cover) {
+// 			old_cover = cover;
+// 			if (cover && typeof callback_fullyCover == 'function') {
+// 				callback_fullyCover();
+// 			}
+// 			else if (!cover && typeof callback_notFullyCover == 'function') {
+// 				callback_notFullyCover();
+// 			}
+// 		}
+// 	}
+// }
 
 function onUnderBottomOfViewport(el, callback_fullyCover, callback_notFullyCover) { // el이 viewport 최하단보다 아래쪽으로 살짝만 뻗어나오면/완전히 최하단 위쪽으로 올라가버리면, 발동.
 	var old_cover=true; // 처음 onLoad할 때에, cover=true면 callback이 없도록 함.
@@ -65,23 +128,6 @@ function onAboveBottomOfViewport(el, callback_fullyCover, callback_notFullyCover
 	var old_cover=true; // 처음 onLoad할 때에, cover=true면 callback이 없도록 함.
 	return function () {
 		var cover = isElementAboveBottomOfViewport(el);
-		if (cover != old_cover) {
-			old_cover = cover;
-			if (cover && typeof callback_fullyCover == 'function') {
-				callback_fullyCover();
-			}
-			else if (!cover && typeof callback_notFullyCover == 'function') {
-				callback_notFullyCover();
-			}
-		}
-	}
-}
-
-
-function onPartiallyCoverViewport(el, callback_fullyCover, callback_notFullyCover) { // viewport의 일부를 가리는 순간/전혀 보이지 않는 순간, 발동.
-	var old_cover=null; // 처음 onLoad할 때에 무조건 발동되게 함.
-	return function () {
-		var cover = isElementPartiallyInViewport(el);
 		if (cover != old_cover) {
 			old_cover = cover;
 			if (cover && typeof callback_fullyCover == 'function') {
@@ -135,27 +181,33 @@ function triggerFunction(_el, _callback) {
 
 
 
-var handler_chapter_01 = onPartiallyCoverViewport( $("#chapter-01"), 
-													function() {
-														$(".fixed-background").removeClass("visible");
-														$("#chapter-01-background").addClass("visible");
-														$("#layer-names").removeClass("visible");
-														console.log("chapter-01");
-													}, 
-													function() {}
+
+var handler_chapter_01 = onAboveBottomOfViewport( $("#chapter-01"), 
+														function() {
+															$(".fixed-background").removeClass("visible");
+															$("#chapter-01-background").addClass("visible");
+															$("#layer-names").removeClass("visible");
+															console.log("chapter-01");
+														}, 
+														function() {}
 													);
 
-var handler_chapter_02 = onPartiallyCoverViewport( $("#chapter-02"), 
+var handler_chapter_02 = onAboveBottomOfViewport( $("#chapter-02"),  
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-02-background").addClass("visible");
 															$("#layer-names").addClass("visible");
 															console.log("chapter-02");
 														}, 
-														function() {}
-														);
+														function() {
+															$(".fixed-background").removeClass("visible");
+															$("#chapter-01-background").addClass("visible");
+															$("#layer-names").removeClass("visible");
+															console.log("chapter-01");
+														}
+												);
 
-var handler_chapter_03 = onPartiallyCoverViewport( $("#chapter-03"), 
+var handler_chapter_03 = onAboveBottomOfViewport( $("#chapter-03"), 
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-03-background").addClass("visible");
@@ -163,8 +215,13 @@ var handler_chapter_03 = onPartiallyCoverViewport( $("#chapter-03"),
 															$("#layer-names div").removeClass('orange-background').addClass('red-background');
 															console.log("chapter-03");
 														}, 
-														function() {} 
-														);
+														function() {
+															$(".fixed-background").removeClass("visible");
+															$("#chapter-02-background").addClass("visible");
+															$("#layer-names").addClass("visible");
+															console.log("chapter-02");
+														}
+													);
 
 
 function resizeMap_chapter_01_03() {

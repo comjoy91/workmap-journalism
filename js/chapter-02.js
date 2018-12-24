@@ -366,6 +366,7 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 									.on('resize scroll', onUnderBottomOfViewport( chapter_02_thisPage, changeLayer_02_scrollToTop_index, function(){} )); // 윗방향(역방향)으로 스크롤할 때.
 						});
 
+						
 						$("#chapter-02 div.page").each( function(index) { 
 
 							var chapter_02_thisPage = $("#chapter-02 div.page").eq(index);
