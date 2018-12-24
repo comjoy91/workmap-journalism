@@ -140,6 +140,22 @@ function onAboveBottomOfViewport(el, callback_fullyCover, callback_notFullyCover
 	}
 }
 
+function onAboveBottomOfViewport_initial(el, callback_fullyCover, callback_notFullyCover) { // el이 viewport 최하단보다 위쪽으로 살짝만 뻗어나오면/완전히 최하단 아래로 내려가버리면, 발동.
+	var old_cover; // 처음 onLoad할 때에도 무조건 callback이 일어나게 함.
+	return function () {
+		var cover = isElementAboveBottomOfViewport(el);
+		if (cover != old_cover) {
+			old_cover = cover;
+			if (cover && typeof callback_fullyCover == 'function') {
+				callback_fullyCover();
+			}
+			else if (!cover && typeof callback_notFullyCover == 'function') {
+				callback_notFullyCover();
+			}
+		}
+	}
+}
+
 function triggerFunction(_el, _callback) {
 	return onFULLYcoverViewport( _el,  
 		function() { // callback_fullyCover
@@ -182,7 +198,7 @@ function triggerFunction(_el, _callback) {
 
 
 
-var handler_chapter_01 = onAboveBottomOfViewport( $("#chapter-01"), 
+var handler_chapter_01 = onAboveBottomOfViewport_initial( $("#chapter-01"), 
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-01-background").addClass("visible");
@@ -192,7 +208,7 @@ var handler_chapter_01 = onAboveBottomOfViewport( $("#chapter-01"),
 														function() {}
 													);
 
-var handler_chapter_02 = onAboveBottomOfViewport( $("#chapter-02"),  
+var handler_chapter_02 = onAboveBottomOfViewport_initial( $("#chapter-02"),  
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-02-background").addClass("visible");
@@ -207,7 +223,7 @@ var handler_chapter_02 = onAboveBottomOfViewport( $("#chapter-02"),
 														}
 												);
 
-var handler_chapter_03 = onAboveBottomOfViewport( $("#chapter-03"), 
+var handler_chapter_03 = onAboveBottomOfViewport_initial( $("#chapter-03"), 
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-03-background").addClass("visible");
