@@ -17,13 +17,13 @@
 
 	<!-- jQuery / jQuery UI 가져오기. -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<!-- plugin for special easing -->
 	<script type="text/javascript" src="js/plugin/jquery.easing.1.3.js"></script>
 
 	<!-- D3.js 가져오기. -->
 	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<!-- radar-chart-d3 가져오기. https://github.com/alangrafu/radar-chart-d3, https://gist.github.com/nbremer/21746a9668ffdf6d8242#file-radarchart-js -->
+	<script type="text/javascript" src="js/plugin/radarChart.js"></script>
 
 	<!-- Leaflet.js 가져오기. https://leafletjs.com -->
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" 
@@ -45,16 +45,17 @@
 	<link rel='stylesheet' type='text/css' href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css'>
 	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/earlyaccess/kopubbatang.css'>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-		<!-- importing 'local' webFont (SunBatang) -->
+	<!-- importing 'local' webFont (SunBatang) -->
 	<link rel='stylesheet' type='text/css' href='css_font/font.css'/>
 
 	<!-- local json/css -->
 	<link rel="stylesheet" type="text/css" href="css_font/style.css"/>
 
-	<script type="text/javascript" src="@json_data/scoreLegend.js"></script>
+	<!-- <script type="text/javascript" src="@json_data/scoreLegend.js"></script> -->
 	<script type="text/javascript" src="@json_data/skorea-map-municipal.js"></script>
 	<script type="text/javascript" src="@json_data/skorea-map-province.js"></script>
 	<script type="text/javascript" src="@json_data/skorea-score-2016.js"></script>
+	<script type="text/javascript" src="@json_data/radar-graph-data.js"></script>
 
 
 </head>
@@ -190,6 +191,10 @@
 		</div>
 	</div>
 
+
+
+
+
 	<div class="chapter" id="chapter-02">
 		<div class="page" id="page-02-0">
 			<div class="section paragraph-centerBox white-box">
@@ -256,24 +261,17 @@
 	</div>
 
 
-	<!-- <div class="chapter" id="chapter-02-03-transition">
-		<div class="page">
-			<div class="section paragraph-leftBox white-box">
-					<p class="map-description">이렇게 <redHighlight>모든 정보를 겹쳐놓고 보니,</redHighlight> 진한 색깔이 도드라지는 지역, 반대로 옅은 색깔이 도드라지는 지역이 나타납니다. <br>주목할 지역들을 살펴보겠습니다. </p>
-			</div>
-		</div>
-	</div> -->
+
 
 
 	<div class="chapter" id="chapter-03">
 		<div class="page" id="page-03-layerMoving">
-			<div class="section paragraph-leftBox white-box">
-				<p class="map-description">이렇게 <redHighlight>모든 정보를 겹쳐놓고 보니,</redHighlight> 진한 색깔이 도드라지는 지역, 반대로 옅은 색깔이 도드라지는 지역이 나타납니다. <br>주목할 지역들을 살펴보겠습니다. </p>
-			</div>
 		</div>
+
 		<div class="page" id="page-03-0">
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
 				<p class="municipal-title">전라남도 곡성군</p>
+				<span class="chart-container" id="chart-Gokseong"></span>
 				<p class="map-description">가장 진한 곳은 곡성군이네요. 곡성에는 제조업 대기업에 ‘금호타이어 곡성 공장’ 단 한 개입니다. 이 곳에 종사하는 사람이 지역 전체 종사자의 22.58%에 달합니다. 당연히 제1제조업(고무, 플라스틱) 집중도는 100%입니다. <br>제조업 종사자 중에서 20대는 4.7%에 불과하고요. 과학기술혁신역량, 관리자 전문가 비율 측면에서 봐도 가장 위험한 상태입니다. 그나마 나은 점은 일은 곡성에서 하고 거주는 다른 지역에서 하는 사람들의 비율이 높아보이지 않는다는 것입니다. </p>
 				<p>이런 상태이니 곡성 지역에서 금호타이어의 해외매각 및 구조조정 가능성이 보도될 때마다 민감하게 반응하는 것도 당연합니다. 지역의 노동자들과 정부 입장에서는 이 사업장이 계속 남느냐 아니냐는 이제부터 경영진이 어떻게 판단하느냐에 달려 있다고만 생각할 수 있습니다. 그렇지만, 객관적 정보로 볼 때 이미 이 지역에서의 제조업 고용위기 가능성은 높아져 있는 것이 사실입니다. </p>
 			</div>
@@ -282,6 +280,8 @@
 		<div class="page" id="page-03-1">
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
 				<p class="municipal-title">울산광역시 동구, 북구</p>
+				<span class="chart-container" id="chart-Ulsan_dong"></span>
+				<span class="chart-container" id="chart-Ulsan_buk"></span>
 				<p class="map-description">울산 지역은 이미 고용위기가 나타나 있습니다. 울산은 대도시임에도 불구하고 북구는 현대자동차, 동구는 현대중공업에 대한 고용 의존도가 매우 높습니다. 또한 동구 지역에 제조업 일자리 창출량이 상당히 낮은 점이 눈에 띕니다. <br>두 지역 모두 제조업 종사자 고령화가 상당히 진행돼 있고, 과학기술역량은 낮습니다. 종사자에 비해 거주민의 비율도 낮습니다. 이런 상태는 이미 2014년부터 일관되게 유지되고 있었습니다.</p>
 			</div>
 		</div>
@@ -289,6 +289,7 @@
 		<div class="page" id="page-03-2">
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
 				<p class="municipal-title">전라북도 군산시</p>
+				<span class="chart-container" id="chart-Gunsan"></span>
 				<p class="map-description">2017년 조선업, 2018년 자동차 업종에서 대규모 구조조정을 겪은 군산시를 볼까요? 생각보다 색깔이 두드러지게 진하지는 않습니다. 그렇지만 대부분 정보들에서 두루 중간 이상의 위험도가 보입니다. 특히 2016년 정보에서 제조업 일자리 창출 정도가 확연히 낮아진 것을 볼 수 있습니다. 이 정보가 보여주는 시점의 바로 다음인 2017년부터 군산에서 고용위기가 발생했습니다.</p> 
 				<p>그나마 군산에는 조선과 자동차 외에도 철강, 화학 등 다른 업종의 대규모 공장이 있습니다. 직장인에 비해 주민들의 소득이 적은 현상도 나타나지 않습니다. 관광자원도 가지고 있는 편입니다. <br>그런데도 지금 군산이 고용위기에 허덕이고 있다면, 군산보다 위험도가 진한 다른 지역은 어떨까요? </p>
 			</div>
@@ -298,6 +299,7 @@
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
 				<p>그럼 이번에는 상대적으로 덜 위험해 보이는 지역의 특징을 보겠습니다. </p> 
 				<p class="municipal-title">경기도 수원시</p>
+				<span class="chart-container" id="chart-Suwon"></span>
 				<p class="map-description">수원시를 보면, 제1제조업 집중도가 높고, 제조업 일자리 창출량, 직장인-주민 괴리도는 중간 이상의 위험도를 보이는데도 전체적인 색깔은 옅습니다. <br>우선 300인 이상, 1000인 이상 제조업 종사자의 비중이 전체 종사자에 비해 높지 않기 때문입니다. 제조업 종사자 중 20대의 비율도 23.7%로 꽤 높습니다. 무엇보다 과학기술혁신역량, 관리자 전문가 비중 측면에서 가장 안전한 지역 중 하나입니다.</p> 
 				<p>다만, 이런 요건들이 전부 수원시 자체의 역량에서 갖춰졌을까요? 다른 제조업 도시들에 비해 상대적으로 서울에 가까운, 수도권 도시이기 때문은 아닐까요? OECD에 따르면 한 국가 안에서 수도 주위에 일자리 창출이 집중되는 경향이 전 세계적으로 나타나고 있습니다. 대체로 수도권 사업장들이 전문가, 연구자를 채용하기가 쉽기 때문에 미래지향적, 기술 기반의 일자리들이 집중되고 있는 것입니다. <br>이를 감안하면 수원과 같이 수도권에서 옅은 색을 보이는 도시들은 앞으로 더 안전해지고, 지방의 짙은 색 도시들은 앞으로 더 위험해질 가능성이 높습니다. </p>
 			</div>
@@ -307,6 +309,7 @@
 			<div class="section paragraph-leftBox transparent-box white-outerLine">
 				<p>제조업 집중도는 심하지만 전체적인 위험도는 크지 않은 지역도 있습니다. </p>
 				<p class="municipal-title">경기도 파주시</p>
+				<span class="chart-container" id="chart-Paju"></span>
 				<p class="map-description">파주시가 대표적인데요. 300인 이상, 1000인 이상, 제1제조업 집중도가 모두 높은 지역입니다. <br>그렇지만 제조업 고령화 정도는 심하지 않습니다. 직장인-주민 괴리도와 과학기술혁신역량 위험도가 아주 낮습니다. 관리자, 전문가들도 꽤 있는 것으로 보이고요. <br>그러다보니 처음 300인 이상 제조업 집중도에서 두드러졌던 색깔이 종합 지도에서는 그리 두드러지지 않습니다. </p>
 			</div>
 		</div>
@@ -324,8 +327,8 @@
 				<p>LAB2050이 ‘제조업 고용위기 시그널 지도’를 통해 하려는 이야기는 여기까지입니다. 스웨덴 말뫼, 호주 애들레이드, 미국과 일본 사례 연구를 통해서 도출한 LAB2050의 ‘제조업 고용위기 대응 모델’로 이야기는 이어집니다. 감사합니다!</p>
 			</div>
 		</div>
-	</div>
 
+	</div>
 
 
 
@@ -338,6 +341,7 @@
 	<script type="text/javascript" src="js/chapter-03.js"></script>
 	<script type="text/javascript" src="js/leaflet_script.js"></script>
 	<script type="text/javascript" src="js/article_script.js"></script>
+	<script type="text/javascript" src="js/radar-chart.js"></script>
 
 </body>
 </html>
