@@ -34,10 +34,12 @@ html {
 ::-moz-selection { /* Code for Firefox */
 	color: #FFFFFF; /*selected text color*/
 	background-color: rgba(40, 97, 177, 0.85); /*block color*/
+	text-shadow: none;
 }
 ::selection {
 	color: #FFFFFF; /*selected text color*/ 
 	background-color: rgba(40, 97, 177, 0.85); /*block color*/
+	text-shadow: none;
 }
 
 body {
