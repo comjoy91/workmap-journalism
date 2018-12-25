@@ -171,29 +171,7 @@ function triggerFunction(_el, _callback) {
 
 
 
-// (function() {
 
-// 	window.addEventListener("resize", resizeThrottler, false);
-
-// 	var resizeTimeout;
-// 	function resizeThrottler() {
-// 		// ignore resize events as long as an actualResizeHandler execution is in the queue
-// 		if ( !resizeTimeout ) {
-// 			resizeTimeout = setTimeout(function() {
-// 				resizeTimeout = null;
-// 				actualResizeHandler();
-
-// 			// The actualResizeHandler will execute at a rate of 15fps
-// 		}, 66);
-//     }
-// }
-
-// function actualResizeHandler() {
-//     // handle the resize event
-//     ...
-// }
-
-// }());
 
 
 
@@ -266,4 +244,29 @@ function resizeMap_chapter_01_03() {
 $(window).on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_01)
 			.on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_02)
 			.on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_03)
-			.on('DOMContentLoaded load orientationchange resize', resizeMap_chapter_01_03);
+			.on('DOMContentLoaded load', resizeMap_chapter_01_03); // resize / orientationchange event에 대해서는 아래에서 처리.
+
+
+(function() {
+
+	window.addEventListener("resize", resizeThrottler, false);
+	window.addEventListener("orientationchange", resizeThrottler, false);
+
+	var resizeTimeout;
+	function resizeThrottler() {
+		// ignore resize events as long as an actualResizeHandler execution is in the queue
+		if ( !resizeTimeout ) {
+			resizeTimeout = setTimeout(function() {
+				resizeTimeout = null;
+				actualResizeHandler();
+
+				// The actualResizeHandler will execute at a rate of 15fps
+			}, 66);
+		}
+	}
+
+	function actualResizeHandler() {
+		resizeMap_chapter_01_03(); 
+	}
+
+}());
