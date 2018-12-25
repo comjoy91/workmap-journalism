@@ -260,8 +260,8 @@ $(window).on('DOMContentLoaded load orientationchange resize scroll', handler_ch
 				resizeTimeout = null;
 				actualResizeHandler();
 
-				// The actualResizeHandler will execute at a rate of 15fps
-			}, 66);
+				// The actualResizeHandler will execute at a rate of 4fps
+			}, 250);
 		}
 	}
 
