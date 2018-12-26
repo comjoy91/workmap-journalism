@@ -123,9 +123,7 @@ var handler_chapter_03_2 = onUnderBottomOfViewport( $("#chapter-03"),
 														function() {}
 													);
 
-
-function resizeMap_chapter_01_03() {
-
+function leaflet_resize() {
 	var windowWidth, windowHeight, wideRatio = 0;
 	windowWidth = $(window).width();
 	windowHeight = $(window).height();
@@ -153,7 +151,9 @@ function resizeMap_chapter_01_03() {
 			map_03.setView([35.95, 127.6], 6.5);
 		}
 	}
+}
 
+map_01.on("zoomend moveend", function(_event) {
 	var mapSvgBound_01 = layer_province_border_01.getBounds();
 	var mapSvgNW_01 = map_01.latLngToContainerPoint(mapSvgBound_01.getNorthWest());
 	var mapSvgSE_01 = map_01.latLngToContainerPoint(mapSvgBound_01.getSouthEast());
@@ -161,7 +161,9 @@ function resizeMap_chapter_01_03() {
 	var mapSvgLeft_01 = mapSvgNW_01.x;
 	var mapSvgTop_01 = mapSvgNW_01.y;
 	$("#chapter-01-svg").width( mapSvgWidth_01 ).css( { top: mapSvgTop_01+'px', left: mapSvgLeft_01+'px' } );
+});
 
+map_03.on("zoomend moveend", function(_event) {
 	var mapSvgBound_03 = layer_province_border_03.getBounds();
 	var mapSvgNW_03 = map_03.latLngToContainerPoint(mapSvgBound_03.getNorthWest());
 	var mapSvgSE_03 = map_03.latLngToContainerPoint(mapSvgBound_03.getSouthEast());
@@ -169,6 +171,11 @@ function resizeMap_chapter_01_03() {
 	var mapSvgLeft_03 = mapSvgNW_03.x;
 	var mapSvgTop_03 = mapSvgNW_03.y;
 	$("#chapter-03-svg").width( mapSvgWidth_03 ).css( { top: mapSvgTop_03+'px', left: mapSvgLeft_03+'px' } );	
+});
+
+function resizeMap_chapter_01_03() {
+
+	
 }
 
 
@@ -181,13 +188,6 @@ $(window).on('DOMContentLoaded load orientationchange resize scroll', handler_ch
 			.on('orientationchange resize scroll', handler_chapter_01_2)
 			.on('orientationchange resize scroll', handler_chapter_02_2)
 			.on('orientationchange resize scroll', handler_chapter_03_2)
-			.on('DOMContentLoaded load', resizeMap_chapter_01_03); // resize & orientationchange event에 대해서는 아래에서 처리.
-
-map_01.on("resize", function(_event) {
-	resizeMap_chapter_01_03();
-});
-map_03.on("resize", function(_event) {
-	resizeMap_chapter_01_03();
-});
+			.on('DOMContentLoaded load', leaflet_resize); // resize & orientationchange event에 대해서는 아래에서 처리.
 
 

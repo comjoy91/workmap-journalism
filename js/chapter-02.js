@@ -367,7 +367,7 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 						});
 
 						
-						$(window).one('DOMContentLoaded load', function() {
+						// $(window).one('DOMContentLoaded', function() {
 							$("#chapter-02 div.page").each( function(index) { 
 
 								var chapter_02_thisPage = $("#chapter-02 div.page").eq(index);
@@ -380,5 +380,5 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 								else if ( index >= $("#chapter-02 div.page").length-1 ) 
 									changeLayer_02_scrollToBottom_ready( index );
 							});
-						});
+						// });
 				});

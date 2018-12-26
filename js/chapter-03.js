@@ -98,7 +98,7 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 							$(window).on('resize scroll', onUnderBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} ));
 						})
 
-						$(window).one('DOMContentLoaded load', function() {
+						// $(window).one('DOMContentLoaded', function() {
 							$("#chapter-03 div.page").each( function(index) { 
 								var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
 
@@ -110,6 +110,6 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 								else if ( index >= $("#chapter-03 div.page").length-1 ) 
 									changeLayer_03( index );
 							});
-						});
+						// });
 						
 				});

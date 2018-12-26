@@ -516,7 +516,7 @@ div.fixed-background.visible {
 			height: 2em;
 			flex-grow: 1;*/
 			margin: 1px;
-			padding: 0em 0.5em 0.25em 0.5em;
+			padding: 0em 0.5em 0.1em 0.5em;
 			width: auto;
 
 			transition-property: background-color, color, transform;
