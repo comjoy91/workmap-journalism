@@ -94,20 +94,22 @@ Promise.all( [ //d3.text("@images/svg_maps/02_cumulative-red-maps/02-1_hiring300
 							var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
 							var changeLayer_03_index = function() { changeLayer_03(index) };
 							
-							$(window).on('DOMContentLoaded load resize scroll', onAboveBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} )); // 트리거가 일시적으로 작동 
-							$(window).on('scroll', onUnderBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} ));
+							$(window).on('resize scroll', onAboveBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} )); // 트리거가 일시적으로 작동 
+							$(window).on('resize scroll', onUnderBottomOfViewport( chapter_03_thisPage, changeLayer_03_index, function(){} ));
 						})
 
-						$("#chapter-03 div.page").each( function(index) { 
-							var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
+						$(window).one('DOMContentLoaded load', function() {
+							$("#chapter-03 div.page").each( function(index) { 
+								var chapter_03_thisPage = $("#chapter-03 div.page").eq(index);
 
-							if ( !isElementAboveBottomOfViewport( chapter_03_thisPage ) ) {
-								if (index < 1) changeLayer_03( 0 ); 
-								else changeLayer_03( index-1 );
-								return false; // pause .each() loop
-							}
-							else if ( index >= $("#chapter-03 div.page").length-1 ) 
-								changeLayer_03( index );
+								if ( !isElementAboveBottomOfViewport( chapter_03_thisPage ) ) {
+									if (index < 1) changeLayer_03( 0 ); 
+									else changeLayer_03( index-1 );
+									return false; // pause .each() loop
+								}
+								else if ( index >= $("#chapter-03 div.page").length-1 ) 
+									changeLayer_03( index );
+							});
 						});
 						
 				});

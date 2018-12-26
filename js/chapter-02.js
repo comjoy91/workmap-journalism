@@ -367,17 +367,18 @@ Promise.all( [ d3.text("@images/svg_maps/01_single-orange-maps/01-0_single-orang
 						});
 
 						
-						$("#chapter-02 div.page").each( function(index) { 
+						$(window).one('DOMContentLoaded load', function() {
+							$("#chapter-02 div.page").each( function(index) { 
 
-							var chapter_02_thisPage = $("#chapter-02 div.page").eq(index);
+								var chapter_02_thisPage = $("#chapter-02 div.page").eq(index);
 
-							if ( !isElementAboveBottomOfViewport( chapter_02_thisPage ) ) {
-								if (index < 1) changeLayer_02_scrollToBottom_ready( 0 ); 
-								else changeLayer_02_scrollToBottom_ready( index-1 );
-								return false; // pause .each() loop
-							}
-							else if ( index >= $("#chapter-02 div.page").length-1 ) 
-								changeLayer_02_scrollToBottom_ready( index );
+								if ( !isElementAboveBottomOfViewport( chapter_02_thisPage ) ) {
+									if (index < 1) changeLayer_02_scrollToBottom_ready( 0 ); 
+									else changeLayer_02_scrollToBottom_ready( index-1 );
+									return false; // pause .each() loop
+								}
+								else if ( index >= $("#chapter-02 div.page").length-1 ) 
+									changeLayer_02_scrollToBottom_ready( index );
+							});
 						});
-						
 				});
