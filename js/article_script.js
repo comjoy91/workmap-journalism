@@ -263,27 +263,3 @@ map_01.on("resize", function(_event) {
 map_03.on("resize", function(_event) {
 	resizeMap_chapter_01_03();
 });
-
-
-// (function() {
-
-// 	window.addEventListener("resize", resizeThrottler, false);
-// 	window.addEventListener("orientationchange", resizeThrottler, false);
-
-// 	var resizeTimeout;
-// 	function resizeThrottler() {
-// 		// ignore resize events as long as an actualResizeHandler execution is in the queue
-// 		if ( !resizeTimeout ) {
-// 			resizeTimeout = setTimeout(function() {
-// 				resizeTimeout = null;
-// 				actualResizeHandler();
-// 				// The actualResizeHandler will execute at a rate of 4fps
-// 			}, 250);
-// 		}
-// 	}
-
-// 	function actualResizeHandler() {
-// 		resizeMap_chapter_01_03(); 
-// 	}
-
-// }());
