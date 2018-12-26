@@ -58,6 +58,7 @@ div, p {
 }
 
 p {
+	font-size: 1em;
 	margin: 0 0 calc(4em / 3) 0;
 	padding: 0 0 0 0;
 }
@@ -373,8 +374,8 @@ div.fixed-background.visible {
 	/* ------------ page 01-0: #site_title ------------ */
 
 	#page-01-0 {
-		height: 100vh;
-		padding-top: 52vh;
+		padding-top: 50vh;
+		padding-bottom: 30vh;
 	}
 
 		#site_title {
@@ -726,10 +727,10 @@ div.fixed-background.visible {
 	/* ------------ page 03-0 ~ 03-4  ------------ */
 
 	#page-03-0, #page-03-1, #page-03-2, #page-03-3, #page-03-4, #page-03-5 {
-		height: 100vh;
-		margin-bottom: 52vh;
+		min-height: 100vh;
+		margin-bottom: 72vh;
 	}
 
 	#page-03-6 {
-		margin-bottom: 40vh;
+		padding-bottom: 40vh;
 	}
