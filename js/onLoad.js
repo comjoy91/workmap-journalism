@@ -38,11 +38,12 @@ var map_03 = L.map( 'chapter-03-map', {
 var attribution_03 = L.control.attribution({position: 'topright'}).addTo(map_03);
 // L.control.zoom({position: 'topleft'}).addTo(map);
 
+
 var layer_province_border_01 = L.geoJson(provinceGeoJSON, {
 	style: {
 		opacity: 0, 
 		fillOpacity: 0,
-		weight: province_style.weight
+		weight: 1.4
 	},
 	smoothFactor: 0, 
 	interactive: false
@@ -51,7 +52,7 @@ var layer_province_border_03 = L.geoJson(provinceGeoJSON, {
 	style: {
 		opacity: 0, 
 		fillOpacity: 0,
-		weight: province_style.weight
+		weight: 1.4
 	},
 	smoothFactor: 0, 
 	interactive: false
