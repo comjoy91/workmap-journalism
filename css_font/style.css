@@ -43,6 +43,9 @@ html {
 }
 
 body {
+	text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+
 	padding: 0;
 	margin: 0;
 	height: 0;
@@ -426,7 +429,7 @@ div.fixed-background.visible {
 	/* ------------ page 01-2:  ------------ */
 
 	#page-01-2 {
-		height: 100vh;
+		/*height: 100vh;*/
 		padding-top: 52vh;
 		margin-bottom: 50vh;
 	}
