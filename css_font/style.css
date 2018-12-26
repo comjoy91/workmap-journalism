@@ -300,6 +300,23 @@ div.fixed-background.visible {
 
 
 
+/* ------------ "introducing-workmap" text ------------ */
+p.introducing-workmap {
+	font-family: 'Spoqa Han Sans', sans-serif;
+	font-weight: 400;
+	line-height: 1.4;
+	font-size: 0.8em;
+
+    text-shadow: none;
+}
+	p.introducing-workmap a:link, p.introducing-workmap a:visited {
+		color: #326891;
+		text-decoration: underline;
+
+	    text-shadow: none;
+	}
+
+
 
 /* ------------ map SVGs: .tooltip, highlighted shapes; ------------ */
 
@@ -399,16 +416,10 @@ div.fixed-background.visible {
 			color: #000000;
 			text-decoration: none;
 		}
-		@media all and (min-width:768px) and (min-aspect-ratio: 2/1), /* "iPhone X", widescreen aspect */ 
-				all and (max-width:767px) { /* mobile phone */ 
-			#site_title {
-				font-size: 28px;
-			}
-		}
 				#site_title_logo {
 					width: 1.2em;
 					height: 1.2em;
-					margin: 0.05em 0.2em 0 0;
+					margin: 0.05em 0.2em 0 -0.03em;
 					cursor: pointer;
 				}
 					#site_title_logo img {
@@ -420,6 +431,14 @@ div.fixed-background.visible {
 					text-decoration: none;
 					cursor: pointer;
 				}
+
+
+		@media all and (min-width:768px) and (min-aspect-ratio: 2/1), /* "iPhone X", widescreen aspect */ 
+				all and (max-width:767px) { /* mobile phone */ 
+			#site_title {
+				font-size: 28px;
+			}
+		}
 
 	/* ------------ page 01-1:  ------------ */
 
