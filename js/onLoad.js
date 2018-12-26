@@ -189,5 +189,7 @@ $(window).on('DOMContentLoaded load orientationchange resize scroll', handler_ch
 			.on('orientationchange resize scroll', handler_chapter_02_2)
 			.on('orientationchange resize scroll', handler_chapter_03_2)
 			.on('DOMContentLoaded load', leaflet_resize); // resize & orientationchange event에 대해서는 아래에서 처리.
-
+map_01.on("resize", function(e) {
+	leaflet_resize();
+});
 
