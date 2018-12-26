@@ -60,6 +60,12 @@ var layer_province_border_03 = L.geoJson(provinceGeoJSON, {
 
 
 
+// ---------- D3 tooltips ----------
+
+
+var tooltip_orange = d3.select("#tooltip-orange");
+var tooltip_red = d3.select("#tooltip-red");
+
 
 // ---------- FUNCTIONS AND TRIGGERS ----------
 
