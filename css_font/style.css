@@ -721,8 +721,8 @@ div.fixed-background.visible {
 	/* ------------ page 03-0 ~ 03-6  ------------ */
 
 	#page-03-0, #page-03-1, #page-03-2, #page-03-3, #page-03-4, #page-03-5 {
-		min-height: 100vh;
-		margin-bottom: 72vh;
+		/*min-height: 100vh;*/
+		padding-bottom: 100vh;
 	}
 
 	#page-03-6 {
@@ -731,12 +731,14 @@ div.fixed-background.visible {
 
 		div.chart-container {
 			display: flex;
-				
+			flex-wrap: wrap;
+
 			margin-left: -6%;
 			width: 100%;
 		}
 			div.chart-container object.radar-chart {
 				width: 48%;
+				min-width: 180px;
 			    /*background: rgba(255, 255, 255, 0.8);*/
 			}
 				div.chart-container object.radar-chart svg {
@@ -774,3 +776,13 @@ div.fixed-background.visible {
 										#ffffff 3.84068px -1.11766px 0px, 
 										#ffffff 3.9978px -0.132717px 0px;
 					}
+
+		@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+			.municipal-title {
+				text-align: center;
+			}
+			div.chart-container {	
+				justify-content: center;
+				margin-left: 0;
+			}
+		}
