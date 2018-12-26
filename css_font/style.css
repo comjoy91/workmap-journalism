@@ -738,7 +738,7 @@ div.fixed-background.visible {
 		}
 			div.chart-container object.radar-chart {
 				width: 48%;
-				min-width: 180px;
+				min-width: 160px;
 			    /*background: rgba(255, 255, 255, 0.8);*/
 			}
 				div.chart-container object.radar-chart svg {
