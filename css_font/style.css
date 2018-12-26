@@ -233,7 +233,7 @@ grayHighlight {
 	margin-left: calc(100% - 15% - 480px);
 }
 
-.white-outerLine p, .white-outerLine a {
+.white-outerLine p, .white-outerLine a ,#site_title_text {
 	text-shadow: 	#ffffff 4px 0px 0px, 
 					#ffffff 3.87565px 0.989616px 0px, 
 					#ffffff 3.51033px 1.9177px 0px, 
