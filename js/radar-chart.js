@@ -40,12 +40,15 @@
 	  maxValue: 10,
 	  labelFactor: 1.4, 
 	  levels: 5,
+	  dotRadius: 2,
 	  roundStrokes: true,
+	  opacityCircles: 0.5, 
+	  colorCircles: ['rgba(255, 255, 255, 0.35)', 'rgba(255, 255, 255, 0.35)', 'rgba(255, 255, 255, 0.35)', 'rgba(255, 255, 255, 0.35)', 'hsla(35, 100%, 60%, 0.7)'],
 	  color: color
 	};
 	//Call function to draw the Radar chart
 
-	d3.selectAll(".chart-container").each( function( _data, _index, _node ) {
+	d3.selectAll("div.chart-container object.radar-chart").each( function( _data, _index, _node ) {
 		RadarChart(this, radarChart_data(_index), radarChartOptions);
 	});
 	
