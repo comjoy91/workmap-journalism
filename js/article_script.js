@@ -172,49 +172,57 @@ function triggerFunction(_el, _callback) {
 
 
 
-
-
-
-
-var handler_chapter_01 = onAboveBottomOfViewport_initial( $("#chapter-01"), 
+var handler_chapter_01_1 = onAboveBottomOfViewport_initial( $("#chapter-01"), 
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-01-background").addClass("visible");
-															$("#layer-names").removeClass("visible");
+															console.log("chapter-01");
+														}, 
+														function() {}
+													);
+var handler_chapter_01_2 = onUnderBottomOfViewport( $("#chapter-01"), 
+														function() {
+															$(".fixed-background").removeClass("visible");
+															$("#chapter-01-background").addClass("visible");
 															console.log("chapter-01");
 														}, 
 														function() {}
 													);
 
-var handler_chapter_02 = onAboveBottomOfViewport_initial( $("#chapter-02"),  
+var handler_chapter_02_1 = onAboveBottomOfViewport_initial( $("#chapter-02"),  
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-02-background").addClass("visible");
-															$("#layer-names").addClass("visible");
 															console.log("chapter-02");
 														}, 
+														function() {}
+													);
+var handler_chapter_02_2 = onUnderBottomOfViewport( $("#chapter-02"),  
 														function() {
 															$(".fixed-background").removeClass("visible");
-															$("#chapter-01-background").addClass("visible");
-															$("#layer-names").removeClass("visible");
-															console.log("chapter-01");
-														}
-												);
+															$("#chapter-02-background").addClass("visible");
+															console.log("chapter-02");
+														}, 
+														function() {}
+													);
 
-var handler_chapter_03 = onAboveBottomOfViewport_initial( $("#chapter-03"), 
+var handler_chapter_03_1 = onAboveBottomOfViewport_initial( $("#chapter-03"), 
 														function() {
 															$(".fixed-background").removeClass("visible");
 															$("#chapter-03-background").addClass("visible");
-															$("#layer-names").removeClass("visible");
 															$("#layer-names div").removeClass('orange-background').addClass('red-background');
 															console.log("chapter-03");
 														}, 
+														function() {}
+													);
+var handler_chapter_03_2 = onUnderBottomOfViewport( $("#chapter-03"), 
 														function() {
 															$(".fixed-background").removeClass("visible");
-															$("#chapter-02-background").addClass("visible");
-															$("#layer-names").addClass("visible");
-															console.log("chapter-02");
-														}
+															$("#chapter-03-background").addClass("visible");
+															$("#layer-names div").removeClass('orange-background').addClass('red-background');
+															console.log("chapter-03");
+														}, 
+														function() {}
 													);
 
 
@@ -241,32 +249,41 @@ function resizeMap_chapter_01_03() {
 
 
 //jQuery
-$(window).on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_01)
-			.on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_02)
-			.on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_03)
-			.on('DOMContentLoaded load', resizeMap_chapter_01_03); // resize / orientationchange event에 대해서는 아래에서 처리.
+$(window).on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_01_1)
+			.on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_02_1)
+			.on('DOMContentLoaded load orientationchange resize scroll', handler_chapter_03_1)
+			.on('orientationchange resize scroll', handler_chapter_01_2)
+			.on('orientationchange resize scroll', handler_chapter_02_2)
+			.on('orientationchange resize scroll', handler_chapter_03_2)
+			.on('DOMContentLoaded load', resizeMap_chapter_01_03); // resize & orientationchange event에 대해서는 아래에서 처리.
+
+map_01.on("resize", function(_event) {
+	resizeMap_chapter_01_03();
+});
+map_03.on("resize", function(_event) {
+	resizeMap_chapter_01_03();
+});
 
 
-(function() {
+// (function() {
 
-	window.addEventListener("resize", resizeThrottler, false);
-	window.addEventListener("orientationchange", resizeThrottler, false);
+// 	window.addEventListener("resize", resizeThrottler, false);
+// 	window.addEventListener("orientationchange", resizeThrottler, false);
 
-	var resizeTimeout;
-	function resizeThrottler() {
-		// ignore resize events as long as an actualResizeHandler execution is in the queue
-		if ( !resizeTimeout ) {
-			resizeTimeout = setTimeout(function() {
-				resizeTimeout = null;
-				actualResizeHandler();
+// 	var resizeTimeout;
+// 	function resizeThrottler() {
+// 		// ignore resize events as long as an actualResizeHandler execution is in the queue
+// 		if ( !resizeTimeout ) {
+// 			resizeTimeout = setTimeout(function() {
+// 				resizeTimeout = null;
+// 				actualResizeHandler();
+// 				// The actualResizeHandler will execute at a rate of 4fps
+// 			}, 250);
+// 		}
+// 	}
 
-				// The actualResizeHandler will execute at a rate of 4fps
-			}, 250);
-		}
-	}
+// 	function actualResizeHandler() {
+// 		resizeMap_chapter_01_03(); 
+// 	}
 
-	function actualResizeHandler() {
-		resizeMap_chapter_01_03(); 
-	}
-
-}());
+// }());
