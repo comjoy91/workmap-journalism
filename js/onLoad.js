@@ -175,12 +175,6 @@ map_03.on("zoomend moveend", function(_event) {
 	$("#chapter-03-svg").width( mapSvgWidth_03 ).css( { top: mapSvgTop_03+'px', left: mapSvgLeft_03+'px' } );	
 });
 
-function resizeMap_chapter_01_03() {
-
-	
-}
-
-
 
 
 //jQuery
@@ -194,4 +188,5 @@ $(window).on('DOMContentLoaded load orientationchange resize scroll', handler_ch
 map_01.on("resize", function(e) {
 	leaflet_resize();
 });
+
 

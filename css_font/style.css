@@ -82,7 +82,7 @@ p {
 
 /* ------------ typo ------------ */
 
-sanSerif {
+sanSerif, a.sanSerif-link {
 	font-family: 'Spoqa Han Sans', sans-serif;
 	font-weight: 400;
 	font-size: 1em;
@@ -112,6 +112,95 @@ grayHighlight {
 	padding: 0.2em 0 0.15em 0;
 
 	text-shadow: none;
+}
+
+.white-outerLine p, .white-outerLine a {
+	text-shadow: 	#ffffff 0.2em 0em 0px, 
+					#ffffff 0.19319em 0.05176em 0px, 
+					#ffffff 0.17321em 0.1em 0px, 
+					#ffffff 0.14142em 0.14142em 0px, 
+					#ffffff 0.1em 0.17321em 0px, 
+					#ffffff 0.05176em 0.19319em 0px, 
+					#ffffff 0em 0.2em 0px, 
+					#ffffff -0.05176em 0.19319em 0px, 
+					#ffffff -0.1em 0.17321em 0px, 
+					#ffffff -0.14142em 0.14142em 0px, 
+					#ffffff -0.17321em 0.1em 0px, 
+					#ffffff -0.19319em 0.05176em 0px,
+					#ffffff -0.2em 0em 0px,  
+					#ffffff -0.19319em -0.05176em 0px, 
+					#ffffff -0.17321em -0.1em 0px,
+					#ffffff -0.14142em -0.14142em 0px,  
+					#ffffff -0.1em -0.17321em 0px, 
+					#ffffff -0.05176em -0.19319em 0px, 
+					#ffffff 0em -0.2em 0px,
+					#ffffff 0.05176em -0.19319em 0px, 
+					#ffffff 0.1em -0.17321em 0px,  
+					#ffffff 0.14142em -0.14142em 0px, 
+					#ffffff 0.17321em -0.1em 0px,
+					#ffffff 0.19319em -0.05176em 0px;
+} 
+
+#site_title_text {
+	text-shadow: 	#ffffff 4px 0px 0px, 
+					#ffffff 3.87565px 0.989616px 0px, 
+					#ffffff 3.51033px 1.9177px 0px, 
+					#ffffff 2.92676px 2.72656px 0px, 
+					#ffffff 2.16121px 3.36588px 0px, 
+					#ffffff 1.26129px 3.79594px 0px, 
+					#ffffff 0.282949px 3.98998px 0px, 
+					#ffffff -0.712984px 3.93594px 0px, 
+					#ffffff -1.66459px 3.63719px 0px, 
+					#ffffff -2.51269px 3.11229px 0px, 
+					#ffffff -3.20457px 2.39389px 0px, 
+					#ffffff -3.69721px 1.52664px 0px, 
+					#ffffff -3.95997px 0.56448px 0px, 
+					#ffffff -3.97652px -0.432781px 0px, 
+					#ffffff -3.74583px -1.40313px 0px, 
+					#ffffff -3.28224px -2.28625px 0px, 
+					#ffffff -2.61457px -3.02721px 0px, 
+					#ffffff -1.78435px -3.57996px 0px, 
+					#ffffff -0.843183px -3.91012px 0px, 
+					#ffffff 0.150409px -3.99717px 0px, 
+					#ffffff 1.13465px -3.8357px 0px, 
+					#ffffff 2.04834px -3.43574px 0px, 
+					#ffffff 2.83468px -2.82216px 0px, 
+					#ffffff 3.44477px -2.03312px 0px, 
+					#ffffff 3.84068px -1.11766px 0px, 
+					#ffffff 3.9978px -0.132717px 0px;
+}
+
+p.introducing-workmap {
+	font-family: 'Spoqa Han Sans', sans-serif;
+	font-weight: 400;
+	line-height: 1.6;
+	font-size: 0.8em;
+
+    /*text-shadow: none;*/
+}
+p a:link, p a:visited {
+    font-family: 'Spoqa Han Sans', sans-serif;
+	color: #326891;
+	background-color: #ffffff;
+	text-decoration: underline;
+	font-weight: 400;
+
+    text-shadow: none;
+}
+
+p.footnote, footnote {
+	font-family: 'Spoqa Han Sans', sans-serif;
+	font-size: 0.65em;
+	font-weight: 300;
+}
+p.figure-note {
+	font-family: 'Spoqa Han Sans', sans-serif;
+	font-size: 0.75em;
+	font-weight: 600;
+	color: #666666;
+	text-align: center;
+
+	margin-bottom: 3em;
 }
 
 
@@ -150,8 +239,8 @@ grayHighlight {
 	margin-bottom: 0;
 	pointer-events: none; /* background에서 hover event가 작동되도록 함. */
 }
-	.chapter p, .chapter a, .chapter img, .chapter .chart-container {
-		pointer-events: auto; /* 하지만 p, a, img tag 및 radar chart에서는 마우스가 이들과 상호작용해서 작동되도록 함. */
+	.chapter p, .chapter a, .chapter img, .chapter object, #bar-chart-02-legend, div#single-orange-maps {
+		pointer-events: auto; /* 하지만 p, a, img tag 및 chart와 #single-orange-maps에서는 마우스가 이들과 상호작용해서 작동되도록 함. */
 	}
 
 
@@ -180,7 +269,7 @@ grayHighlight {
 	padding: 33px 40px 18px 40px;
 	/*padding-bottom: calc(40px - 4/3em);*/
 }
-@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+@media all and (max-width:600px) { /* "most of mobile phone", portrait layout and "narrow widescreen" layou*/
 	.white-box {	
 		width: 88%;
 		max-width: 525px;
@@ -209,17 +298,12 @@ grayHighlight {
 	margin-right: auto;
 	padding-bottom: 6rem;
 }
-.article-graph {
-	width: 100%;
-	margin-top: 1rem;
-	margin-bottom: 2rem;
-}
 
 
 .paragraph-leftBox {
 	margin-left: 12%;
 }
-@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+@media all and (max-width:600px) { /* "most of mobile phone", portrait layout and "narrow widescreen" layou */
 	.paragraph-leftBox {
 		margin-left: 5%;
 	}
@@ -233,34 +317,7 @@ grayHighlight {
 	margin-left: calc(100% - 15% - 480px);
 }
 
-.white-outerLine p, .white-outerLine a ,#site_title_text {
-	text-shadow: 	#ffffff 4px 0px 0px, 
-					#ffffff 3.87565px 0.989616px 0px, 
-					#ffffff 3.51033px 1.9177px 0px, 
-					#ffffff 2.92676px 2.72656px 0px, 
-					#ffffff 2.16121px 3.36588px 0px, 
-					#ffffff 1.26129px 3.79594px 0px, 
-					#ffffff 0.282949px 3.98998px 0px, 
-					#ffffff -0.712984px 3.93594px 0px, 
-					#ffffff -1.66459px 3.63719px 0px, 
-					#ffffff -2.51269px 3.11229px 0px, 
-					#ffffff -3.20457px 2.39389px 0px, 
-					#ffffff -3.69721px 1.52664px 0px, 
-					#ffffff -3.95997px 0.56448px 0px, 
-					#ffffff -3.97652px -0.432781px 0px, 
-					#ffffff -3.74583px -1.40313px 0px, 
-					#ffffff -3.28224px -2.28625px 0px, 
-					#ffffff -2.61457px -3.02721px 0px, 
-					#ffffff -1.78435px -3.57996px 0px, 
-					#ffffff -0.843183px -3.91012px 0px, 
-					#ffffff 0.150409px -3.99717px 0px, 
-					#ffffff 1.13465px -3.8357px 0px, 
-					#ffffff 2.04834px -3.43574px 0px, 
-					#ffffff 2.83468px -2.82216px 0px, 
-					#ffffff 3.44477px -2.03312px 0px, 
-					#ffffff 3.84068px -1.11766px 0px, 
-					#ffffff 3.9978px -0.132717px 0px;
-}
+
 
 
 
@@ -300,21 +357,6 @@ div.fixed-background.visible {
 
 
 
-/* ------------ "introducing-workmap" text ------------ */
-p.introducing-workmap {
-	font-family: 'Spoqa Han Sans', sans-serif;
-	font-weight: 400;
-	line-height: 1.4;
-	font-size: 0.8em;
-
-    text-shadow: none;
-}
-	p.introducing-workmap a:link, p.introducing-workmap a:visited {
-		color: #326891;
-		text-decoration: underline;
-
-	    text-shadow: none;
-	}
 
 
 
@@ -394,7 +436,7 @@ p.introducing-workmap {
 	/* ------------ page 01-0: #site_title ------------ */
 
 	#page-01-0 {
-		padding-top: 50vh;
+		padding-top: 40vh;
 		padding-bottom: 30vh;
 	}
 
@@ -440,7 +482,65 @@ p.introducing-workmap {
 			}
 		}
 
-	/* ------------ page 01-1:  ------------ */
+	/* ------------ page 01-1: bar charts ------------ */
+
+	.article-graph {
+		width: 100%;
+		margin-top: 1rem;
+		margin-bottom: 2rem;
+		
+		font-size: 0.65rem;
+	}
+
+		object.article-graph svg {
+			width: 100%;
+			height: 100%;
+			font-size: inherit;
+		}
+
+			object.article-graph svg g {
+				font-family: 'Spoqa Han Sans';
+				font-weight: 400;
+				font-size: inherit;
+			}
+
+	div#bar-chart-02-legend {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		font-size: 0.65em;
+		margin-top: 0em;
+		margin-bottom: 1em;
+	}
+		div#bar-chart-02-legend div.legend-pair {
+			display: flex;
+			align-items: center;
+			padding: 0 1em;
+		}
+			div#bar-chart-02-legend div.legend-pair div.skill-colour{
+				width: 2em;
+				height: 1em;
+				margin-right: 0.25em;
+			}
+			div#bar-chart-02-legend div.legend-pair div.legend-text{
+				font-family: 'Spoqa Han Sans';
+				font-weight: 400;
+			}
+
+	.low-skill-colour {
+		background-color: #62cfe2;
+		fill: #62cfe2;
+	}
+
+	.middle-skill-colour, .industry-300 {
+		background-color: hsla(0, 100%, 75%, 1.0);
+		fill: hsla(0, 100%, 75%, 1.0);
+	}
+
+	.high-skill-colour, .other-industry {
+		background-color: #6699cc;
+		fill: #6699cc;
+	}
 
 
 
@@ -460,13 +560,17 @@ p.introducing-workmap {
 		width: 100%;
 
 		display: flex;
-		align-items: flex-end;
+		/*align-items: flex-end;*/
+		align-items: stretch;
 		flex-wrap: wrap;
 		justify-content: space-between;
 
 	}
 
-		#single-orange-maps .layer-and-name {			
+		#single-orange-maps .layer-and-name {	
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;		
 			width: 24%;
 		}
 			.layer-and-name img {
@@ -568,7 +672,7 @@ p.introducing-workmap {
 				}
 	}
 
-	@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+	@media all and (max-width:600px) /*and (max-aspect-ratio: 1/1)*/ { /* "most of mobile phone" portrait layout */
 		#layer-names {
 			flex-direction: row-reverse;
 			flex-wrap: wrap;
@@ -721,8 +825,8 @@ p.introducing-workmap {
 
 		#chapter-03-svg g.municipalLayer .active-shape {
 			opacity: 1.0;
-			-webkit-transition: opacity 400ms cubic-bezier(0.77, 0, 0.175, 1);
-			transition:         opacity 400ms cubic-bezier(0.77, 0, 0.175, 1);
+			-webkit-transition: opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
+			transition:         opacity 600ms cubic-bezier(0.77, 0, 0.175, 1);
 		}
 			#chapter-03-svg g.municipalLayer .active-shape.transparent-shape {
 				opacity: 0.0;
@@ -796,7 +900,7 @@ p.introducing-workmap {
 										#ffffff 3.9978px -0.132717px 0px;
 					}
 
-		@media all and (max-width:600px) and (max-aspect-ratio: 1/1) { /* "most of mobile phone" portrait layout */
+		@media all and (max-width:600px) { /* "most of mobile phone", portrait layout and "narrow widescreen" layout */
 			.municipal-title {
 				text-align: center;
 			}
