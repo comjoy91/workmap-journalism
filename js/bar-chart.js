@@ -83,7 +83,7 @@ var build_barChart_02 = function() {
 	var margin_02 = {	top: 0, 
 						right: $("#bar-chart-02").width()*0.02, 
 						bottom: parseFloat($("#bar-chart-02").css("font-size")) + 12,  
-						left: 7.628 * parseFloat($("#bar-chart-02").css("font-size")) + 6 },
+						left: 7.628 * parseFloat($("#bar-chart-02").css("font-size")) + 9 },
 		width_02 = $("#bar-chart-02").width() - margin_02.left - margin_02.right,
 		height_02 = parseFloat($("#bar-chart-02").css("font-size"))*2.2*25 - margin_02.top - margin_02.bottom;
 	var svgWidth_02 = width_02 + margin_02.left + margin_02.right, 
@@ -119,7 +119,7 @@ var build_barChart_02 = function() {
 
 	// add the y Axis
 	var axisY_02_nation = svg_02.append("g")
-					.call(d3.axisLeft(y_02_nation).tickSize(-width_02).tickPadding(6));
+					.call(d3.axisLeft(y_02_nation).tickSize(-width_02).tickPadding(9));
 	axisY_02_nation.selectAll(".tick:nth-child(even) line").attr("stroke", "#eee").attr("stroke-width", y_02_nation.bandwidth());
 	axisY_02_nation.selectAll(".tick:nth-child(odd) line").attr("stroke", "#fff").attr("stroke-width", y_02_nation.bandwidth());
 	axisY_02_nation.select(".domain").remove();
