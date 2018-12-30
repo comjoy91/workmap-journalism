@@ -20,7 +20,7 @@ var RadarChart = function (/*id*/_DOM, data, options) {
 		opacityArea: 0.35, 	//The opacity of the area of the blob
 		dotRadius: 4, 			//The size of the colored circles of each blog
 		opacityCircles: 0.1, 	//The opacity of the circles of each blob
-		colorCircles: ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'],//The colour of the circles of each blob
+		colorCircles: ['#CDCDCD', '#CDCDCD', '#CDCDCD', '#CDCDCD', '#CDCDCD'],//The colour of the circles of each blob
 		strokeWidth: 2, 		//The width of the stroke around each blob
 		roundStrokes: false,	//If true the area and stroke will follow a round path (cardinal-closed)
 		color: d3.schemeCategory10	//Color function

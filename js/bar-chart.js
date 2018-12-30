@@ -1,3 +1,9 @@
+// https://bl.ocks.org/caravinden/eb0e5a2b38c8815919290fa838c6b63b
+// https://bl.ocks.org/mbostock/3887051
+// https://bl.ocks.org/mbostock/3371592
+
+
+
 
 // ------------------------ #bar-chart-01 ------------------------------
 
@@ -93,11 +99,11 @@ var build_barChart_02 = function() {
 	var keyArray = [ "low-skill-colour", "middle-skill-colour", "high-skill-colour" ];
 
 	// set the ranges
-	var y_02_nation = d3.scaleBand()
+	var y_02_nation = d3.scaleBand() // range of national group
 						.domain(_national_jobCreation.map(function(d) { return d.nation; }))
 						.range([0, height_02])
 						.padding(0);
-	var y_02_bar = d3.scaleBand()
+	var y_02_bar = d3.scaleBand() // range of bars(skills) in a national group 
 						.domain(keyArray)
 						.range([0, y_02_nation.bandwidth()])
 						.paddingInner(0).paddingOuter(0.5);

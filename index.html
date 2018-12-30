@@ -2,6 +2,38 @@
 <html>
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129343110-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-129343110-2');
+	</script>
+
+	<!-- SEO tags. LIVE MODE ONLY. Comment out all of the below if error occurs in your DEV env. -->
+	<!-- <meta name="description"			content="1948년부터 지금까지. 당신이 투표함에 넣었던 표가 모여, 한국 역대 공직선거 데이터 지도가 되었습니다.">
+	<meta name="author"					content="조현익 Hyunik Cho">
+	<meta name="copyright"				content="workingHyunik@gmail.com">
+	<meta name="application-name"		content="대한민국 전국투표전도">
+	<link rel="shortcut icon" 			href="/assets/img/social_media/favicon.ico"/> -->
+
+	<!-- <meta property="og:url"				content="http://skorea-election-map.org/" />
+	<meta property="og:type"			content="article" />
+	<meta property="og:title"			content="대한민국 전국투표전도" />
+	<meta property="og:description"		content="1948년부터 지금까지. 당신이 투표함에 넣었던 표가 모여, 한국 역대 공직선거 데이터 지도가 되었습니다." />
+	<meta property="og:image"			content="http://skorea-election-map.org/assets/img/social_media/facebook_thumbnail_02.png" /> -->
+	<!-- <meta property="og:image:type"		content="image/png" /> -->
+	<!-- <meta property="fb:app_id"			content="350202635492695" /> -->
+	<!-- <meta property="og:locale"			content="ko_KR" /> -->
+
+	<!-- <meta name="twitter:card"			content="summary_large_image">
+	<meta name="twitter:title"			content="대한민국 전국투표전도">
+	<meta name="twitter:description"	content="1948년부터 지금까지. 당신이 투표함에 넣었던 표가 모여, 한국 역대 공직선거 데이터 지도가 되었습니다.">
+	<meta name="twitter:image"			content="http://skorea-election-map.org/assets/img/social_media/facebook_thumbnail_02.png">  -->
+	<!-- <meta name="twitter:creator"		content="@20timeline"> -->
+	<!-- SEO tags. LIVE MODE ONLY. Comment out all of the above if error occurs in your DEV env. -->
+
 	
 	
 	<title>우리 지역 고용위기 시그널 - LAB2050</title>
@@ -52,7 +84,6 @@
 	<!-- local json/css -->
 	<link rel="stylesheet" type="text/css" href="css_font/style.css"/>
 
-	<!-- <script type="text/javascript" src="@json_data/scoreLegend.js"></script> -->
 	<!-- <script type="text/javascript" src="@json_data/skorea-map-municipal.js"></script> -->
 	<script type="text/javascript" src="@json_data/skorea-map-province.js"></script>
 	<script type="text/javascript" src="@json_data/skorea-score-2016.js"></script>
@@ -68,7 +99,7 @@
 
 	<div id="background-bounding">
 		<div class="fixed-background visible" id="chapter-01-background">
-			<div id="chapter-01-map"></div>
+			<div id="chapter-01-map"></div><!-- leaflet map -->
 			<object id="chapter-01-svg" class="cumulative-red-map"></object>
 		</div>
 
@@ -88,7 +119,7 @@
 		</div>
 
 		<div class="fixed-background" id="chapter-03-background">
-			<div id="chapter-03-map"></div>
+			<div id="chapter-03-map"></div><!-- leaflet map -->
 			<object id="chapter-03-svg" class="cumulative-red-map"></object>
 		</div>
 
